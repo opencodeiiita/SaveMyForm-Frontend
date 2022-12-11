@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# SaveMyForm-Frontend
+Backend Less form submission collection for your application!
 
-First, run the development server:
+## What problem SaveMyForm solves?
+For frontend-only applications if the developer wants to collect form submissions from his/her users, he/she requires to create a complete backend application for it. 
+
+It Solves the problem by providing the developers a url which they can use for form submissions by sending a POST request to the url.
+
+
+
+## Tech Stack 
+* Nodejs (v16.18.0)
+* Nextjs
+* Antd
+* NextUI
+* Vercel
+
+## Dependencies
+You need npm/yarn installed in your local machine in order to run this app.
+
+## Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
+  npm install 
+  npm run dev
 ```
+## How To Setup 
+* Make sure your machine is having internet connection.
+* Open shell (which ever your OS support) on your PC.
+* Change drive to the location where you want your project to be copied.
+* Clone it to your local setup by using command git clone ```<repo link>```.
+* Once cloned, Run the following command in the root directory of the project ```npm install```.
+* After the process is completed, run the command ```npm run dev```.
+* The website will be live on ```localhost:3000```.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Reference Links 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Claim an issue
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Communication 
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Guidlines 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Our Top Contributors ♥️
+<img src="https://contrib.rocks/image?repo=opencodeiiita/SaveMyForm-Frontend"/>
