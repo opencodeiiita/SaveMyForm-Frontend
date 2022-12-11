@@ -38,7 +38,7 @@ You need npm/yarn installed in your local machine in order to run this app.
 ## Reference Links 
 
 ## Claim an issue
-
+Comment on the issue. In case of no activity on the issue even after 2 days, the issue will be reassigned. If you have difficulty approaching the issue, feel free to ask on our discord channel.
 ## Communication 
 Whether you are working on a new feature or facing a doubt please feel free to ask us on our [discord](https://discord.gg/D9999YTkS8) channel. We will be happy to help you out.
 
