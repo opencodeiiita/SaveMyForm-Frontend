@@ -36,7 +36,13 @@ You need npm/yarn installed in your local machine in order to run this app.
 
 
 ## Reference Links 
-
+- [Download and install the latest version of Git.](https://git-scm.com/downloads)
+- [Set your username in Git.](https://help.github.com/articles/setting-your-username-in-git)
+- [Set your commit email address in Git.](https://help.github.com/articles/setting-your-commit-email-address-in-git)
+- [Antd Docs](https://ant.design/)
+- [NextUI Docs](https://nextui.org/)
+- [Setup Nodejs](https://nodejs.org/en/blog/release/v16.18.1/)
+)
 ## Claim an issue
 Comment on the issue. In case of no activity on the issue even after 2 days, the issue will be reassigned. If you have difficulty approaching the issue, feel free to ask on our discord channel.
 ## Communication 
