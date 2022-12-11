@@ -42,7 +42,6 @@ You need npm/yarn installed in your local machine in order to run this app.
 - [Antd Docs](https://ant.design/)
 - [NextUI Docs](https://nextui.org/)
 - [Setup Nodejs](https://nodejs.org/en/blog/release/v16.18.1/)
-)
 ## Claim an issue
 Comment on the issue. In case of no activity on the issue even after 2 days, the issue will be reassigned. If you have difficulty approaching the issue, feel free to ask on our discord channel.
 ## Communication 
