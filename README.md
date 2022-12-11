@@ -40,7 +40,7 @@ You need npm/yarn installed in your local machine in order to run this app.
 ## Claim an issue
 
 ## Communication 
-Whether you are working on a new feature or facing a doubt please feel free to ask us on our [discord](https://discord.gg/KaMSZkgV) channel. We will be happy to help you out.
+Whether you are working on a new feature or facing a doubt please feel free to ask us on our [discord](https://discord.gg/D9999YTkS8) channel. We will be happy to help you out.
 
 ## Guidlines 
 
