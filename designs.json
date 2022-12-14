@@ -6,5 +6,9 @@
   "loginVector":{
     "createdBy": "github-account",
     "link": "link to vector"
+  },
+  "homePageDesign":{
+    "createdBy": "github-account",
+    "figma": "link to vector"
   }
 }
