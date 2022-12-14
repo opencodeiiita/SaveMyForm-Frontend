@@ -2,5 +2,9 @@
   "logo":{
     "createdBy": "github-account",
     "figma": "link to figma file"
+  },
+  "loginVector":{
+    "createdBy": "github-account",
+    "link": "link to vector"
   }
 }
