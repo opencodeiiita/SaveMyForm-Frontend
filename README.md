@@ -27,6 +27,7 @@ You need npm/yarn installed in your local machine in order to run this app.
 ```
 ## How To Setup 
 * Make sure your machine is having internet connection.
+* Fork the repository.
 * Open shell (which ever your OS support) on your PC.
 * Change drive to the location where you want your project to be copied.
 * Clone it to your local setup by using command git clone ```<repo link>```.
