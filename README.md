@@ -16,6 +16,9 @@ It Solves the problem by providing the developers a url which they can use for f
 * NextUI
 * Vercel
 
+## Design Template
+[Open Figma File ](https://www.figma.com/file/2KnOYD17aRMhXw8qhuuEKu/Theme?node-id=0%3A1&t=GcHGtrnBjhuiOyHI-1)
+
 ## Dependencies
 You need npm/yarn installed in your local machine in order to run this app.
 
