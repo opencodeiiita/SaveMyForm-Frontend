@@ -16,6 +16,9 @@ It Solves the problem by providing the developers a url which they can use for f
 * NextUI
 * Vercel
 
+## Design Template
+[Open Figma File ](https://www.figma.com/file/2KnOYD17aRMhXw8qhuuEKu/Theme?node-id=0%3A1&t=GcHGtrnBjhuiOyHI-1)
+
 ## Dependencies
 You need npm/yarn installed in your local machine in order to run this app.
 
@@ -27,6 +30,7 @@ You need npm/yarn installed in your local machine in order to run this app.
 ```
 ## How To Setup 
 * Make sure your machine is having internet connection.
+* Fork the repository.
 * Open shell (which ever your OS support) on your PC.
 * Change drive to the location where you want your project to be copied.
 * Clone it to your local setup by using command git clone ```<repo link>```.
@@ -54,7 +58,7 @@ Please help us follow the best practice to make it easy for the reviewer as well
 
 - Single commit per pull request and name the commit as something meaningful, example: Adding <-your-name-> in students/mentors section.
 
-- Reference the issue numbers in the commit message if it resolves an open issue. Follow the pattern Fixes #<issue number> <commit message>
+- Reference the issue numbers in the commit message if it resolves an open issue. Follow the [PR Template](https://github.com/opencodeiiita/SaveMyForm-Frontend/blob/main/.github/pull_request_template.md) Issue: < ISSUE NUMBER >
 
 - Provide the link to live gh-pages from your forked repository or relevant screenshot for easier review.
 
