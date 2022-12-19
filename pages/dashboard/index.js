@@ -11,29 +11,29 @@ export default function Dashboard() {
       <div className="py-5 text-center bg-slate-600 mb-8">Navbar</div>
       <div className="w-[90%] h-[10rem] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] border-[#E7EEEC] border-2">
         <Row>
-          <Col>
+          <Col flex="none">
             <div className="h-24 w-24 bg-[#B1FE04] my-7 rounded-full mx-8 "></div>
           </Col>
-          <Col>
-            <Col>
+          <Col flex="none">
+            <Col className="justify-start">
               <Typography.Title
                 level={3}
-                className="mt-10 mb-0 text-4xl font-inter font-medium"
+                className="mt-10 mb-0 text-4xl font-inter font-medium text-left"
               >
                 Name
               </Typography.Title>
             </Col>
-            <Col>
+            <Col className="justify-start">
               <Typography.Title
                 level={5}
-                className="text-2xl font-light text-[#001E2B]"
+                className="text-2xl font-light text-[#001E2B] text-left"
               >
                 Email Address
               </Typography.Title>
             </Col>
           </Col>
-          <Col offset={14}>
-            <Button className=" h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+          <Col flex="auto">
+            <Button className="absolute right-0 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
               Settings
             </Button>
           </Col>
@@ -41,23 +41,25 @@ export default function Dashboard() {
       </div>
       <div className="w-[90%] h-[31.25rem] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] my-24 border-[#E7EEEC] border-2">
         <Row>
-          <Col>
-            <Typography.Title
+          <Col flex="4" className="mt-3 mb-0">
+            <Typography.Text
               level={3}
-              className="mt-3 mb-0 text-4xl font-inter font-medium ml-8"
+              className="mb-0 text-4xl font-inter font-medium ml-8"
             >
               Projects {`(${projectNum})`}
-            </Typography.Title>
+            </Typography.Text>
+
+            <a className="mx-5 mt-8 text-[#006DFB]">Docs</a>
           </Col>
-          <Col className="mt-8 ml-6 text-[#006DFB]">
-            <a>Docs</a>
-          </Col>
-          <Col offset={13}>
-            <Button className=" h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+          {/* <Col flex="1" className=" mt-8 text-[#006DFB]">
+            <a className="">Docs</a>
+          </Col> */}
+          <Col flex="1">
+            <Button className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
               <ReloadOutlined className="mb-[5px] ml-[-3px]" />
             </Button>
           </Col>
-          <Col>
+          <Col flex="1">
             <Button
               type="primary"
               className="ml-5 mr-2 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
@@ -78,18 +80,18 @@ export default function Dashboard() {
 
         <Row className="mt-3 mb-2">
           <Col
-            span={5}
-            className="ml-10 mr-6 font-inter font-semibold text-base"
+            span={6}
+            className="pl-10 pr-6 font-inter font-semibold text-base"
           >
             Name
           </Col>
-          <Col span={5} className="mx-6 font-inter font-semibold text-base">
+          <Col span={6} className="px-6 font-inter font-semibold text-base">
             Number of Forms
           </Col>
-          <Col span={5} className="mx-6 font-inter font-semibold text-base">
+          <Col span={6} className="px-6 font-inter font-semibold text-base">
             Allowed Origins
           </Col>
-          <Col span={5} className="mx-6 font-inter font-semibold text-base">
+          <Col span={6} className="px-6 font-inter font-semibold text-base">
             Date Created
           </Col>
         </Row>
