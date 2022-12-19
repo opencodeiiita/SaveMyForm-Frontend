@@ -1,5 +1,15 @@
-"vector":{
+
+{
+  "logo1":{
+    "createdBy": "aasthaaaa7",
+    "figma": "https://www.figma.com/file/mYRUFOpVhsP7CNeu5mgX1e/save-my-form-logo?node-id=0%3A1&t=H4CtyVgvAvmF7xsY-1",
+    },
+  "logo2":{
+    "createdBy": "pragya1976",
+    "figma": "https://www.figma.com/file/o9w8V84a43fljvFm4eRxZK/Untitled?node-id=0%3A1&t=6dylXCYt6LILuSCN-1"
+   },
+   "loginVector1":{
     "github": "pragya1976",
     "figma": "https://www.figma.com/file/AXxwebtZHhFjXqrIpI1Hlk/Untitled?node-id=0%3A1&t=sfOYzrKXtgeFmVUi-1"
    },
-},
+}
