@@ -1,7 +1,7 @@
 import {AiFillEyeInvisible,AiFillEye} from 'react-icons/ai';
 import { useState } from 'react';
 export default function SignIn() {
-    let [open,setOpen]=useState(true);
+    let [open,setOpen]=useState(false);
     let toggle=()=>{
         setOpen(!open);
     }
@@ -25,7 +25,7 @@ export default function SignIn() {
                         <input
                             placeholder="Password"
                             className="border-[1px] font-normal rounded-lg bg-[#FFFFFF] p-3 focus:border-green-500 pass_type transition-all"
-                            type={(open===false)?"text":"password"}
+                            type={(open===false)?"password":"text"}
                             required
                         ></input>
                         <div className='text-2xl absolute top-5 right-3 cursor-[pointer] select-none'>
@@ -38,7 +38,7 @@ export default function SignIn() {
                     
                     <button
                         type="submit"
-                        className="border-2 border-[#00694B] border-opacity-70 w-full my-2 py-3 bg-[#00694B] shadow-lg shadow-black-500/50 rounded-lg text-[#FFFFFF] hover:transition-all hover:scale-105 "
+                        className="border-2 border-[#00694B] border-opacity-70 w-full my-2 py-3 bg-[#00694B]  rounded-lg text-[#FFFFFF] shadow-[0_0_0px_0_rgba(100,100,111,0.2)] transition-shadow duration-300   hover:shadow-[0_0px_10px_0px_rgba(100,100,111,0.8)] "
                     >
                         Submit
                     </button>
