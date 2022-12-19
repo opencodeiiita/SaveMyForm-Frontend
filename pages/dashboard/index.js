@@ -62,7 +62,7 @@ export default function Dashboard() {
           <Col flex="1">
             <Button
               type="primary"
-              className="ml-5 mr-2 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
+              className="ml-5 mr-8 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
             >
               Create Project
             </Button>
