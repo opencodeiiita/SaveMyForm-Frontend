@@ -1,0 +1,5 @@
+{
+ "How secure is my data when using your form submission service in your website?":"Our form submission service includes several security features to ensure the protection of your data, including JSON schema validation, POST request origin validation, and reCaptcha support.",
+    "Can I add attachments to my form submissions? If so, is there a size limit for attachments?":"Yes, you can allow users to attach files to their form submissions. The maximum size for attachments is 10 MB.",
+   " Can I collaborate with other users on my form submissions?":"Yes, our form submission service includes collaborator support, which allows you to invite other users to view and manage your form submissions. This can be useful for teams working on a project together or for sharing form submissions with clients or stakeholders."
+}
