@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import 'antd/dist/antd'
 import { Button, Typography, Form, Input, Radio, Checkbox, Collapse } from 'antd'
-import { ArrowLeftOutlined, ExclamationCircleOutlined, PlusOutlined, UserAddOutlined } from '@ant-design/icons'
-const { Title, Text, Paragraph, Link } = Typography;
-const {Panel}=Collapse;
+import { ArrowLeftOutlined, ExclamationCircleOutlined, PlusOutlined, UserAddOutlined, CloseOutlined } from '@ant-design/icons'
+const { Paragraph } = Typography;
+const { Panel } = Collapse;
 
-const Recap = () => {
+const Form = () => {
   const [value1, setValue1] = useState(1);
   const [value2, setValue2] = useState(1);
-  const [state, setState] = useState(false)
+  const [state, setState] = useState(false);
+  const [mdomain, setdomain] = useState([{ domain: '' }])
+  const [memail, setMail] = useState([{ email: '' }])
 
   const onChange1 = (e) => {
     setValue1(e.target.value);
@@ -16,7 +18,46 @@ const Recap = () => {
   const onChange2 = (e) => {
     setValue2(e.target.value);
   };
-  const text=""
+
+  const handleClick = () => {
+    setdomain([...mdomain, { domain: '' }])
+  }
+  const handleClickEmail = () => {
+    setMail([...memail, { email: '' }])
+  }
+
+  const handleChnageEmail = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...memail];
+    list[index][name] = value;
+    setMail(list);
+  }
+
+  const handleChange = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...mdomain];
+    list[index][name] = value;
+    setdomain(list);
+  }
+  const handleRemove = (index) => {
+    const list = [...mdomain];
+    list.splice(index, 1);
+    setdomain(list);
+    //  console.log('clkjl')
+  }
+  const handleRemoveEmail = (index) => {
+    const list = [...memail];
+    list.splice(index, 1);
+    setMail(list);
+    //  console.log('clkjl')
+  }
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -40,14 +81,46 @@ const Recap = () => {
           )}
         </div>
         <h2 className='font-bold ml-24 text-lg tracking-wider'>Domains<ExclamationCircleOutlined className='ml-10' /></h2>
-        <div className='ml-24 mt-6 flex flex-row'>
-          <PlusOutlined className='mr-5' /><Input className='  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Add a domain, e.g. example.com'></Input>
-        </div>
+
+        {
+
+          mdomain.map((x, i) => {
+            return (
+              <div className='ml-24 mt-6 flex flex-row h-auto'>
+                <PlusOutlined className='mr-5' onClick={handleClick} />
+                <Input className='  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Add a domain, e.g. example.com' name='domain' onChange={e => handleChange(e, i)}></Input>
+
+                {
+                  mdomain.length > 1 && <CloseOutlined className='ml-5' onClick={() => handleRemove(i)} />
+                }
+              </div>
+            );
+          })
+        }
+
+
         <h2 className='font-bold ml-24 text-lg tracking-wider'>Owners</h2>
         <h3 className='ml-24 font-medium text-slate-400'>nandaaman1234@gmail.com</h3>
-        <div className='ml-24 mt-6 flex flex-row'>
-          <UserAddOutlined className='mr-5 ' /><Input className=' border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Enter email addresses'></Input>
-        </div>
+
+
+        {
+
+          memail.map((x, i) => {
+            return (
+              <div className='ml-24 mt-6 flex flex-row h-auto'>
+                <UserAddOutlined className='mr-5' onClick={handleClickEmail} />
+                <Input className='  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Enter email adresses' name='email' onChange={e => handleChnageEmail(e, i)}></Input>
+
+                {
+                  memail.length > 1 && <CloseOutlined className='ml-5' onClick={() => handleRemoveEmail(i)} />
+                }
+              </div>
+            );
+          })
+        }
+
+
+
         <div className='ml-24 mt-6 h-auto'>
           <Checkbox className='font-bold tracking-widest'>Accept the reCAPTCHA Terms of Service</Checkbox>
           <Paragraph className='ml-10 mt-6 text-sm text-slate-400 w-1/2 '>By accessing or using the reCAPTCHA APIs, you agree to the Google APIs <span className='text-blue-900 brightness-200'>Terms of Use</span>,Google  <span className='text-blue-900 brightness-200'>Terms of Use</span>, and to the Additional Terms below. Please read and understand all applicable terms and policies before accessing the APIs.</Paragraph>
@@ -57,7 +130,7 @@ const Recap = () => {
             <Panel header="reCAPTCHA Terms Of Service" className='text-slate-900 font-semibold'>
               <p className='text-xs  text-slate-400'>You acknowledge and understand that the reCAPTCHA API works by collecting hardware and software information, such as device and application data, and sending these data to Google for analysis. The information collected in connection with your use of the service will be used for improving reCAPTCHA and for general security purposes. It will not be used for personalized advertising by Google. Pursuant to Section 3(d) of the Google APIs Terms of Service, you agree that if you use the APIs that it is your responsibility to provide any necessary notices or consents for the collection and sharing of this data with Google. For users in the European Union, you and your API Client(s) must comply with the <span className='text-blue-900 brightness-200'> EU User Consent Policy.</span> Your use of reCAPTCHA is subject to <span className='text-blue-900 brightness-200'>call limits</span>. Google may in its sole discretion enforce these limits through any of the means described at <span className='text-blue-900 brightness-200'>call limits</span> or in these terms of service.</p>
             </Panel>
-           
+
           </Collapse>
         </div>
         <div className='ml-24 mt-24 '>
@@ -65,7 +138,7 @@ const Recap = () => {
           <ExclamationCircleOutlined className='ml-10' />
         </div>
         <div className='ml-24 mt-24 mb-28'>
-          <Button className=' bg-transparent border-none text-blue-500 cursor-pointer font-semibold'>CANCEL</Button>
+          <Button className=' bg-transparent border-none text-blue-500 cursor-pointer font-semibold' >CANCEL</Button>
           <Button className='ml-16 bg-blue-500  text-white cursor-pointer font-semibold'>SUBMIT</Button>
         </div>
       </Form>
@@ -73,4 +146,4 @@ const Recap = () => {
   )
 }
 
-export default Recap
+export default Form
