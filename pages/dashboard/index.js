@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Typography, Col, Row, Button, Input } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../components/elements/ProjectItem";
+import Avatar from "../../components/elements/Avatar";
 
 export default function Dashboard() {
   const [projectNum, setProjectNum] = useState(0);
@@ -37,7 +38,7 @@ export default function Dashboard() {
       >
         <Row>
           <Col flex="none">
-            <div className="h-24 w-24 bg-[#B1FE04] my-7 rounded-full mx-8 "></div>
+            <div className="h-24 w-24 bg-[#B1FE04] my-7 rounded-full mx-8 "><Avatar /></div>
           </Col>
           <Col flex="none">
             <Col className="justify-start">
