@@ -25,7 +25,7 @@ const newProject = () => {
     setReCaptchaSecret("");
     setDomainNames([{ value: "" }]);
     setCollaboratorNames([{ value: "" }]);
-    setIsChecked((prev) => !prev);
+    setIsChecked(false);
   };
 
   return (
