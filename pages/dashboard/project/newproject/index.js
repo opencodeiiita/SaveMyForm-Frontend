@@ -25,7 +25,7 @@ const newProject = () => {
     setReCaptchaSecret("");
     setDomainNames([{ value: "" }]);
     setCollaboratorNames([{ value: "" }]);
-    setIsChecked(false);
+    setIsChecked((prev) => !prev);
   };
 
   return (
@@ -54,7 +54,7 @@ const newProject = () => {
           reCAPTCHA v3:{" "}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
-        <Checkbox onChange={handleChange}>
+        <Checkbox onChange={handleChange} checked={isChecked}>
           Do you want reCaptcha Support?
         </Checkbox>
         {isChecked && (

@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Input, Button } from "antd";
-const MultipleInputs = ({ addIcon, deleteIcon, placeholder, type , inputs , setInputs}) => {
-  
+const MultipleInputs = ({
+  addIcon,
+  deleteIcon,
+  placeholder,
+  type,
+  inputs,
+  setInputs,
+}) => {
   const addInput = () => {
+    const size = inputs.length;
+    if (inputs[size - 1].value == "") return;
     setInputs([...inputs, { value: "" }]);
   };
   const removeInput = (index, e) => {
