@@ -3,7 +3,7 @@ const nextConfig = {
     reactStrictMode: false,
     swcMinify: true,
     images: {
-        domains: [],
+        domains: [""],
     },
     webpack: (config) => {
         // this will override the experiments
