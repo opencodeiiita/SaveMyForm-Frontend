@@ -9,8 +9,7 @@ export default function SignUp() {
                 <Image src={backimage} 
                 alt=""
                 objectFit="contain"
-                layout="responsive"
-                style={"(min-width : 576px)"}
+
             />   
             </div>
             <div className=" flex flex-col justify-center">
