@@ -3,75 +3,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: Inter, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: Inter, sans-serif;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-.faq_header
-{
-    cursor: pointer;
-    width: 700px;
-    font-size:large;
-    border-radius: 4px;
-    box-shadow: rgb(0 0 0 / 20%) 0px 2px 7px 0px;
-    user-select: none;
-    padding:20px 0px;
-    padding-bottom: 0px;
-    position: relative;
-
+.faq_header {
+  cursor: pointer;
+  width: 700px;
+  font-size: large;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 7px 0px;
+  user-select: none;
+  padding: 20px 0px;
+  padding-bottom: 0px;
+  position: relative;
 }
-.faq_header::before
-{
-    content: "+";
-    font-weight: 100;
-    position: absolute;
-    right:25px;
-    color:#001E2B;
-    padding: 0px;
-    margin: 0px;
-    transform: rotate(var(--angle,0deg)) scale(2.4);
-    transition: transform .2s ease;
+.faq_header::before {
+  content: "+";
+  font-weight: 100;
+  position: absolute;
+  right: 25px;
+  color: #001e2b;
+  padding: 0px;
+  margin: 0px;
+  transform: rotate(var(--angle, 0deg)) scale(2.4);
+  transition: transform 0.2s ease;
 }
-.faq_header h1
-{
-    padding-left: 30px;
-    padding-bottom: 20px;
-    font-weight:700;
-    font-size: 24px;
-    color:#00694B;
+.faq_header h1 {
+  padding-left: 30px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #00694b;
 }
-.faq_container
-{
-    font-family: 'Inter', sans-serif;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top:100px;
-    margin:15px 0px;
-
+.faq_container {
+  font-family: "Inter", sans-serif;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 100px;
+  margin: 15px 0px;
 }
-.faq_details
-{
-    font-size:14px;
-    overflow: hidden;
-    transition: max-height .5s linear,padding .75s ease;
-    max-height: 0px;
-    padding: 0px 30px;
-    padding-bottom:0px;
+.faq_details {
+  font-size: 14px;
+  overflow: hidden;
+  transition: max-height 0.5s linear, padding 0.75s ease;
+  max-height: 0px;
+  padding: 0px 30px;
+  padding-bottom: 0px;
 }
 /* @media (prefers-color-scheme: dark) {
     html {
@@ -82,4 +75,12 @@ a {
         background: #fffefe;
     }
 } */
+.ant-checkbox .ant-checkbox-inner {
+  background-color: #fffefe !important;
+  border-color: black !important;
+}
 
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: green !important;
+  border-color: black !important;
+}
