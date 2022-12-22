@@ -1,7 +1,7 @@
 import axios from "axios";
-import { getLS, error, log } from "../";
+import { getLS, removeLS } from "../LocalStorage/index";
 
-const API_URL = "";
+const API_URL = "https://dev.savemyform.tk";
 
 const getAccessToken = () => {
     return getLS("jwt_token");
@@ -9,13 +9,14 @@ const getAccessToken = () => {
 
 const getHeaders = (token) => {
     if (!token) token = getAccessToken();
-    if (token)
+    if (token) {
         return {
             headers: {
                 Accept: "application/json",
-                "x-access-token": token,
+                Authorization: token,
             },
         };
+    }
     return {
         headers: {
             Accept: "application/json",
@@ -23,17 +24,21 @@ const getHeaders = (token) => {
     };
 };
 
-const post = async (endpoint, body, token = null) => {
+const post = async (endpoint, body, token = null, form = false) => {
+    let options = getHeaders(token);
+    if (form) {
+        options.headers["Content-Type"] = "multipart/form-data";
+    }
     try {
-        const response = await axios.post(
-            API_URL + endpoint,
-            body,
-            getHeaders(token)
-        );
-        log(response.data);
-        return response.data;
+        console.log(options);
+        const response = await axios.post(API_URL + endpoint, body, options);
+        return response;
     } catch (err) {
-        error(err?.response?.data || err);
+        console.error(err?.response?.data || err);
+        if (err?.response?.status === 401) {
+            console.log("Wrong password");
+            removeLS("jwt_token");
+        }
         return err?.response?.data || err;
     }
 };
@@ -41,10 +46,13 @@ const post = async (endpoint, body, token = null) => {
 const get = async (endpoint, token = null) => {
     try {
         const response = await axios.get(API_URL + endpoint, getHeaders(token));
-        log(response.data);
-        return response.data;
+        return response;
     } catch (err) {
-        error(err?.response?.data || err);
+        console.error(err?.response?.data || err);
+        if (err?.response?.status === 401) {
+            console.log("Wrong password");
+            removeLS("jwt_token");
+        }
         return err?.response?.data || err;
     }
 };
@@ -56,10 +64,13 @@ const put = async (endpoint, body, token = null) => {
             body,
             getHeaders(token)
         );
-        log(response.data);
         return response.data;
     } catch (err) {
-        error(err?.response?.data || err);
+        console.error(err?.response?.data || err);
+        if (err?.response?.status === 401) {
+            console.log("Wrong password");
+            removeLS("jwt_token");
+        }
         return err?.response?.data || err;
     }
 };
@@ -70,10 +81,13 @@ const remove = async (endpoint, token = null) => {
             API_URL + endpoint,
             getHeaders(token)
         );
-        log(response.data);
         return response.data;
     } catch (err) {
-        error(err?.response?.data || err);
+        console.error(err?.response?.data || err);
+        if (err?.response?.status === 401) {
+            console.log("Wrong password");
+            removeLS("jwt_token");
+        }
         return err?.response?.data || err;
     }
 };
