@@ -3,9 +3,9 @@ import backimage from '../../assets/images/illustrations/signin.png'
 
 export default function SignUp() {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full ">
             
-            <div className="hidden sm:flex">
+            <div className="hidden sm:flex overflow-auto">
                 <Image src={backimage} 
                 alt=""
                 objectFit="contain"
