@@ -1,7 +1,14 @@
+import Image from "next/image";
+import backimage from '../../assets/images/illustrations/signin.png'
+
 export default function SignUp() {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
-            <div className="bg-gray-200"></div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full ">
+            <div className="hidden sm:flex overflow-auto">
+                <Image src={backimage}
+                className="object-contain"
+            />   
+            </div>
             <div className=" flex flex-col justify-center">
                 <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
                     <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">
