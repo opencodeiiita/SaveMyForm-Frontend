@@ -1,154 +1,126 @@
-import React, { useState } from 'react'
-import 'antd/dist/antd'
-import { Button, Form, Input, Radio } from 'antd'
-import {  ExclamationCircleOutlined, PlusOutlined, UserAddOutlined, CloseOutlined } from '@ant-design/icons'
+import React, { useState } from "react";
+import { Button, Form, Input, Typography, Checkbox } from "antd";
+import {
+  ExclamationCircleOutlined,
+  PlusOutlined,
+  UserAddOutlined,
+  DeleteOutlined,
+  UserDeleteOutlined,
+} from "@ant-design/icons";
+import MultipleInputs from "../../../../components/elements/MultipleInputs";
 
-const NewProject = () => {
-  const [value1, setValue1] = useState(1);
-  const [state, setState] = useState(false);
-  const [mdomain, setdomain] = useState([{ domain: '' }])
-  const [memail, setMail] = useState([{ email: '' }])
-  const [check1,setCheck1]=useState(false);
-  const [check2,setCheck2]=useState(false);
-
-
-  const onChange1 = (e) => {
-    setValue1(e.target.value);
+const newProject = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [projectName, setProjectName] = useState("");
+  const [reCaptchaKey, setReCaptchaKey] = useState("");
+  const [reCaptchaSecret, setReCaptchaSecret] = useState("");
+  const [domainNames, setDomainNames] = useState([{ value: "" }]);
+  const [collaboratorNames, setCollaboratorNames] = useState([{ value: "" }]);
+  const handleChange = (e) => {
+    setIsChecked(e.target.checked);
+  };
+  const clearInputs = () => {
+    setProjectName("");
+    setReCaptchaKey("");
+    setReCaptchaSecret("");
+    setDomainNames([{ value: "" }]);
+    setCollaboratorNames([{ value: "" }]);
+    setIsChecked(false);
   };
 
-
-  const handleClick = () => {
-    setdomain([...mdomain, { domain: '' }])
-    
-
-  }
-  const handleClickEmail = () => {
-    setMail([...memail, { email: '' }])
-  }
-
-  const handleChnageEmail = (e, index) => {
-    const { name, value } = e.target;
-    let str=e.target.value
-    if(!str.trim())
-    setCheck2(false);
-    else
-    setCheck2(true);
-    const list = [...memail];
-    list[index][name] = value;
-    setMail(list);
-    
-   
-  }
-
-  const handleChange = (e, index) => {
-    const { name, value } = e.target;
-    let str=e.target.value
-    if(!str.trim())
-    setCheck1(false);
-    else
-    setCheck1(true);
-    const list = [...mdomain];
-    list[index][name] = value;
-    setdomain(list);
-    
-    
-    
-  }
-  const handleRemove = (index) => {
-    const list = [...mdomain];
-    list.splice(index, 1);
-    setdomain(list);
-    
-  }
-  const handleRemoveEmail = (index) => {
-    const list = [...memail];
-    list.splice(index, 1);
-    setMail(list);
-
-  }
-
-
-
-
-
-
-
-
   return (
-    <div>
-      {/* <h2 className='bg-purple-100 px-20 font-semibold text-lg pt-5 pb-5 text-left'><ArrowLeftOutlined className='mr-2 ' /> Register new Site</h2> */}
-      <h2 className='bg-yellow-300 px-20 pt-5 pb-5 text-2xl sm:text-4xl font-bold text-black brightness-95 '  >SaveMyForm-Frontend </h2>
-      <Form className='mt-3 w-auto'>
-        <h2 className='font-bold ml-24 text-lg tracking-wider'>Project Name:<ExclamationCircleOutlined className='ml-10' /></h2>
-        <Input className='ml-24  border-l-blue-300 text-lg underline-offset-auto w-1/2' maxLength={50} placeholder='e.g. example.com'></Input>
-        <h2 className='font-bold ml-24 mt-8 mb-2 text-lg sm:text-2xl tracking-wider'>reCAPTCHA type<ExclamationCircleOutlined className='ml-10' /></h2>
-        <div className='ml-24 '>
-          <Radio.Group onChange={onChange1} className='flex flex-col mb-3 ' value={value1}>
-            <Radio value={1} onClick={() => setState(false)} className='text-slate-400 tracking-wider p-2 sm:text-2xl sm:text-slate-60000 sm:flex '><span className='ml-2 mr-20  tracking-widest text-zinc-900 font-medium'>reCAPTCHA v3</span> Verify requests with a score</Radio>
-            <Radio value={2} onClick={() => setState(true)} className='text-slate-400 tracking-wider p-2'><span className='ml-2 mr-20 tracking-widest text-zinc-900 font-medium'>reCAPTCHA v2</span> Verify requests with a challenge</Radio>
-          </Radio.Group>
-          {state && (
-            <div  className='flex flex-col ml-12 '>
-              <div className='w-auto'>
-              <Input className='ml-24  border-l-blue-300 text-lg underline-offset-auto w-1/2'  placeholder='reCAPTCHA key'></Input>
-              </div>
-              <div className='w-auto'>
-              <Input className='ml-24  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='reCAPTCHA SECRET'></Input>
-              </div>       
-            </div>
-          )}
-        </div>
-        <h2 className='font-bold ml-24 text-lg tracking-wider'>Domains<ExclamationCircleOutlined className='ml-10' /></h2>
-        {
-          mdomain.map((x, i) => {
-            return (
-              <div className='ml-24 mt-6 flex flex-row h-auto'>
-             {  
-              check1 && <PlusOutlined className='mr-5' onClick={handleClick} />
-             }  
-                <Input className='  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Add a domain, e.g. example.com' name='domain'  onChange={e => handleChange(e, i)}></Input>
-                {
-                  mdomain.length > 1 && <CloseOutlined className='ml-5' onClick={() => handleRemove(i)} />
-                }
-              </div>
-            );
-          })
-        }
+    <>
+      <div className="py-5 text-center bg-slate-600 mb-8">Navbar</div>
+      <form className=" bg-[#FFFEFE] max-w-4xl mx-8">
+        <Typography.Title
+          level={3}
+          className="mt-10 mb-0 text-base font-inter font-bold text-left"
+        >
+          Project Name:{" "}
+          <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
+          <Input
+            placeholder="e.g example.com"
+            className=" border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-normal rounded-md bg-[#FFFEFE] p-3 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+            type="text"
+            value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
+            required
+          />
+        </Typography.Title>
+        <Typography.Title
+          level={3}
+          className="mt-10 mb-0 text-base font-inter font-bold text-left"
+        >
+          reCAPTCHA v3:{" "}
+          <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
+        </Typography.Title>
+        <Checkbox onChange={handleChange} checked={isChecked}>
+          Do you want reCaptcha Support?
+        </Checkbox>
+        {isChecked && (
+          <>
+            <Input
+              placeholder="Enter reCaptcha Key"
+              className="mb-4 border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-normal rounded-md bg-[#FFFEFE] p-3 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+              value={reCaptchaKey}
+              onChange={(e) => setReCaptchaKey(e.target.value)}
+              required
+            />
+            <Input
+              placeholder="Enter reCaptcha Secret"
+              className=" border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-normal rounded-md bg-[#FFFEFE] p-3 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+              value={reCaptchaSecret}
+              onChange={(e) => setReCaptchaSecret(e.target.value)}
+              required
+            />
+          </>
+        )}
+        <Typography.Title
+          level={3}
+          className="mt-10 mb-0 text-base font-inter font-bold text-left"
+        >
+          Domain:{" "}
+          <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
+        </Typography.Title>
+        <MultipleInputs
+          placeholder="Enter Domain Name"
+          type="email"
+          addIcon={<PlusOutlined />}
+          deleteIcon={<DeleteOutlined />}
+          inputs={domainNames}
+          setInputs={setDomainNames}
+        />
+        <Typography.Title
+          level={3}
+          className="mt-10 mb-0 text-base font-inter font-bold text-left"
+        >
+          Collaborators:{" "}
+          <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
+        </Typography.Title>
+        <MultipleInputs
+          placeholder={"Enter Collaborator's email"}
+          type="email"
+          addIcon={<UserAddOutlined />}
+          deleteIcon={<UserDeleteOutlined />}
+          inputs={collaboratorNames}
+          setInputs={setCollaboratorNames}
+        />
+        <Button
+          type="secondary"
+          className=" border-[#00694B] text-[#00694B] font-medium font-inter  my-4 pb-2 rounded-md "
+          onClick={clearInputs}
+        >
+          Cancel
+        </Button>
+        <Button
+          type="primary"
+          className=" ml-4 border-[#00694B] text-[#FFFEFE] font-medium font-inter rounded-md my-4 pb-2 "
+        >
+          Submit
+        </Button>
+      </form>
+    </>
+  );
+};
 
-
-        <h2 className='font-bold ml-24 text-lg tracking-wider'>Owners</h2>
-        <h3 className='ml-24 font-medium text-slate-400'>nandaaman1234@gmail.com</h3>
-
-
-        {
-
-          memail.map((x, i) => {
-            return (
-              <div className='ml-24 mt-6 flex flex-row h-auto'>
-              {
-
-           check2&&     <UserAddOutlined className='mr-5' onClick={handleClickEmail} />
-              }
-                <Input className='  border-l-blue-300 text-lg underline-offset-auto w-1/2' placeholder='Enter email adresses' name='email' onChange={e => handleChnageEmail(e, i)}></Input>
-
-                {
-                  memail.length > 1 && <CloseOutlined className='ml-5' onClick={() => handleRemoveEmail(i)} />
-                }
-              </div>
-            );
-          })
-        }
-
-
-
-
-        <div className='ml-24 mt-24 mb-28'>
-          <Button className=' bg-transparent border-none text-blue-500 cursor-pointer font-semibold' >CANCEL</Button>
-          <Button className='ml-16 bg-blue-500  text-white cursor-pointer font-semibold'>SUBMIT</Button>
-        </div>
-      </Form>
-    </div>
-  )
-}
-
-export default NewProject
+export default newProject;
