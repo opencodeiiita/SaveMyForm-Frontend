@@ -31,29 +31,31 @@ const HeroSection = () => {
     return (
       <>
         <div className="bg-[#00694B] fixed h-full w-full">
-          <div className="absolute h-[400px] w-[400px]">
+          <div className=" h-[350px] w-[350px]">
             <Image
-              className="object-contain z-10 ml-8"
+              className="object-contain z-10 ml-6"
               src={heroImage}
               alt={"heroImage"}
               priority={true}
             />
           </div>
-          <div className="absolute bottom-32 ml-8 right-8 max-w-md text-[#FFFEFE] pt-8">
-            <div className="font-inter font-bold text-3xl">
-              Save your form data now Easily and Securely.
+          <div className="absolute right-0">
+            <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
+              <div className="font-inter font-bold text-3xl">
+                Save your form data now Easily and Securely.
+              </div>
+              <div className="mt-5 font-inter font-medium text-lg">
+                No need to create a form Backend for collecting form responses
+                on your application.
+              </div>
+              <Button
+                type="primary"
+                className="bg-[#01EC64] text-[#00694B] mt-8 rounded-lg font-medium text-xl pb-10 pt-2 pl-8 pr-8 max-1100:mt-8"
+                onClick={handleClick}
+              >
+                Start Now
+              </Button>
             </div>
-            <div className="mt-5 font-inter font-medium text-lg">
-              No need to create a form Backend for collecting form responses on
-              your application.
-            </div>
-            <Button
-              type="primary"
-              className="bg-[#01EC64] text-[#00694B] mt-8 rounded-lg font-medium text-xl pb-10 pt-2 pl-8 pr-8 max-1100:mt-8"
-              onClick={handleClick}
-            >
-              Start Now
-            </Button>
           </div>
         </div>
       </>
