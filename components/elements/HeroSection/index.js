@@ -68,7 +68,7 @@ const HeroSection = () => {
         Navbar
       </div>
       <div className="fixed left-0 top-0 w-[40vw] h-[100vh]">
-        <div className="mt-8 absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-5vh)] max-xl:w-[448px] max-xl:h-[448px] ">
+        <div className="mt-0 absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-3vh)] max-xl:w-[448px] max-xl:h-[448px] ">
           <Image src={heroImage} alt={"heroImage"} />
         </div>
         <svg
@@ -118,7 +118,7 @@ const HeroSection = () => {
             />
           </svg>
         </div>
-        <div className=" absolute top-[calc(50vh-10vw)] right-[15vw] h-[30vw] w-[50vw] xl:w-[40vw] max-xl:top-[62vh] max-xl:right-[22vw] ">
+        <div className=" absolute top-[calc(54vh-10vw)] right-[15vw] h-[30vw] w-[50vw] xl:w-[40vw] max-xl:top-[62vh] max-xl:right-[15vw] max-lg:right-[22vw] ">
           <div className="font-inter font-bold text-5xl max-2xl:text-4xl max-xl:text-3xl max-sm:text-xl">
             Save your form data now <br />{" "}
             <span className="text-[#00694B]">Easily</span> and{" "}
