@@ -30,7 +30,7 @@ const HeroSection = () => {
   if (size.width < 600) {
     return (
       <>
-        <div className="bg-[#00694B] fixed h-full w-full">
+        <div className="bg-[#00694B] fixed h-full w-full overflow-y-auto">
           <div className=" h-[350px] w-[350px]">
             <Image
               className="object-contain z-10 ml-6"
@@ -68,11 +68,11 @@ const HeroSection = () => {
         Navbar
       </div>
       <div className="fixed left-0 top-0 w-[40vw] h-[100vh]">
-        <div className="absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)]">
+        <div className="absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-5vh)] max-xl:w-[448px] max-xl:h-[448px] ">
           <Image src={heroImage} alt={"heroImage"} />
         </div>
         <svg
-          className=" z-0 transition-all relative  top-8" //left-[-30%] max-1100:left-[-40%] fixed top-[5%]
+          className=" z-0 relative  top-8" //left-[-30%] max-1100:left-[-40%] fixed top-[5%]
           width="100%"
           height="100%"
           viewBox="0 0 782 915"
@@ -88,7 +88,7 @@ const HeroSection = () => {
       </div>
 
       <div className="fixed left-[40vw] top-0 w-[60vw] h-[100vh]">
-        <div className="z-0 absolute right-0 bottom-[10vw] w-[15vw] h-[30vw]">
+        <div className="z-0 absolute right-0 bottom-[23vh] w-[15vw] h-[55vh]">
           <svg
             width="100%"
             height="100%"
@@ -103,7 +103,7 @@ const HeroSection = () => {
             />
           </svg>
         </div>
-        <div className="z-10 fixed right-0 bottom-0 w-[40vw] h-[30vw]">
+        <div className="z-10 fixed right-0 bottom-0 w-[40vw] h-[60vh]">
           <svg
             width="100%"
             height="100%"
@@ -118,20 +118,22 @@ const HeroSection = () => {
             />
           </svg>
         </div>
-        <div className="absolute top-[calc(50vh-10vw)] right-[15vw] h-[30vw] w-[40vw]">
-          <div className="font-inter font-bold text-5xl max-2xl:text-4xl max-xl:text-3xl max-lg:text-2xl max-md:text-xl">
+        <div className="absolute top-[calc(50vh-10vw)] right-[15vw] h-[30vw] w-[40vw] max-xl:top-[60vh] max-xl:right-[25vw]">
+          {/* max-xl:text-3xl max-lg:text-2xl max-md:text-xl */}
+          <div className="font-inter font-bold text-5xl max-2xl:text-4xl max-xl:text-3xl max-lg:text-2xl max-sm:text-xl">
             Save your form data now <br />{" "}
             <span className="text-[#00694B]">Easily</span> and{" "}
             <span className="text-[#00694B]">Securely.</span>
           </div>
-          <div className="mt-5 font-inter font-medium text-xl text-[#001E2B] max-2xl:text-lg max-xl:text-base max-lg:text-sm max-md:text-xs">
+          {/* max-2xl:text-lg max-xl:text-base max-lg:text-sm max-md:text-xs */}
+          <div className="mt-5 font-inter font-medium text-xl text-[#001E2B] max-xl:text-base max-lg:text-sm max-sm:text-xs">
             No need to create a <span className="#00694B">Backend </span>for
             <br />
             collecting form responses on your application.
           </div>
           <Button
             type="primary"
-            className="mt-8 rounded-lg font-medium text-xl pb-10 pt-2 pl-8 pr-8 max-xl:pb-8 max-xl:pt-2 max-xl:text-base"
+            className="mt-8 rounded-lg font-medium text-xl pb-10 pt-2 pl-8 pr-8"
             onClick={handleClick}
           >
             Start Now
