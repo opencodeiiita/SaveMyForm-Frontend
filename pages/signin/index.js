@@ -2,7 +2,6 @@ import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import backimage from "../../assets/images/illustrations/signin.png";
-// import axios from "axios";
 import { post } from "../../components/utils/API";
 import { storeLS, getLS } from "../../components/utils/LocalStorage";
 import { message } from "antd";
