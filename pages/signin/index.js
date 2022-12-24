@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 export default function SignIn() {
   const router = useRouter();
   useEffect(() => {
-    if (getLS) {
+    if (getLS("secret")) {
       router.replace("/dashboard");
     }
   }, []);
@@ -42,6 +42,7 @@ export default function SignIn() {
       .then((res) => {
         storeLS("secret", res.data.data.secret);
         success();
+        router.replace("/dashboard");
       })
       .catch((err) => error());
   };
