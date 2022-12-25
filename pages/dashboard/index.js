@@ -3,9 +3,10 @@ import { Typography, Col, Row, Button, Input } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../components/elements/ProjectItem";
 import Avatar from "../../components/elements/Avatar";
-
 export default function Dashboard() {
   const [projectNum, setProjectNum] = useState(0);
+
+
   //Function to get screen size as the component is rendered on server side but we need the screen size of the user
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -30,7 +31,10 @@ export default function Dashboard() {
   const size = useWindowSize();
   return (
     <>
-      <div className="py-5 text-center bg-slate-600 mb-8">Navbar</div>
+      
+      <div className="py-5 text-center bg-slate-600 mb-8">NavBar</div>
+      
+      
       <div
         className={`${
           size.width <= 800 ? "h-[15rem]" : "h-[10rem]"
