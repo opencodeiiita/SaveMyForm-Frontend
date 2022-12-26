@@ -30,7 +30,7 @@ const HeroSection = () => {
   if (size.width < 600) {
     return (
       <>
-        <div className="bg-[#00694B] h-full w-full">
+        <div className="bg-[#00694B] h-[100vh] w-full">
           <div className=" w-[80%]">
             <Image
               className="object-contain z-10 ml-6"
