@@ -84,3 +84,11 @@ a {
   background-color: green !important;
   border-color: black !important;
 }
+
+.homeCircleColor {
+  background: linear-gradient(
+    158deg,
+    #01ec64 14.39%,
+    rgba(217, 217, 217, 0) 90.67%
+  );
+}

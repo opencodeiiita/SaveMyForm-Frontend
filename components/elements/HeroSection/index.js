@@ -30,8 +30,8 @@ const HeroSection = () => {
   if (size.width < 600) {
     return (
       <>
-        <div className="bg-[#00694B] fixed h-full w-full overflow-y-auto">
-          <div className=" h-[350px] w-[350px]">
+        <div className="bg-[#00694B] h-[100vh] w-full">
+          <div className=" w-[80%]">
             <Image
               className="object-contain z-10 ml-6"
               src={heroImage}
@@ -39,7 +39,7 @@ const HeroSection = () => {
               priority={true}
             />
           </div>
-          <div className="absolute right-0">
+          <div className="">
             <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
               <div className="font-inter font-bold text-3xl">
                 Save your form data now Easily and Securely.
@@ -64,10 +64,10 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="z-30 text-center bg-slate-600 fixed top-0 h-[5%] w-full">
+      <div className="z-30 text-center bg-slate-600 absolute top-0 h-[5%] w-[100vw]">
         Navbar
       </div>
-      <div className="fixed left-0 top-0 w-[40vw] h-[100vh]">
+      <div className="w-[40vw] h-[100vh] inline-block">
         <div className="mt-0 absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-3vh)] max-xl:w-[448px] max-xl:h-[448px] ">
           <Image src={heroImage} alt={"heroImage"} />
         </div>
@@ -75,7 +75,7 @@ const HeroSection = () => {
           className=" z-0 relative  top-8"
           width="100%"
           height="100%"
-          viewBox="0 0 782 915"
+          viewBox="0 0 782 960"
           preserveAspectRatio="none"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -87,8 +87,8 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="fixed left-[40vw] top-0 w-[60vw] h-[100vh]">
-        <div className="z-0 absolute right-0 bottom-[23vh] w-[15vw] h-[55vh]">
+      <div className="absolute left-[40vw] inline-block w-[60vw] h-[100vh]">
+        <div className="z-0 absolute right-0 bottom-[calc(23vh-3px)] w-[15vw] h-[55vh]">
           <svg
             width="100%"
             height="100%"
@@ -103,7 +103,7 @@ const HeroSection = () => {
             />
           </svg>
         </div>
-        <div className="z-10 fixed right-0 bottom-0 w-[40vw] h-[60vh]">
+        <div className="z-10 absolute right-0 -bottom-[5px]  inline-block w-[40vw] h-[60vh]">
           <svg
             width="100%"
             height="100%"
