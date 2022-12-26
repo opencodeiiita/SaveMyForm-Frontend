@@ -50,7 +50,7 @@ export default function Home() {
           </defs>
         </svg>
 
-        <div className=" max-600:bg-[#001E2B] flex justify-center absolute top-[100vh] h-[100vh] w-[100vw]">
+        <div className=" max-600:bg-[#001E2B] max-600:w-full flex justify-center absolute top-[100vh] h-[100vh] w-[100vw]">
           <div
             className={`h-[100vh] w-[60vw] min-w-[1200px] max-600:min-w-full max-600:w-full`}
           >
