@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <div className=" h-full w-[100vw]">
+      <div className=" h-[100vh] w-[100vw]">
         <svg
           className="max-600:hidden"
           width="100vw"
