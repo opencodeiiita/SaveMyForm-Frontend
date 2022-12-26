@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      {/* <HeroSection /> */}
       <div className=" h-full w-full">
         <svg
           width="100%"
@@ -13,6 +13,7 @@ export default function Home() {
           viewBox="0 0 1728 982"
           fill="none"
           preserveAspectRatio="none"
+          className="maxg-600:hidden"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
