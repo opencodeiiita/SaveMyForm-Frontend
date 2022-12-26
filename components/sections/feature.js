@@ -1,8 +1,14 @@
 import React from "react";
 import templateCode from "../../assets/images/illustrations/templateCode.png";
 import Image from "next/image";
+import { useInView } from "react-intersection-observer";
 
 const feature = () => {
+  const { ref: text, inView: textVisible } = useInView();
+  const { ref: code, inView: codeVisible } = useInView();
+  const { ref: circle1, inView: circle1Visible } = useInView();
+  const { ref: circle2, inView: circle2Visible } = useInView();
+  const { ref: circle3, inView: circle3Visible } = useInView();
   return (
     <>
       <div className=" h-[100vh] w-[100vw]">
@@ -54,8 +60,15 @@ const feature = () => {
             className={`h-[100vh] w-[60vw] min-w-[1200px] max-600:min-w-full max-600:w-full`}
           >
             <div className="absolute flex justify-center left-0 top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
-              <div className="max-600:absolute max-600:top-[270px] max-600:w-[85vw] z-10 w-[60%] h-[60%] mt-[22vh] font-sans text-[#FFFFFF] max-xl:w-[80%]">
-                <h5 className="max-600:hidden font-semibold text-6xl text-[#FFFFFF] max-lg:text-5xl max-md:text-4xl">
+              <div
+                ref={text}
+                className={`reveal-bottom ${
+                  textVisible ? "active-reveal" : ""
+                } max-600:absolute max-600:top-[270px] max-600:w-[85vw] z-10 w-[60%] h-[60%] mt-[22vh] font-sans text-[#FFFFFF] max-xl:w-[80%]`}
+              >
+                <h5
+                  className={`max-600:hidden font-semibold text-6xl text-[#FFFFFF] max-lg:text-5xl max-md:text-4xl`}
+                >
                   <span className="text-[#01EC64]">JSON</span> Schema
                   <br />
                   Validation
@@ -72,16 +85,34 @@ const feature = () => {
               </div>
             </div>
 
-            <div className="max-600:top-20 max-600:left-6 mt-0 absolute top-[30vh] right-[15%] z-10 h-[20vw] w-[20vw] min-w-[400px] min-h-[400px]  max-xl:right-16 max-800:min-w-[300px] max-800:min-h[300px] max-md:right-8">
+            <div
+              ref={code}
+              className={`reveal-bottom ${
+                codeVisible ? "active-reveal" : ""
+              } max-600:top-20 max-600:left-6 mt-0 absolute top-[30vh] right-[15%] z-10 h-[20vw] w-[20vw] min-w-[400px] min-h-[400px]  max-xl:right-16 max-800:min-w-[300px] max-800:min-h[300px] max-md:right-8`}
+            >
               <Image
                 src={templateCode}
                 alt={"templateCode"}
                 preserveAspectRatio="none"
               />
             </div>
-            <div className="max-600:hidden absolute right-[30vw] top-[10vh] homeCircleColor w-[18vw] h-[18vw] rounded-full min-w-[300px] min-h-[300px] max-xl:left-[35%] max-xl:top-[5%]"></div>
-            <div className="max-600:right-8 max-600:top-64 absolute right-[5vw] top-[65vh] homeCircleColor w-[14vw] h-[14vw] rounded-full min-w-[200px] min-h-[200px] max-xl:right-[30%] "></div>
-            <div className="max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[12vw] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:top-[15vh]"></div>
+            <div
+              ref={circle1}
+              className={`reveal-bottom ${
+                circle1Visible ? "active-reveal" : ""
+              } max-600:hidden absolute right-[30vw] top-[10vh] homeCircleColor w-[18vw] h-[18vw] rounded-full min-w-[300px] min-h-[300px] max-xl:left-[35%] max-xl:top-[5%]`}
+            ></div>
+            <div
+              ref={circle2}
+              className={`max-600:right-8 max-600:top-64 absolute right-[5vw] top-[65vh] homeCircleColor w-[14vw] h-[14vw] rounded-full min-w-[200px] min-h-[200px] max-xl:right-[30%] `}
+            ></div>
+            <div
+              ref={circle3}
+              className={`reveal-bottom ${
+                circle3Visible ? "active-reveal" : ""
+              } max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[12vw] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:top-[15vh]`}
+            ></div>
           </div>
         </div>
       </div>
