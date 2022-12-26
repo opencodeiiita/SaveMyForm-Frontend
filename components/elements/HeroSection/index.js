@@ -39,9 +39,9 @@ const HeroSection = () => {
               priority={true}
             />
           </div>
-          <div className="absolute right-0">
+          <div className="">
             <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
-              <div className="font-inter font-bold text-2xl">
+              <div className="font-inter font-bold text-3xl">
                 Save your form data now Easily and Securely.
               </div>
               <div className="mt-5 font-inter font-medium text-lg">
