@@ -31,7 +31,7 @@ const HeroSection = () => {
     return (
       <>
         <div className="bg-[#00694B] h-[100vh] w-[100vw] overflow-y-auto">
-          <div className=" h-[350px] w-[350px]">
+          <div className=" w-[80%]">
             <Image
               className="object-contain z-10 ml-6"
               src={heroImage}
@@ -41,7 +41,7 @@ const HeroSection = () => {
           </div>
           <div className="absolute right-0">
             <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
-              <div className="font-inter font-bold text-3xl">
+              <div className="font-inter font-bold text-2xl">
                 Save your form data now Easily and Securely.
               </div>
               <div className="mt-5 font-inter font-medium text-lg">
@@ -64,7 +64,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="z-30 text-center bg-slate-600 fixed top-0 h-[5%] w-full">
+      <div className="z-30 text-center bg-slate-600 absolute top-0 h-[5%] w-[100vw]">
         Navbar
       </div>
       <div className="w-[40vw] h-[100vh] inline-block">

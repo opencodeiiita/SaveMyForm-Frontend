@@ -83,7 +83,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" h-[100vh] w-[100vw] bg-yellow-500"></div>
     </>
   );
 }
