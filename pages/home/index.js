@@ -13,7 +13,7 @@ export default function Home() {
           viewBox="0 0 1728 982"
           fill="none"
           preserveAspectRatio="none"
-          className="maxg-600:hidden"
+          className="max-600:hidden"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
