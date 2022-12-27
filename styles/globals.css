@@ -231,3 +231,22 @@ a {
 }
 
 }
+
+.homeCircleColor {
+  background: linear-gradient(
+    158deg,
+    #01ec64 14.39%,
+    rgba(217, 217, 217, 0) 90.67%
+  );
+}
+
+.reveal-bottom {
+  transform: translateY(300px);
+  opacity: 0;
+  transition: opacity, transform 0.3s ease;
+}
+
+.reveal-bottom.active-reveal {
+  transform: translateY(0px);
+  opacity: 1;
+}
