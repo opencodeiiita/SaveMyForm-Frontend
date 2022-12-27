@@ -15,7 +15,7 @@ const responses = () => {
   });
   return (
     <>
-      <div className="h-[100vh] w-[100vw] relative max-600:bg-[#001E2B]">
+      <div className="max-600:h-[80vh] h-[100vh] w-[100vw] relative max-600:bg-[#001E2B]">
         <svg
           className=" z-0 h-[100vh] w-[45vw] max-600:hidden"
           preserveAspectRatio="none"
@@ -48,7 +48,7 @@ const responses = () => {
           ref={circle1}
           className={`reveal-bottom ${
             circle1Visible ? "active-reveal" : ""
-          } max-600:top-[13vh] max-600:right-20 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]`}
+          } max-600:float-right max-600:top-[13vh] max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]`}
         ></div>
         <div
           ref={circle2}
@@ -136,9 +136,9 @@ const responses = () => {
             ref={text}
             className={`reveal-bottom ${
               textVisible ? "active-reveal" : ""
-            } max-600:top-[10vw] max-600:w-[400px] absolute top-[calc(46vh-10vw)] left-0 h-[400px] w-[50vw] max-800:w-[54vw]`}
+            } max-600:pr-8 max-600:top-[10vw] max-600:w-[90vw] absolute top-[calc(46vh-10vw)] left-0 h-[400px] w-[50vw] max-800:w-[54vw]`}
           >
-            <div className="max-600:text-3xl max-600:text-[#FFFFFF] max-800:text-3xl text-[52px] font-bold font-sans max-1140:text-4xl">
+            <div className=" max-600:text-2xl max-600:text-[#FFFFFF] max-800:text-3xl text-[52px] font-bold font-sans max-1140:text-4xl">
               Save{" "}
               <span className="text-[#116148] max-600:text-[#01EC64]">
                 1000
@@ -147,7 +147,7 @@ const responses = () => {
               <span className="text-[#116148] max-600:text-[#01EC64]">30</span>{" "}
               days !
             </div>
-            <div className="max-600:text-[#FFFFFF] max-600:text-lg max-600:w-[44vw] max-800:text-base max-800:w-[50vw]  font-medium font-sans text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
+            <div className="max-600:text-[#FFFFFF] max-600:text-lg max-800:text-base max-800:w-[50vw]  font-medium font-sans text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
               We save your form easily and securely that no other platform can
             </div>
             <div className="max-600:mt-16 max-600:text-[#FFFFFF] max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#116148] w-[75%] font-medium font-sans text-xl max-1140:text-lg max-1140:mt-2">
