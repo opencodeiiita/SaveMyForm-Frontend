@@ -1,5 +1,6 @@
 @import "./antd.css";
 @import "./antd-mod.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -83,4 +84,150 @@ a {
 .ant-checkbox-checked .ant-checkbox-inner {
   background-color: green !important;
   border-color: black !important;
+}
+.dyfr_background
+{
+  /* border: 5px solid red; */
+  background-image: url("../assets/svgs/DYFR_Background.svg");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  overflow:scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+
+}
+.figma_ellipse
+{
+  height: 200px;
+  width: 200px;
+  /* outline: 1px solid white; */
+  position: fixed;
+  left:600px;
+  top: 110px;
+}
+.figma_ellipse2
+{
+  height: 250px;
+  width: 250px;
+  /* outline: 1px solid white; */
+  position: fixed;
+  left:clamp(10px,5%,100px);
+  top: 450px;
+}
+.figma_vector
+{
+  width: clamp(400px,30%,500px);
+  position: fixed;
+  right: clamp(10px,10%,400px);
+  top:clamp(10px,30%,300px);
+  /* outline: 1px solid white; */
+
+}
+
+.text_container
+{
+  display: flex;
+  flex-direction: column;
+  /* outline:1px solid white; */
+  width: min-content;
+  z-index: 1;
+  position: absolute;
+  left:clamp(10px,10%,160px);
+  top:clamp(10px,20%,150px);
+  width: 678px;
+
+}
+.dyfr_text1
+{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 7vh;
+  color: #FFFEFE;
+  margin-bottom: 50px;
+}
+.dyfr_text2
+{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2.5vh;
+  line-height: 36px;
+  width: 500px;
+  color: #FFFEFE;
+  margin-bottom: 30px;
+
+}
+.dyfr_text3
+{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5vh;
+  line-height: 36px;
+  color: #EFE7E7;  
+  width: 408.81px;
+}
+
+@media  screen and (max-width:900px) {
+  
+  .dyfr_background
+  {
+    background: #001E2B;
+  }
+  .figma_ellipse
+  {
+    height: 120px;
+    width: 120px;
+    left: 5%;
+    top:50px;
+  }
+  .figma_vector
+  {
+    width: calc(20vh + 40vw );
+    position: absolute;
+    right: unset;
+    top: 90px;
+  }
+  .figma_ellipse2
+  {
+    display: none;
+  }
+  .text_container
+  {
+    width: 90%;
+    /* outline: 1px solid white; */
+    top: unset;
+    left: unset;
+    bottom: 2%;
+    /* height: 300px; */
+  }
+  .dyfr_text1
+{
+
+  font-weight: 600;
+  font-size: 4vh;
+  margin-bottom: 10px;
+  line-height:unset;
+}
+.dyfr_text2
+{
+  font-size: 2vh;
+  width: auto;
+  margin-bottom: 10px;
+  line-height: unset;
+}
+.dyfr_text3
+{
+
+  font-size: 2ch;
+  width: auto;
+  line-height: unset;
+}
+
 }

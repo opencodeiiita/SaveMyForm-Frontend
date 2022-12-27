@@ -8,15 +8,30 @@ export default function SignIn() {
     let toggle=()=>{
         setOpen(!open);
     }
+    //Code for sign_in functionality;
+    if(process.browser)
+    {
+        let form=document.querySelector("form");
+        let email="";
+        let pass="";
+        form.onsubmit=()=>{
+            email=form[0].value;
+            pass=form[1].value;
+            alert(email+" "+pass);
+        }
+        
+    }
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
             <div className="hidden sm:flex overflow-auto" >
                 <Image src={backimage} 
                 className="object-contain"
+                alt="Sorry image couldn't load"
+                priority
             />   
             </div>
             <div className=" flex flex-col justify-center">
-                <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
+                <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 " >
                     <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">
                         Log In
                     </h2>
