@@ -172,7 +172,7 @@ const responses = () => {
               />
             </svg>
           </div>
-          <div className="max-600:hidden z-10 absolute right-0 -bottom-[5px]  inline-block w-[35vw] h-[57vh]">
+          <div className="max-600:hidden z-10 absolute right-0 bottom-0 inline-block w-[35vw] h-[57vh]">
             <svg
               width="100%"
               height="100%"
