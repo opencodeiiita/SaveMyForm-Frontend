@@ -1,6 +1,6 @@
 import React from "react"
 import Image from "next/image"
-import down from "../../assets/images/illustrations/down.png"
+import down from "../../assets/images/illustrations/Down.png"
 
 export default function Footer(){
     return(
