@@ -4,11 +4,17 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
 const feature = () => {
-  const { ref: text, inView: textVisible } = useInView();
-  const { ref: code, inView: codeVisible } = useInView();
-  const { ref: circle1, inView: circle1Visible } = useInView();
-  const { ref: circle2, inView: circle2Visible } = useInView();
-  const { ref: circle3, inView: circle3Visible } = useInView();
+  const { ref: text, inView: textVisible } = useInView({ triggerOnce: true });
+  const { ref: code, inView: codeVisible } = useInView({ triggerOnce: true });
+  const { ref: circle1, inView: circle1Visible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: circle2, inView: circle2Visible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: circle3, inView: circle3Visible } = useInView({
+    triggerOnce: true,
+  });
   return (
     <>
       <div className=" h-[100vh] w-[100vw]">
