@@ -4,14 +4,20 @@ import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 
 const feature = () => {
-  const { ref: text, inView: textVisible } = useInView();
-  const { ref: code, inView: codeVisible } = useInView();
-  const { ref: circle1, inView: circle1Visible } = useInView();
-  const { ref: circle2, inView: circle2Visible } = useInView();
-  const { ref: circle3, inView: circle3Visible } = useInView();
+  const { ref: text, inView: textVisible } = useInView({ triggerOnce: true });
+  const { ref: code, inView: codeVisible } = useInView({ triggerOnce: true });
+  const { ref: circle1, inView: circle1Visible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: circle2, inView: circle2Visible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: circle3, inView: circle3Visible } = useInView({
+    triggerOnce: true,
+  });
   return (
     <>
-      <div className=" h-[100vh] w-[100vw]">
+      <div className="h-[100vh] w-[100vw]">
         <svg
           className="max-600:hidden"
           width="100vw"
@@ -57,9 +63,9 @@ const feature = () => {
 
         <div className=" max-600:bg-[#001E2B] flex justify-center absolute top-[100vh] h-[100vh] w-full">
           <div
-            className={`h-[100vh] w-[60vw] min-w-[1200px] max-600:min-w-full max-600:w-full`}
+            className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-full`}
           >
-            <div className="absolute flex justify-center left-0 top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
+            <div className=" absolute flex justify-center left-0 top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
               <div
                 ref={text}
                 className={`reveal-bottom ${
