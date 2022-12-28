@@ -20,7 +20,7 @@ export default ()=>{
     return (
         <div className="dyfr_background">
         <svg 
-        className=" z-0 h-[100vh] max-600:hidden mt-[-.7px]"
+        className=" z-0 h-[100vh] max-600:hidden -mt-2"
         preserveAspectRatio="none"
         fill="none"
         width="100%" height="100%" viewBox="0 0 1728 1036" xmlns="http://www.w3.org/2000/svg">

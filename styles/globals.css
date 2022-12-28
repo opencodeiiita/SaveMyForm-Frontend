@@ -101,16 +101,16 @@ a {
   /* outline: 1px solid white; */
   position: absolute;
   left:40%;
-  top: 110px;
+  top: 100px;
 }
 .figma_ellipse2
 {
-  height: 250px;
-  width: 250px;
+  height: 16vw;
+  width: 16vw;
   /* outline: 1px solid white; */
   position: absolute;
   left:clamp(10px,5%,100px);
-  top: 450px;
+  top: 20vw;
 }
 .figma_vector
 {
@@ -140,7 +140,7 @@ a {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 600;
-  font-size: 60px;
+  font-size: 50px;
   color: #FFFEFE;
   margin-bottom: 30px;
 }
@@ -149,9 +149,9 @@ a {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 36px;
-  width: 500px;
+  width: 350px;
   color: #FFFEFE;
   margin-bottom: 30px;
 
@@ -161,7 +161,7 @@ a {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 400;
-  font-size: 22px;
+  font-size: 18px;
   color: #EFE7E7;  
   width: 408.81px;
 }
