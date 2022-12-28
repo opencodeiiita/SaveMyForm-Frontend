@@ -15,7 +15,7 @@ const responses = () => {
   });
   return (
     <>
-      <div className="h-[100vh] relative max-600:bg-[#001E2B]">
+      <div className=" h-[80vh] relative max-600:bg-[#001E2B]">
         <svg
           className=" z-0 h-[100vh] w-[45vw] max-600:hidden"
           preserveAspectRatio="none"
@@ -48,7 +48,7 @@ const responses = () => {
           ref={circle1}
           className={`reveal-bottom ${
             circle1Visible ? "active-reveal" : ""
-          } max-600:float-right max-600:top-[13vh] max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]`}
+          } max-600:float-right max-600:top-[18vh] max-600:mt-4 max-600:ml-4 max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]`}
         ></div>
         <div
           ref={circle2}
@@ -131,12 +131,12 @@ const responses = () => {
           </defs>
         </svg>
 
-        <div className=" max-600:w-[100vw] max-600:left-0 max-600:mx-8 absolute top-0 left-[40vw] inline-block w-[60vw] h-[100vh]">
+        <div className=" max-600:w-[90vw] max-600:top-[50vh] max-600:translate-y-[-40%] max-600:left-0 max-600:mx-8 absolute top-0 left-[40vw] inline-block w-[60vw] h-[100vh]">
           <div
             ref={text}
             className={`reveal-bottom ${
               textVisible ? "active-reveal" : ""
-            } max-600:pr-8 max-600:top-[10vw] max-600:w-[90vw] absolute top-[calc(46vh-10vw)] left-0 h-[400px] w-[50vw] max-800:w-[54vw]`}
+            } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(46vh-10vw)] left-0 h-[400px] w-[50vw] max-800:w-[54vw]`}
           >
             <div className=" max-600:text-2xl max-600:text-[#FFFFFF] max-800:text-3xl text-[52px] font-bold font-sans max-1140:text-4xl">
               Save{" "}
