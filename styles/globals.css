@@ -181,6 +181,13 @@ a {
     rgba(217, 217, 217, 0) 90.67%
   );
 }
+.homeCircleColor2 {
+  background: linear-gradient(
+    153.43deg,
+    #01ec64 -16.67%,
+    rgba(217, 217, 217, 0) 66.67%
+  );
+}
 
 .reveal-bottom {
   transform: translateY(300px);

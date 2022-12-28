@@ -16,6 +16,7 @@ module.exports = {
             screens:{
                 '800' : '800px',
                 '600' : '600px',
+                '1140' : '1140px'
             },
             maxWidth: {
                 "screen-xl": "84rem",
