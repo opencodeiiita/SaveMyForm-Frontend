@@ -15,7 +15,7 @@ const responses = () => {
   });
   return (
     <>
-      <div className=" h-[80vh] relative max-600:bg-[#001E2B]">
+      <div className=" max-600:h-[80vh] h-[100vh] relative max-600:bg-[#001E2B]">
         <svg
           className=" z-0 h-[100vh] w-[45vw] max-600:hidden"
           preserveAspectRatio="none"
