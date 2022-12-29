@@ -1,11 +1,17 @@
 import React from "react";
-
+import { useInView } from "react-intersection-observer";
 const SingleFileUpload = () => {
+  const { ref: docImg, inView: docImgVisible } = useInView({
+    triggerOnce: true,
+  });
+  const { ref: text, inView: textVisible } = useInView({
+    triggerOnce: true,
+  });
   return (
     <>
       <div className="max-600:h-[80vh] h-[100vh] relative bg-[#01EC64] max-600:bg-[#01694b]">
         <svg
-          className="absolute -bottom-[210px] left-0"
+          className="absolute -bottom-[210px] left-0 600:hidden"
           width="111"
           height="260"
           viewBox="0 0 111 260"
@@ -113,7 +119,10 @@ const SingleFileUpload = () => {
           </svg>
         </div>
         <svg
-          className={` max-600:hidden max-800:-left-8 max-800:h-[300px] max-800:w-[300px] absolute top-[25vh] left-[10vw] z-10 h-[25vw] w-[25vw]`}
+          ref={docImg}
+          className={`reveal-bottom ${
+            docImgVisible ? "active-reveal" : ""
+          } max-600:hidden max-800:-left-8 max-800:h-[300px] max-800:w-[300px] absolute top-[25vh] left-[10vw] z-10 h-[25vw] w-[25vw]`}
           width="100%"
           height="100%"
           viewBox="0 0 473 550"
@@ -175,7 +184,10 @@ const SingleFileUpload = () => {
 
         <div className=" max-600:w-[90vw] max-600:top-[50vh] max-600:translate-y-[-40%] max-600:left-0 max-600:mx-8 absolute top-0 left-[50vw] inline-block w-[60vw] h-[100vh]">
           <div
-            className={`max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(40vh-10vw)] left-0 h-[400px] w-[52vw] max-800:w-[54vw]`}
+            ref={text}
+            className={`reveal-bottom ${
+              textVisible ? "active-reveal" : ""
+            } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(40vh-10vw)] left-0 h-[400px] w-[52vw] max-800:w-[54vw]`}
           >
             <div className=" max-600:w-[60vw] max-600:text-3xl text-[#FFFFFF] max-800:text-3xl text-[52px] w-[40vw] font-bold font-sans max-1140:text-4xl">
               Single file upload allowed!
