@@ -3,7 +3,8 @@ import Feature from "../../components/sections/feature.js";
 import Footer from "../../components/sections/footer";
 import Responses from "../../components/sections/responses.js";
 import DownloadFormResponses from "../../components/sections/FormResponsesSection";
-import ReCaptcha from "../../components/sections/reCaptcha";
+import SingleFileUpload from "../../components/sections/SingleFileUpload";
+import ReCaptcha from "../../components/sections/reCaptcha"
 export default function Home() {
   return (
     <>
@@ -11,6 +12,8 @@ export default function Home() {
       <Feature />
       <DownloadFormResponses />
       <Responses />
+      <SingleFileUpload/>
+      <ReCaptcha/>
       <Footer />
     </>
   );
