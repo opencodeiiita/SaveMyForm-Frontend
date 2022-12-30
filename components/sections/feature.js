@@ -70,7 +70,7 @@ const feature = () => {
                 ref={text}
                 className={`reveal-bottom ${
                   textVisible ? "active-reveal" : ""
-                } max-600:absolute max-600:top-[270px] max-600:w-[85vw] z-10 w-[60%] h-[60%] mt-[22vh] font-sans text-[#FFFFFF] max-xl:w-[80%]`}
+                } max-600:absolute max-600:top-[270px] max-600:w-[85vw] z-10 w-[60%] h-[60%] mt-[22vh] font-inter text-[#FFFFFF] max-xl:w-[80%]`}
               >
                 <h5
                   className={`max-600:hidden font-semibold text-6xl text-[#FFFFFF] max-lg:text-5xl max-md:text-4xl`}
@@ -82,7 +82,8 @@ const feature = () => {
                 <h5 className="600:hidden font-semibold text-3xl text-[#FFFFFF]">
                   <span className="text-[#01EC64]">JSON</span> Schema Validation
                 </h5>
-                <p className="max-600:w-full max-600:mt-4 mt-16 font-normal text-2xl w-[300px] max-md:text-xl">
+
+                <p className="max-600:w-full max-600:mt-4 mt-16 font-normal font-[Poppins] text-2xl w-[450px] max-md:text-xl">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco

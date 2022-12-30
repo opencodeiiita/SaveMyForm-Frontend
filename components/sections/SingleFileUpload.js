@@ -189,13 +189,14 @@ const SingleFileUpload = () => {
               textVisible ? "active-reveal" : ""
             } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(40vh-10vw)] left-0 h-[400px] w-[52vw] max-800:w-[54vw]`}
           >
-            <div className=" max-600:w-[60vw] max-600:text-3xl text-[#FFFFFF] max-800:text-3xl text-[52px] w-[40vw] font-bold font-sans max-1140:text-4xl">
+            <div className=" max-600:w-[60vw] max-600:text-3xl text-[#FFFFFF] max-800:text-3xl text-[52px] w-[40vw] font-bold font-inter max-1140:text-4xl">
               Single file upload allowed!
             </div>
-            <div className="text-[#FFFFFF] max-600:text-xl max-800:text-base max-800:w-[60vw]  font-medium font-sans text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
+            <br></br>
+            <div className="text-[#FFFFFF] max-600:text-xl max-800:text-base max-800:w-[60vw]  font-bold font-inter text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
               We save your form easily and securely that no other platform can
             </div>
-            <div className="max-600:mt-16 max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#FFFFFF] w-[75%] font-medium font-sans text-xl max-1140:text-lg mt-8">
+            <div className="max-600:mt-16 max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#FFFFFF] w-[75%] font-normal font-[Poppins] text-xl max-1140:text-lg mt-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
