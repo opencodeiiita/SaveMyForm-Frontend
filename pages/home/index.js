@@ -9,10 +9,8 @@ export default function Home() {
     <>
       <HeroSection />
       <Feature />
-      {/* <div className="h-[100vh] w-[100vw] bg-red-500"></div> */}
-      <DownloadFormResponses/>
+      <DownloadFormResponses />
       <Responses />
-      <ReCaptcha/>
       <Footer />
     </>
   );
