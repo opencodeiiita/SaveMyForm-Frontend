@@ -8,6 +8,8 @@ const Settings = () => {
     const [newPasswordVisible, setNewPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [passwordTab, setPasswordTab] = useState(false);
+    const [name,setName] = useState("");
+    const [email,setEmail] = useState("");
     const [oldPassword,setOldPassword] = useState("");
     const [newPassword,setNewPassword] = useState("");
     const [confPassword,setConfPassword] = useState("");
@@ -35,7 +37,7 @@ const Settings = () => {
         })
         .catch((err)=>{
             error();
-            console.log(err);
+            // console.log(err);
         })
         .then(()=>{
             success();
@@ -60,9 +62,17 @@ const Settings = () => {
         }
     }
     const reset = () => {
-        setOldPassword("");
-        setNewPassword("");
-        setConfPassword("");
+        if (passwordTab == true) {
+            setOldPassword("");
+            setNewPassword("");
+            setConfPassword("");
+        }
+        else {
+            setEmail("");
+            setName("");
+        }
+        
+        
     };
     return (
         <>  
@@ -98,12 +108,20 @@ const Settings = () => {
                         className={`${
                             passwordTab ? "hidden" : "block"
                         } mt-8 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
+                        onChange={(e)=>{
+                            setName(e.target.value);
+                        }}
+                        value={name}
                     />
                     <Input
                         placeholder="Email Address"
                         className={`${
                             passwordTab ? "hidden" : "block"
                         } mt-12 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
+                        onChange={(e)=>{
+                            setEmail(e.target.value);
+                        }}
+                        value={email}
                     />
                     {passwordTab && (
                         <Input.Password
@@ -159,7 +177,9 @@ const Settings = () => {
                     type="primary"
                     className="mr-4 w-[8rem] h-10 rounded-lg font-inter font-medium text-lg text-center hover:border-green-300 shadow-md mb-8 hover:scale-105"
                     onClick={()=>{
-                        validatePasswords();
+                        {passwordTab?validatePasswords():
+                            console.log("TODO") // when user is saving name and email
+                        }
                     }}
                 >
                     Save
