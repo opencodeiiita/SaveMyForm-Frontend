@@ -57,9 +57,9 @@ const get = async (endpoint, token = null) => {
     }
 };
 
-const put = async (endpoint, body, token = null) => {
+const patch = async (endpoint, body, token = null) => {
     try {
-        const response = await axios.put(
+        const response = await axios.patch(
             API_URL + endpoint,
             body,
             getHeaders(token)
@@ -92,4 +92,4 @@ const remove = async (endpoint, token = null) => {
     }
 };
 
-export { getAccessToken, post, get, put, remove };
+export { getAccessToken, post, get, patch, remove };
