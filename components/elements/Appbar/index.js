@@ -19,7 +19,7 @@ export default function index() {
   }, []);
 
   return (
-    <Navbar shouldHideOnScroll variant="sticky">
+    <Navbar variant="sticky">
       <Navbar.Toggle
         showIn={"md"}
         aria-label="toggle navigation"
