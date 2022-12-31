@@ -253,7 +253,7 @@ export default () => {
         <div
           className={`reveal-bottom ${
             text2Visible ? "active-reveal" : ""
-          } mt-6 text-[min(20px,2vw)] font-[Poppins] font-[400] max-600:text-lg max-600:text-center max-600:mt-16`}
+          } mt-6 text-[min(20px,2vw)] font-[Poppins] font-[400] max-600:text-lg max-600:text-left max-600:mt-16`}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

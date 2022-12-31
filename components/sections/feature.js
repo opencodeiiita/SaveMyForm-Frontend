@@ -83,11 +83,9 @@ const feature = () => {
                   <span className="text-[#01EC64]">JSON</span> Schema Validation
                 </h5>
 
-                <p className="max-600:w-full max-600:mt-4 mt-16 font-normal font-[Poppins] text-2xl w-[450px] max-md:text-xl">
+                <p className="max-600:w-full max-600:mt-4 mt-16 font-normal font-[Poppins] text-2xl w-[300px] max-md:text-xl">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
                 </p>
               </div>
             </div>

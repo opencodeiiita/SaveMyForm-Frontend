@@ -17,7 +17,7 @@ const responses = () => {
     <>
       <div className=" max-600:h-[80vh] h-[100vh] relative max-600:bg-[#001E2B]">
         <svg
-          className=" z-0 h-[100vh] w-[47.55vw] max-600:hidden -mt-[5px]"
+          className=" z-0 h-[100vh] w-[48.05vw] max-600:hidden -mt-[5px]"
           preserveAspectRatio="none"
           width="100%"
           height="100%"
@@ -147,16 +147,13 @@ const responses = () => {
               <span className="text-[#116148] max-600:text-[#01EC64]">30</span>{" "}
               days !
             </div>
-            <br></br>
             <div className="max-600:text-[#FFFFFF] max-600:text-lg max-800:text-base max-800:w-[50vw]  font-bold text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
               We save your form easily and securely that no other platform can
             </div>
             <br></br>
             <div className="max-600:mt-16 max-600:text-[#FFFFFF] max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#116148] w-[75%] font-medium  font-[Poppins] text-xl max-1140:text-lg max-1140:mt-2">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
           </div>
           <div className="max-600:hidden z-0 absolute right-0 bottom-[calc(23vh-3px)] w-[10vw] h-[55vh]">

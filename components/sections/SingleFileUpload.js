@@ -192,15 +192,12 @@ const SingleFileUpload = () => {
             <div className=" max-600:w-[60vw] max-600:text-3xl text-[#FFFFFF] max-800:text-3xl text-[52px] w-[40vw] font-bold font-inter max-1140:text-4xl">
               Single file upload allowed!
             </div>
-            <br></br>
             <div className="text-[#FFFFFF] max-600:text-xl max-800:text-base max-800:w-[60vw]  font-bold font-inter text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
               We save your form easily and securely that no other platform can
             </div>
-            <div className="max-600:mt-16 max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#FFFFFF] w-[75%] font-normal font-[Poppins] text-xl max-1140:text-lg mt-8">
+            <div className="max-600:mt-16 max-600:w-[85vw] max-600:text-lg max-800:text-base text-[#FFFFFF] w-[75%] font-normal font-[Poppins] text-xl max-1140:text-lg mt-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </div>
           </div>
         </div>
