@@ -4,7 +4,7 @@ import Footer from "../../components/sections/footer";
 import Responses from "../../components/sections/responses.js";
 import DownloadFormResponses from "../../components/sections/FormResponsesSection";
 import SingleFileUpload from "../../components/sections/SingleFileUpload";
-import ReCaptcha from "../../components/sections/reCaptcha"
+import ReCaptcha from "../../components/sections/reCaptcha";
 export default function Home() {
   return (
     <>
@@ -12,8 +12,8 @@ export default function Home() {
       <Feature />
       <DownloadFormResponses />
       <Responses />
-      <SingleFileUpload/>
-      <ReCaptcha/>
+      <SingleFileUpload />
+      <ReCaptcha />
       <Footer />
     </>
   );

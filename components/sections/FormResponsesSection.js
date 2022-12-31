@@ -18,6 +18,7 @@ export default ()=>{
         triggerOnce: true,
       });
     return (
+      <div className="relative">
         <div className="dyfr_background">
         <svg 
         className=" z-0 h-[100vh] max-600:hidden -mt-2"
@@ -57,6 +58,8 @@ export default ()=>{
                 </div>
             </div>
         </div>
+      </div>
+        
     );
 
 }
