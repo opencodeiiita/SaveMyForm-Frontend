@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button } from "antd";
+import { Input, Button, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { post } from "../../components/utils/API";
+import { patch } from "../../components/utils/API";
 
 const Settings = () => {
     const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
@@ -11,29 +11,51 @@ const Settings = () => {
     const [oldPassword,setOldPassword] = useState("");
     const [newPassword,setNewPassword] = useState("");
     const [confPassword,setConfPassword] = useState("");
-    const [error, setError] = useState(false);
+    const [errorBool, setErrorBool] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
-    
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = () => {
+        messageApi.open({
+        type: "success",
+        content: "Password was successfully updated",
+        });
+    };
+    const error = () => {
+        messageApi.open({
+          type: "error",
+          content: "Error encountered",
+        });
+      };
     function handleSave(){
-        e.preventDefault();
-
+        patch("/updatepassword",{
+            oldPassword: oldPassword,
+            newPassword: newPassword,
+            recaptcha_token: "dunno"
+        })
+        .catch((err)=>{
+            error();
+            console.log(err);
+        })
+        .then(()=>{
+            success();
+        });
     }
-
     function validatePasswords(){
         if (oldPassword==="" || newPassword ==="" || confPassword ==="") {
-            setError(true);
+            setErrorBool(true);
             setErrorMessage("All fields are required");
         }
         else if (newPassword.length < 7){
-            setError(true);
+            setErrorBool(true);
             setErrorMessage("New password length >7 required!");
         }
         else if (newPassword!==confPassword) {
-            setError(true);
+            setErrorBool(true);
             setErrorMessage("Confirm Password does not match!");
         }
         else{
-            setError(false);
+            setErrorBool(false);
             handleSave();
         }
     }
@@ -43,7 +65,8 @@ const Settings = () => {
         setConfPassword("");
     };
     return (
-        <>
+        <>  
+            {contextHolder}
             <div className="h-24 w-24 bg-[#B1FE04] mt-8 rounded-full mx-auto "></div>
             <div className="mt-8 pl-2 flex rounded-lg h-10 w-[90%] ml-auto mr-auto max-w-5xl bg-[#FFFEFE] shadow-[0_3px_4px_0px_#00000040] border-[1px]">
                 <div
@@ -124,7 +147,7 @@ const Settings = () => {
                             value={confPassword}
                         />
                     )}
-                    {passwordTab && error && (
+                    {passwordTab && errorBool && (
                         <div className="error-message" style={{textAlign:"center",color:"red"}}>
                             {errorMessage}
                         </div>
