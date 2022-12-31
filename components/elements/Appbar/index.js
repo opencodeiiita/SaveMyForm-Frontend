@@ -19,9 +19,9 @@ export default function index() {
   }, []);
 
   return (
-    <Navbar variant="sticky">
+    <Navbar variant="sticky" className="w-full opacity-100 bg-[#FFFFFF]">
       <Navbar.Toggle
-        showIn={"md"}
+        showIn={"sm"}
         aria-label="toggle navigation"
         className="mx-2 fill-[#00FF00]"
       />
@@ -31,32 +31,32 @@ export default function index() {
           SaveMyForm
         </Text>
       </Navbar.Brand>
-      <Navbar.Content activeColor={"success"} hideIn="md" variant={"default"}>
+      <Navbar.Content activeColor={"success"} hideIn="sm" variant={"default"}>
         <Navbar.Link
           isActive={active[0]}
           href="/home"
-          className="hover:text-[#116148]"
+          className="hover:text-[#116148] text-lg"
         >
           Home
         </Navbar.Link>
         <Navbar.Link
           isActive={active[1]}
           href="/dashboard"
-          className="hover:text-[#116148]"
+          className="hover:text-[#116148] text-lg"
         >
           Dashboard
         </Navbar.Link>
         <Navbar.Link
           isActive={active[2]}
           href="/documentation"
-          className="hover:text-[#116148]"
+          className="hover:text-[#116148] text-lg"
         >
           Documentation
         </Navbar.Link>
         <Navbar.Link
           isActive={active[3]}
           href="/faqs"
-          className="hover:text-[#116148]"
+          className="hover:text-[#116148] text-lg"
         >
           FAQs
         </Navbar.Link>
@@ -67,7 +67,7 @@ export default function index() {
           flat
           auto
           color="success"
-          className="hover:bg-[#90EE90] hover:text-[#FFFFFF]"
+          className="hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md"
         >
           Login
         </Button>
@@ -76,7 +76,7 @@ export default function index() {
           flat
           bordered
           color={"success"}
-          className="bg-[#01EC64] text-[#00694B] hover:bg-[#90EE90] hover:text-[#FFFFFF]"
+          className="bg-[#01EC64] text-[#00694B] hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md"
         >
           Sign Up
         </Button>
