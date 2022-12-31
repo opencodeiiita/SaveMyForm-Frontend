@@ -1,12 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { post } from "../../components/utils/API";
 
 const Settings = () => {
     const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
     const [newPasswordVisible, setNewPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [passwordTab, setPasswordTab] = useState(false);
+    const [oldPassword,setOldPassword] = useState("");
+    const [newPassword,setNewPassword] = useState("");
+    const [confPassword,setConfPassword] = useState("");
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    
+    function handleSave(){
+        e.preventDefault();
+
+    }
+
+    function validatePasswords(){
+        if (oldPassword==="" || newPassword ==="" || confPassword ==="") {
+            setError(true);
+            setErrorMessage("All fields are required");
+        }
+        else if (newPassword.length < 7){
+            setError(true);
+            setErrorMessage("New password length >7 required!");
+        }
+        else if (newPassword!==confPassword) {
+            setError(true);
+            setErrorMessage("Confirm Password does not match!");
+        }
+        else{
+            setError(false);
+            handleSave();
+        }
+    }
+    const reset = () => {
+        setOldPassword("");
+        setNewPassword("");
+        setConfPassword("");
+    };
     return (
         <>
             <div className="h-24 w-24 bg-[#B1FE04] mt-8 rounded-full mx-auto "></div>
@@ -55,6 +90,10 @@ const Settings = () => {
                                 visible: oldPasswordVisible,
                                 onVisibleChange: setOldPasswordVisible,
                             }}
+                            onChange={(e)=>{
+                                setOldPassword(e.target.value);
+                            }}
+                            value={oldPassword}
                         />
                     )}
                     {passwordTab && (
@@ -65,6 +104,10 @@ const Settings = () => {
                                 visible: newPasswordVisible,
                                 onVisibleChange: setNewPasswordVisible,
                             }}
+                            onChange={(e)=>{
+                                setNewPassword(e.target.value);
+                            }}
+                            value={newPassword}
                         />
                     )}
                     {passwordTab && (
@@ -75,7 +118,16 @@ const Settings = () => {
                                 visible: confirmPasswordVisible,
                                 onVisibleChange: setConfirmPasswordVisible,
                             }}
+                            onChange={(e)=>{
+                                setConfPassword(e.target.value);
+                            }}
+                            value={confPassword}
                         />
+                    )}
+                    {passwordTab && error && (
+                        <div className="error-message" style={{textAlign:"center",color:"red"}}>
+                            {errorMessage}
+                        </div>
                     )}
                 </div>
             </div>
@@ -83,12 +135,18 @@ const Settings = () => {
                 <Button
                     type="primary"
                     className="mr-4 w-[8rem] h-10 rounded-lg font-inter font-medium text-lg text-center hover:border-green-300 shadow-md mb-8 hover:scale-105"
+                    onClick={()=>{
+                        validatePasswords();
+                    }}
                 >
                     Save
                 </Button>
                 <Button
                     type="default"
                     className="mr-8 w-[8rem] h-10 rounded-lg font-inter font-medium text-lg text-center border-1 border-[#7FB3A4] text-[#00694B] hover:border-green-300 shadow-md mb-8 hover:scale-105"
+                    onClick={() => {
+                        reset();
+                    }}
                 >
                     Cancel
                 </Button>
