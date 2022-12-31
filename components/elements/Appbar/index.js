@@ -26,8 +26,8 @@ export default function index() {
         className="mx-2 fill-[#00FF00]"
       />
       <Navbar.Brand>
-        <Image src={Logo} className="h-16 w-16" />
-        <Text b color="inherit" hideIn="xs">
+        <Image src={Logo} className="h-16 w-16 mr-4" />
+        <Text b color="inherit" hideIn="xs" className="text-2xl">
           SaveMyForm
         </Text>
       </Navbar.Brand>
@@ -67,7 +67,7 @@ export default function index() {
           flat
           auto
           color="success"
-          className="hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md"
+          className="hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md text-lg"
         >
           Login
         </Button>
@@ -76,7 +76,7 @@ export default function index() {
           flat
           bordered
           color={"success"}
-          className="bg-[#01EC64] text-[#00694B] hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md"
+          className="bg-[#01EC64] text-[#00694B] hover:bg-[#90EE90] hover:text-[#FFFFFF] rounded-md text-lg"
         >
           Sign Up
         </Button>
