@@ -30,7 +30,7 @@ const HeroSection = () => {
   if (size.width < 600) {
     return (
       <>
-        <div className="bg-[#00694B] h-[100vh] w-full">
+        <div className="bg-[#00694B] h-fit w-full">
           <div className=" w-[80%]">
             <Image
               className="object-contain z-10 ml-6"
@@ -64,15 +64,13 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="z-30 text-center bg-slate-600 absolute top-0 h-[5%] w-[100vw]">
-        Navbar
-      </div>
       <div className="w-[40vw] h-[100vh] inline-block">
+        <div className="h-[10vh]"></div>
         <div className="mt-0 absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-3vh)] max-xl:w-[448px] max-xl:h-[448px] ">
           <Image src={heroImage} alt={"heroImage"} />
         </div>
         <svg
-          className=" z-0 relative  top-8"
+          className=" z-0 h-[110vh] w-[40vw] absolute top-[10vh]"
           width="100%"
           height="100%"
           viewBox="0 0 782 960"

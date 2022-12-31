@@ -17,7 +17,7 @@ const feature = () => {
   });
   return (
     <>
-      <div className="h-[100vh] w-[100vw]">
+      <div className="relative h-[100vh] w-[100vw]">
         <svg
           className="max-600:hidden"
           width="100vw"
@@ -61,11 +61,11 @@ const feature = () => {
           </defs>
         </svg>
 
-        <div className=" max-600:bg-[#001E2B] flex justify-center absolute top-[100vh] h-[100vh] w-full">
+        <div className="absolute top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh] w-full">
           <div
             className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-full`}
           >
-            <div className=" absolute flex justify-center left-0 top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
+            <div className="absolute flex justify-center left-0 top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
               <div
                 ref={text}
                 className={`reveal-bottom ${
