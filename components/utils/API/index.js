@@ -4,7 +4,7 @@ import { getLS, removeLS } from "../LocalStorage/index";
 const API_URL = "https://dev.savemyform.tk";
 
 const getAccessToken = () => {
-    return getLS("jwt_token");
+    return getLS("secret");
 };
 
 const getHeaders = (token) => {
@@ -13,7 +13,7 @@ const getHeaders = (token) => {
         return {
             headers: {
                 Accept: "application/json",
-                Authorization: token,
+                Authorization: `Bearer ${token}`,
             },
         };
     }
@@ -37,7 +37,7 @@ const post = async (endpoint, body, token = null, form = false) => {
         console.error(err?.response?.data || err);
         if (err?.response?.status === 401) {
             console.log("Wrong password");
-            removeLS("jwt_token");
+            removeLS("secret");
         }
         return err?.response?.data || err;
     }
@@ -51,15 +51,15 @@ const get = async (endpoint, token = null) => {
         console.error(err?.response?.data || err);
         if (err?.response?.status === 401) {
             console.log("Wrong password");
-            removeLS("jwt_token");
+            removeLS("secret");
         }
         return err?.response?.data || err;
     }
 };
 
-const put = async (endpoint, body, token = null) => {
+const patch = async (endpoint, body, token = null) => {
     try {
-        const response = await axios.put(
+        const response = await axios.patch(
             API_URL + endpoint,
             body,
             getHeaders(token)
@@ -69,7 +69,7 @@ const put = async (endpoint, body, token = null) => {
         console.error(err?.response?.data || err);
         if (err?.response?.status === 401) {
             console.log("Wrong password");
-            removeLS("jwt_token");
+            removeLS("secret");
         }
         return err?.response?.data || err;
     }
@@ -86,10 +86,10 @@ const remove = async (endpoint, token = null) => {
         console.error(err?.response?.data || err);
         if (err?.response?.status === 401) {
             console.log("Wrong password");
-            removeLS("jwt_token");
+            removeLS("secret");
         }
         return err?.response?.data || err;
     }
 };
 
-export { getAccessToken, post, get, put, remove };
+export { getAccessToken, post, get, patch, remove };
