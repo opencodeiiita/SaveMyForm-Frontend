@@ -1,1 +1,9 @@
-export default function NewForm() {}
+import NewFormComponent from "../../../../../components/elements/NewForm";
+
+export default function NewForm() {
+  return (
+    <>
+      <NewFormComponent />
+    </>
+  );
+}
