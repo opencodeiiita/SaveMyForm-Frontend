@@ -8,55 +8,52 @@ const Settings = () => {
     const [newPasswordVisible, setNewPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [passwordTab, setPasswordTab] = useState(false);
-    const [name,setName] = useState("");
-    const [email,setEmail] = useState("");
-    const [oldPassword,setOldPassword] = useState("");
-    const [newPassword,setNewPassword] = useState("");
-    const [confPassword,setConfPassword] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [oldPassword, setOldPassword] = useState("");
+    const [newPassword, setNewPassword] = useState("");
+    const [confPassword, setConfPassword] = useState("");
     const [errorBool, setErrorBool] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [messageApi, contextHolder] = message.useMessage();
 
     const success = () => {
         messageApi.open({
-        type: "success",
-        content: "Password was successfully updated",
+            type: "success",
+            content: "Password was successfully updated",
         });
     };
     const error = () => {
         messageApi.open({
-          type: "error",
-          content: "Error encountered",
+            type: "error",
+            content: "Error encountered",
         });
-      };
-    function handleSave(){
-        patch("/updatepassword",{
+    };
+    function handleSave() {
+        patch("/user/updatepassword", {
             oldPassword: oldPassword,
             newPassword: newPassword,
-            recaptcha_token: "dunno"
+            recaptcha_token: "dunno",
         })
-        .catch((err)=>{
-            error();
-            // console.log(err);
-        })
-        .then(()=>{
-            success();
-        });
+            .catch((err) => {
+                error();
+                // console.log(err);
+            })
+            .then(() => {
+                success();
+            });
     }
-    function validatePasswords(){
-        if (oldPassword==="" || newPassword ==="" || confPassword ==="") {
+    function validatePasswords() {
+        if (oldPassword === "" || newPassword === "" || confPassword === "") {
             setErrorBool(true);
             setErrorMessage("All fields are required");
-        }
-        else if (newPassword.length < 7){
+        } else if (newPassword.length < 7) {
             setErrorBool(true);
             setErrorMessage("New password length >7 required!");
-        }
-        else if (newPassword!==confPassword) {
+        } else if (newPassword !== confPassword) {
             setErrorBool(true);
             setErrorMessage("Confirm Password does not match!");
-        }
-        else{
+        } else {
             setErrorBool(false);
             handleSave();
         }
@@ -66,16 +63,13 @@ const Settings = () => {
             setOldPassword("");
             setNewPassword("");
             setConfPassword("");
-        }
-        else {
+        } else {
             setEmail("");
             setName("");
         }
-        
-        
     };
     return (
-        <>  
+        <>
             {contextHolder}
             <div className="h-24 w-24 bg-[#B1FE04] mt-8 rounded-full mx-auto "></div>
             <div className="mt-8 pl-2 flex rounded-lg h-10 w-[90%] ml-auto mr-auto max-w-5xl bg-[#FFFEFE] shadow-[0_3px_4px_0px_#00000040] border-[1px]">
@@ -108,7 +102,7 @@ const Settings = () => {
                         className={`${
                             passwordTab ? "hidden" : "block"
                         } mt-8 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setName(e.target.value);
                         }}
                         value={name}
@@ -118,7 +112,7 @@ const Settings = () => {
                         className={`${
                             passwordTab ? "hidden" : "block"
                         } mt-12 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
-                        onChange={(e)=>{
+                        onChange={(e) => {
                             setEmail(e.target.value);
                         }}
                         value={email}
@@ -131,7 +125,7 @@ const Settings = () => {
                                 visible: oldPasswordVisible,
                                 onVisibleChange: setOldPasswordVisible,
                             }}
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 setOldPassword(e.target.value);
                             }}
                             value={oldPassword}
@@ -145,7 +139,7 @@ const Settings = () => {
                                 visible: newPasswordVisible,
                                 onVisibleChange: setNewPasswordVisible,
                             }}
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 setNewPassword(e.target.value);
                             }}
                             value={newPassword}
@@ -159,14 +153,17 @@ const Settings = () => {
                                 visible: confirmPasswordVisible,
                                 onVisibleChange: setConfirmPasswordVisible,
                             }}
-                            onChange={(e)=>{
+                            onChange={(e) => {
                                 setConfPassword(e.target.value);
                             }}
                             value={confPassword}
                         />
                     )}
                     {passwordTab && errorBool && (
-                        <div className="error-message" style={{textAlign:"center",color:"red"}}>
+                        <div
+                            className="error-message"
+                            style={{ textAlign: "center", color: "red" }}
+                        >
                             {errorMessage}
                         </div>
                     )}
@@ -176,9 +173,11 @@ const Settings = () => {
                 <Button
                     type="primary"
                     className="mr-4 w-[8rem] h-10 rounded-lg font-inter font-medium text-lg text-center hover:border-green-300 shadow-md mb-8 hover:scale-105"
-                    onClick={()=>{
-                        {passwordTab?validatePasswords():
-                            console.log("TODO") // when user is saving name and email
+                    onClick={() => {
+                        {
+                            passwordTab
+                                ? validatePasswords()
+                                : console.log("TODO"); // when user is saving name and email
                         }
                     }}
                 >
