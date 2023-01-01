@@ -115,11 +115,11 @@ export default function Form() {
           <>
             <Row>
               <Col flex="auto">
-                <Button className=" ml-8  h-10 w-[10rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-md  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                <Button className=" ml-4  h-10 w-[10rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-md  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
                   Download CSV
                 </Button>
 
-                <Button className=" mx-4 h-10 w-[10rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-md my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                <Button className=" mx-2 h-10 w-[10rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-md my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
                   Download PDF
                 </Button>
               </Col>
