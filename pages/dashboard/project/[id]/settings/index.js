@@ -30,7 +30,6 @@ const newProject = () => {
 
   return (
     <>
-      <div className="py-5 text-center bg-slate-600 mb-8">Navbar</div>
       <form className=" bg-[#FFFEFE] max-w-4xl mx-8">
         <Typography.Title
           level={3}

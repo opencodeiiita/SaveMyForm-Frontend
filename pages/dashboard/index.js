@@ -29,7 +29,6 @@ export default function Dashboard() {
     const size = useWindowSize();
     return (
         <>
-            <div className="py-5 text-center bg-slate-600 mb-8">NavBar</div>
 
             <div
                 className={`${
