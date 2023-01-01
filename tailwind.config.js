@@ -4,9 +4,20 @@ module.exports = {
     content: [
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
+        "./node_modules/flowbite/**/*.js"
     ],
+
+    plugins: [
+        require('flowbite/plugin')
+    ],
+
     theme: {
         extend: {
+            screens:{
+                '800' : '800px',
+                '600' : '600px',
+                '1140' : '1140px'
+            },
             maxWidth: {
                 "screen-xl": "84rem",
             },

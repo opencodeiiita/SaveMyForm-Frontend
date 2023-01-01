@@ -29,7 +29,6 @@ export default function Project() {
   const size = useWindowSize();
   return (
     <>
-      <div className="py-5 text-center bg-slate-600 mb-8">Navbar</div>
       <div
         className={`${
           size.width <= 800 ? "h-[18rem]" : "h-[11rem]"
