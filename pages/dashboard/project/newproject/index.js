@@ -34,13 +34,13 @@ const newProject = () => {
     const success = () => {
         messageApi.open({
             type: "success",
-            content: "Password was successfully updated",
+            content: "Project successfully saved",
         });
     };
     const error = () => {
         messageApi.open({
             type: "error",
-            content: "Error encountered",
+            content: "Error encountered!",
         });
     };
 
