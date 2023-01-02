@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Typography, Checkbox } from "antd";
+import { Button, Form, Input, Typography, Checkbox , message} from "antd";
 import {
     ExclamationCircleOutlined,
     PlusOutlined,
@@ -8,6 +8,7 @@ import {
     UserDeleteOutlined,
 } from "@ant-design/icons";
 import MultipleInputs from "../../../../components/elements/MultipleInputs";
+import { post } from "../../../../components/utils/API";
 
 const newProject = () => {
     const [isChecked, setIsChecked] = useState(false);
@@ -16,6 +17,8 @@ const newProject = () => {
     const [reCaptchaSecret, setReCaptchaSecret] = useState("");
     const [domainNames, setDomainNames] = useState([{ value: "" }]);
     const [collaboratorNames, setCollaboratorNames] = useState([{ value: "" }]);
+    const [messageApi, contextHolder] = message.useMessage();
+
     const handleChange = (e) => {
         setIsChecked(e.target.checked);
     };
@@ -28,8 +31,41 @@ const newProject = () => {
         setIsChecked(false);
     };
 
+    const success = () => {
+        messageApi.open({
+            type: "success",
+            content: "Password was successfully updated",
+        });
+    };
+    const error = () => {
+        messageApi.open({
+            type: "error",
+            content: "Error encountered",
+        });
+    };
+
+    function handleSubmit(){
+        post("/new",{
+            "name" : projectName,
+            "hasRecaptcha": isChecked,
+            "recaptchaKey": reCaptchaKey,
+            "recaptchaSecret": reCaptchaSecret,
+            "allowedOrigins": ["http://localhost", "https://savemyform.tk"],
+            "collaborators": collaboratorNames,
+            "recaptcha_token": "dunno"
+        })
+        .catch((err) => {
+            error();
+            console.log(err);
+        })
+        .then(() => {
+            success();
+        });
+    }
+
     return (
         <>
+            {contextHolder}
             <form className=" bg-[#FFFEFE] max-w-4xl mx-8">
                 <Typography.Title
                     level={3}
@@ -114,6 +150,7 @@ const newProject = () => {
                 <Button
                     type="primary"
                     className=" ml-4 border-[#00694B] text-[#FFFEFE] font-medium font-inter rounded-md my-4 pb-2 "
+                    onClick={handleSubmit}
                 >
                     Submit
                 </Button>
