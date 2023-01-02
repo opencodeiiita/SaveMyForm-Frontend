@@ -6,6 +6,7 @@ import { post } from "../../components/utils/API";
 import { storeLS, getLS } from "../../components/utils/LocalStorage";
 import { message } from "antd";
 import { useRouter } from "next/router";
+import GoogleOAuth from "../../components/elements/GoogleOAuth"
 
 export default function SignIn() {
   const router = useRouter();
@@ -86,13 +87,13 @@ export default function SignIn() {
                 )}
               </div>
             </div>
-
             <button
               type="submit"
               className="border-2 border-[#00694B] border-opacity-70 w-full my-2 py-3 bg-[#00694B]  rounded-lg text-[#FFFFFF] shadow-[0_0_0px_0_rgba(100,100,111,0.2)] transition-shadow duration-300   hover:shadow-[0_0px_10px_0px_rgba(100,100,111,0.8)] "
             >
               Submit
             </button>
+            <GoogleOAuth/>
           </form>
         </div>
       </div>

@@ -6,6 +6,8 @@ import { storeLS } from "../../components/utils/LocalStorage";
 import { useRouter } from "next/router";
 import { message } from "antd";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import GoogleOAuth from "../../components/elements/GoogleOAuth";
+
 export default function SignUp() {
     const router = useRouter();
     const [name, setName] = useState(null);
@@ -136,6 +138,7 @@ export default function SignUp() {
                         >
                             Submit
                         </button>
+                        <GoogleOAuth/>
                     </form>
                 </div>
             </div>
