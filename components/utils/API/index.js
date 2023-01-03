@@ -37,7 +37,13 @@ const post = async (endpoint, body, token = null, form = false) => {
         console.error(err?.response?.data || err);
         if (err?.response?.status === 401) {
             console.log("Wrong password");
+            throw "Wrong password";
             removeLS("secret");
+        }
+        else if (err?.response?.status === 404) {
+            console.log("404 Error");
+            removeLS("secret");
+            throw "404 Error";
         }
         return err?.response?.data || err;
     }
