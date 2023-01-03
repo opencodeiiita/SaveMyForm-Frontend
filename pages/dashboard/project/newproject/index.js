@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Typography, Checkbox , message} from "antd";
+import { Button, Form, Input, Typography, Checkbox , message, Col} from "antd";
 import {
     ExclamationCircleOutlined,
     PlusOutlined,
@@ -45,13 +45,19 @@ const newProject = () => {
     };
 
     function handleSubmit(){
-        post("/new",{
+        var collaboratorNamesStrings = collaboratorNames.map(function(item){
+            return item['value']
+        });
+        var domainNamesStrings = domainNames.map(function(item){
+            return item['value']
+        });
+        post("/project/new",{
             "name" : projectName,
             "hasRecaptcha": isChecked,
             "recaptchaKey": reCaptchaKey,
             "recaptchaSecret": reCaptchaSecret,
-            "allowedOrigins": ["http://localhost", "https://savemyform.tk"],
-            "collaborators": collaboratorNames,
+            "allowedOrigins": domainNamesStrings,
+            "collaborators": collaboratorNamesStrings,
             "recaptcha_token": "dunno"
         })
         .catch((err) => {
