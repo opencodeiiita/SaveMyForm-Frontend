@@ -7,7 +7,7 @@ export default function Error() {
       <svg
         width="100%"
         height="100%"
-        className=" h-[42vw] bottom-0 w-[75vw] absolute right-0 max-600:h-[56vw] max-600:w-[100vw]"
+        className="max-600:hidden h-[42vw] bottom-0 w-[75vw] absolute right-0 max-600:h-[56vw] max-600:w-[100vw]"
         preserveAspectRatio="none"
         viewBox="0 0 1279 888"
         fill="none"
@@ -45,26 +45,26 @@ export default function Error() {
         </defs>
       </svg>
       <Image
-        className="h-[25vw] w-[30vw] absolute bottom-[3vw] right-[8vw] max-600:right-[18vw]"
+        className="max-600:hidden h-[25vw] w-[30vw] absolute bottom-[3vw] right-[8vw] max-600:right-[18vw]"
         height={"100%"}
         width={"100%"}
         src={errorImage}
         alt={"ErrorImage"}
       />
-      <div className="w-[35vw] left-[5vw] relative max-lg:w-[90vw]">
-        <div className="font-bold text-[#005E41] text-[100px] mt-[10vh] font-[Poppins] max-xl:mt-[5vh] max-xl:text-[80px]">
+      <div className="max-600:bg-[#00694B] max-600:h-[89vh] max-600:left-0 max-600:w-[100vw] max-600:p-[5vw] w-[35vw] left-[5vw] relative max-lg:w-[90vw]">
+        <div className="font-bold text-[#01EC64] text-[100px] mt-[10vh] font-[Poppins] max-xl:mt-[5vh] max-xl:text-[80px]">
           ERROR!
         </div>
-        <div className="font-semibold font-[Poppins] text-[50px] max-xl:text-[40px] max-lg:mb-4">
+        <div className="max-600:text-[#FFFFFF] font-semibold font-[Poppins] text-[50px] max-xl:text-[40px] max-lg:mb-4">
           PAGE NOT FOUND
         </div>
-        <div className="font-medium font-[Poppins] text-[20px]">
+        <div className="max-600:w-[85vw] max-600:text-[#FFFFFF] font-medium font-[Poppins] text-[20px]">
           We’re sorry, the page you requested couldn't be found, Go back to home
           page.
         </div>
         <Button
           color={"success"}
-          className="max-xl:mt-8 mt-16 h-12 bg-[#01EC64] text-[#00694B] hover:text-[#01EC64] hover:bg-[#00694B] rounded-md text-lg"
+          className="max-xl:mt-8 mt-16 h-12 bg-[#01EC64] text-[#00694B] hover:text-[#00104B] hover:bg-[#01FF64] rounded-md text-lg"
         >
           Back to Home Page
         </Button>
