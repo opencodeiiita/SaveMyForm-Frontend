@@ -52,7 +52,7 @@ export default function Error() {
         alt={"ErrorImage"}
       />
       <div className="max-600:bg-[#00694B] max-600:h-[89vh] max-600:left-0 max-600:w-[100vw] max-600:p-[5vw] w-[35vw] left-[5vw] relative max-lg:w-[90vw]">
-        <div className="font-bold text-[#01EC64] text-[100px] mt-[10vh] font-[Poppins] max-xl:mt-[5vh] max-xl:text-[80px]">
+        <div className="font-bold max-600:text-[#01EC64] text-[#005E41] text-[100px] mt-[10vh] font-[Poppins] max-xl:mt-[5vh] max-xl:text-[80px]">
           ERROR!
         </div>
         <div className="max-600:text-[#FFFFFF] font-semibold font-[Poppins] text-[50px] max-xl:text-[40px] max-lg:mb-4">
