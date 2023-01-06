@@ -4,7 +4,19 @@ import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../components/elements/ProjectItem";
 import Avatar from "../../components/elements/Avatar";
 import {get,getAccessToken} from '../../components/utils/API/index.js';
-export default async function Dashboard() {
+import { useRouter } from 'next/router'
+
+async function getUserDashboard(){
+    const router = useRouter()
+    const accessToken = getAccessToken()
+    if(!accessToken) router.push('/signin')
+    else{
+        const data =  await get('/user/dashboard',accessToken)
+        return data
+    }
+}
+
+export default function Dashboard() {
     const [projectNum, setProjectNum] = useState(0);
     //Function to get screen size as the component is rendered on server side but we need the screen size of the user
     function useWindowSize() {
@@ -29,8 +41,13 @@ export default async function Dashboard() {
     }
     const size = useWindowSize();
 
-    const dashboardData = await get('/user/dashboard',getAccessToken())
-    console.log(dashboardData)
+    getUserDashboard()
+    .then((data)=>{
+        console.log(data)
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
 
     return (
         <>
