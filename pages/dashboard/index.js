@@ -3,7 +3,8 @@ import { Typography, Col, Row, Button, Input } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../components/elements/ProjectItem";
 import Avatar from "../../components/elements/Avatar";
-export default function Dashboard() {
+import {get,getAccessToken} from '../../components/utils/API/index.js';
+export default async function Dashboard() {
     const [projectNum, setProjectNum] = useState(0);
     //Function to get screen size as the component is rendered on server side but we need the screen size of the user
     function useWindowSize() {
@@ -27,6 +28,10 @@ export default function Dashboard() {
         return windowSize;
     }
     const size = useWindowSize();
+
+    const dashboardData = await get('/user/dashboard',getAccessToken())
+    console.log(dashboardData)
+
     return (
         <>
 
