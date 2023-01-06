@@ -6,17 +6,8 @@ import Avatar from "../../components/elements/Avatar";
 import {get,getAccessToken} from '../../components/utils/API/index.js';
 import { useRouter } from 'next/router'
 
-async function getUserDashboard(){
-    const router = useRouter()
-    const accessToken = getAccessToken()
-    if(!accessToken) router.push('/signin')
-    else{
-        const data =  await get('/user/dashboard')
-        return data
-    }
-}
-
 export default function Dashboard() {
+    const router = useRouter()
     const [projectNum, setProjectNum] = useState(0);
     //Function to get screen size as the component is rendered on server side but we need the screen size of the user
     function useWindowSize() {
@@ -41,13 +32,22 @@ export default function Dashboard() {
     }
     const size = useWindowSize();
 
-    getUserDashboard()
-    .then((data)=>{
-        console.log(data)
-    })
-    .catch((error)=>{
-        console.log(error)
-    })
+    async function getUserDashboard(){
+        const accessToken = getAccessToken()
+        if(!accessToken) router.push('/signin')
+        else{
+            const data =  await get('/user/dashboard')
+            return data
+        }
+    }
+
+    let dashboardData;
+    useEffect(()=>{
+        dashboardData = getUserDashboard()
+        return(()=>{
+            console.log(dashboardData)
+        })
+    },[])
 
     return (
         <>
