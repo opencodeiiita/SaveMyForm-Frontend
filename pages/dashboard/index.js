@@ -11,7 +11,7 @@ async function getUserDashboard(){
     const accessToken = getAccessToken()
     if(!accessToken) router.push('/signin')
     else{
-        const data =  await get('/user/dashboard',accessToken)
+        const data =  await get('/user/dashboard')
         return data
     }
 }
