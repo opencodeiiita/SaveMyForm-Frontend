@@ -1,9 +1,28 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Col, Row, Button, Input } from "antd";
+import { Typography, Col, Row, Button, Input, Modal } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../../components/elements/ProjectItem";
+import { AiOutlineDelete } from "react-icons/ai";
 
 export default function Project() {
+  //states and functions for modal.
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [deleteProjectPassword, setDeleteProjectPassword] = useState("");
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    // write send request here
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setDeleteProjectPassword("");
+    setIsModalOpen(false);
+  };
+
   const [formNum, setFormNum] = useState(2);
   //Function to get screen size as the component is rendered on server side but we need the screen size of the user
   function useWindowSize() {
@@ -31,11 +50,28 @@ export default function Project() {
     <>
       <div
         className={`${
-          size.width <= 800 ? "h-[18rem]" : "h-[11rem]"
+          size.width <= 800 ? "h-fit" : "h-[11rem]"
         }   w-[90%] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] border-[#E7EEEC] border-2`}
       >
+        <Modal
+          open={isModalOpen}
+          onOk={handleOk}
+          okText="Confirm"
+          onCancel={handleCancel}
+        >
+          <div className="py-4 text-lg font-[Poppins] font-normal">
+            Are you sure you want to delete the project?
+          </div>
+          <Input
+            className="rounded-lg"
+            placeholder="Enter Password"
+            type="password"
+            onChange={(e) => {
+              setDeleteProjectPassword(e.target.value);
+            }}
+          />
+        </Modal>
         <Row>
-          
           <Col flex="none" className="pl-8">
             <Col className="justify-start">
               <Typography.Title
@@ -58,55 +94,83 @@ export default function Project() {
                 level={5}
                 className="mb-0 text-2xl font-normal text-[#001E2B] text-left "
               >
-                Collaborators: <span className="hover:underline text-xl font-normal text-[#006DFB] text-left">pranavt150@gmail.com</span>
+                Collaborators:{" "}
+                <span className="hover:underline text-xl font-normal text-[#006DFB] text-left">
+                  pranavt150@gmail.com
+                </span>
               </Typography.Title>
             </Col>
             <Col className="justify-start">
               {size.width > 800 ? (
                 <Typography.Title
-                level={5}
-                className="text-2xl font-normal text-[#001E2B] text-left"
-              >
-                Allowed Origins: <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">Public</span>
-                reCAPTCHA: <span className="hover:underline text-xl font-medium text-[#00694B] text-left">Available</span>
-              </Typography.Title>
+                  level={5}
+                  className="text-2xl font-normal text-[#001E2B] text-left"
+                >
+                  Allowed Origins:{" "}
+                  <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">
+                    Public
+                  </span>
+                  reCAPTCHA:{" "}
+                  <span className="hover:underline text-xl font-medium text-[#00694B] text-left">
+                    Available
+                  </span>
+                </Typography.Title>
               ) : (
                 <>
                   <Typography.Title
                     level={5}
                     className="text-2xl font-normal text-[#001E2B] text-left mb-0"
                   >
-                    Allowed Origins: <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">Public</span>
+                    Allowed Origins:{" "}
+                    <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">
+                      Public
+                    </span>
                   </Typography.Title>
                   <Typography.Title
                     level={5}
                     className="text-2xl font-normal text-[#001E2B] text-left mt-0"
                   >
-                    reCAPTCHA: <span className="hover:underline text-xl font-medium text-[#00694B] text-left">Available</span>
+                    reCAPTCHA:{" "}
+                    <span className="hover:underline text-xl font-medium text-[#00694B] text-left">
+                      Available
+                    </span>
                   </Typography.Title>
-              </>
+                </>
               )}
-              
             </Col>
           </Col>
           {size.width > 800 && (
             <>
-            
-              <Col flex="auto">
-                <Button className="absolute right-0 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+              <Col flex="24">
+                <Button className="absolute right-16 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
                   Settings
+                </Button>
+              </Col>
+              <Col flex="1">
+                <Button
+                  className="absolute right-0 border-[#970606] text-[#970606] mx-4 h-14 w-14 font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-red-300"
+                  onClick={showModal}
+                >
+                  <AiOutlineDelete className="h-6 w-6" />
                 </Button>
               </Col>
             </>
           )}
-      
         </Row>
         {size.width <= 800 && (
           <>
             <Row>
-              <Col flex="auto">
-                <Button className="absolute ml-8  h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+              <Col>
+                <Button className="ml-8 my-4  h-10 w-[8rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
                   Settings
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  className=" mr-8 ml-4 h-10 w-13  border-[#970606] text-[#970606] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-red-300"
+                  onClick={showModal}
+                >
+                  <AiOutlineDelete className="" />
                 </Button>
               </Col>
             </Row>
