@@ -34,16 +34,17 @@ export default ()=>{
 </linearGradient>
 </defs>
 </svg>
-
-            <Image ref={circle1} src={Ellips} className={`figma_ellipse reveal-bottom ${
+          
+            <Image ref={circle1} src={Ellips} className={`figma_ellipse max-md:w-[150px] max-md:h-[150px] 2xl:w-[15vw] 2xl:h-[15vw] max-md:mt-[22vh] max-lg:mt-[16vh] 2xl:mt-[-5vw] max-xl:ml-[15vw] max-2xl:ml-[5vw] 2xl:ml-[10vw] reveal-bottom ${
             circle1Visible ? "active-reveal" : ""
           }`}/>
-            <Image ref={vectorImg} src={Vector} className={`figma_vector reveal-bottom ${
+            <Image ref={circle2} src={Ellips} className={`figma_ellipse2 max-lg:mt-[36vh] max-xl:mt-[22vh] max-2xl:mt-[10vh] reveal-bottom ${
+            circle2Visible ? "active-reveal" : ""
+          }`}/> 
+            <Image ref={vectorImg} src={Vector} className={`figma_vector xl:w-[40vw] mt-[-10%] reveal-bottom ${
             vectorImgVisible ? "active-reveal" : ""
           }`}/>
-            <Image ref={circle2} src={Ellips} className={`figma_ellipse2 reveal-bottom ${
-            circle2Visible ? "active-reveal" : ""
-          }`}/>
+            
             <div ref={text} className={`text_container reveal-bottom ${
             textVisible ? "active-reveal" : ""
           }`}>

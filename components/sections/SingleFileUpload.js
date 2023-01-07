@@ -26,7 +26,7 @@ const SingleFileUpload = () => {
         </svg>
 
         <svg
-          className="absolute bottom-0 -right-8 max-600:hidden"
+          className="absolute bottom-0 right-0 max-600:hidden"
           width="10vw"
           height="15vw"
           viewBox="0 0 168 410"
@@ -39,7 +39,6 @@ const SingleFileUpload = () => {
             stroke-width="3"
           />
         </svg>
-
         <svg
           className="absolute top-0 right-0 max-600:h-[30vh] max-600:w-[30vw]"
           width="25vw"
@@ -55,7 +54,6 @@ const SingleFileUpload = () => {
             stroke-width="3"
           />
         </svg>
-
         <svg
           className="max-600:hidden"
           width="100%"
@@ -83,7 +81,6 @@ const SingleFileUpload = () => {
             </linearGradient>
           </defs>
         </svg>
-
         <div className="absolute left-0 top-0 w-[28vw] h-[100vh] max-600:hidden">
           <svg
             width="100%"
@@ -182,10 +179,10 @@ const SingleFileUpload = () => {
           </defs>
         </svg>
 
-        <div className=" max-600:w-[90vw] max-600:top-[50vh] max-600:translate-y-[-40%] max-600:left-0 max-600:mx-8 absolute top-0 left-[50vw] inline-block w-[60vw] h-[100vh]">
+        <div className=" max-600:w-[90vw] max-600:top-[50vh] max-600:translate-y-[-40%] max-600:left-0 max-600:mx-8 absolute top-0 left-[40vw] inline-block w-[60vw] h-[100vh]">
           <div
             ref={text}
-            className={`reveal-bottom ${
+            className={`reveal-bottom ${ 
               textVisible ? "active-reveal" : ""
             } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(40vh-10vw)] left-0 h-[400px] w-[52vw] max-800:w-[54vw]`}
           >
@@ -207,5 +204,4 @@ const SingleFileUpload = () => {
     </>
   );
 };
-
 export default SingleFileUpload;
