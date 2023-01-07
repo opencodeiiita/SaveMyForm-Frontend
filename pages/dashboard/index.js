@@ -3,7 +3,11 @@ import { Typography, Col, Row, Button, Input } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../components/elements/ProjectItem";
 import Avatar from "../../components/elements/Avatar";
+import {get,getAccessToken} from '../../components/utils/API/index.js';
+import { useRouter } from 'next/router'
+
 export default function Dashboard() {
+    const router = useRouter()
     const [projectNum, setProjectNum] = useState(0);
     //Function to get screen size as the component is rendered on server side but we need the screen size of the user
     function useWindowSize() {
@@ -27,6 +31,24 @@ export default function Dashboard() {
         return windowSize;
     }
     const size = useWindowSize();
+
+    async function getUserDashboard(){
+        const accessToken = getAccessToken()
+        if(!accessToken) router.push('/signin')
+        else{
+            const data =  await get('/user/dashboard')
+            return data
+        }
+    }
+
+    let dashboardData;
+    useEffect(()=>{
+        dashboardData = getUserDashboard()
+        return(()=>{
+            console.log(dashboardData)
+        })
+    },[])
+
     return (
         <>
 

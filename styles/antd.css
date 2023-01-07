@@ -21585,8 +21585,8 @@ textarea.ant-mentions {
 }
 .ant-modal-close-x {
   display: block;
-  width: 54px;
-  height: 54px;
+  /* width: 54px; */
+  /* height: 54px; */
   font-size: 16px;
   font-style: normal;
   line-height: 54px;
