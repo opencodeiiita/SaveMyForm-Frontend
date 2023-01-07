@@ -48,14 +48,14 @@ const responses = () => {
           ref={circle1}
           className={`reveal-bottom ${
             circle1Visible ? "active-reveal" : ""
-          } max-600:float-right max-600:top-[18vh] max-600:mt-4 max-600:ml-4 max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]
+          } max-600:float-right max-600:top-[18vh] max-600:mt-4 max-600:ml-4 max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[0vw] homeCircleColor rounded-full w-[10vw] h-[10vw]
           `}
         ></div>
         <div
           ref={circle2}
           className={`reveal-bottom ${
             circle2Visible ? "active-reveal" : ""
-          } max-800:hidden absolute left-[5vw] top-[23vh] homeCircleColor2 w-[5vw] h-[5vw] rounded-full`}
+          } max-800:hidden absolute left-[5vw] top-[39vh] homeCircleColor2 w-[5vw] h-[5vw] rounded-full`}
         ></div>
 
         <svg
