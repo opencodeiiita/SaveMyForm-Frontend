@@ -11213,10 +11213,10 @@ span.ant-radio + * {
   transition: all 0.2s cubic-bezier(0.12, 0.4, 0.29, 1.46) 0.1s;
   content: ' ';
 }
-.ant-checkbox-checked .ant-checkbox-inner {
+/* .ant-checkbox-checked .ant-checkbox-inner {
   background-color: #1890ff;
   border-color: #1890ff;
-}
+} */
 .ant-checkbox-disabled {
   cursor: not-allowed;
 }
