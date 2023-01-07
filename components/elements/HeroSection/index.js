@@ -11,7 +11,6 @@ const HeroSection = () => {
       width: undefined,
       height: undefined,
     });
-
     useEffect(() => {
       function handleResize() {
         setWindowSize({
@@ -27,22 +26,24 @@ const HeroSection = () => {
     return windowSize;
   }
   const size = useWindowSize();
-  if (size.width < 600) {
+  if (size.width < 840) {
     return (
       <>
-        <div className="bg-[#00694B] h-fit w-full">
+        <div className="bg-[#00694B] font-poppins h-fit w-full">
           <div className=" w-[80%]">
             <Image
-              className="object-contain z-10 ml-6"
+              className="object-contain z-10 ml-6" 
               src={heroImage}
               alt={"heroImage"}
               priority={true}
             />
           </div>
-          <div className="">
+          <div >
             <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
               <div className="font-inter font-bold text-3xl">
                 Save your form data now Easily and Securely.
+
+  
               </div>
               <div className="mt-5 font-inter font-medium text-lg">
                 No need to create a form Backend for collecting form responses
@@ -61,16 +62,14 @@ const HeroSection = () => {
       </>
     );
   }
-
   return (
     <>
       <div className="w-[40vw] h-[100vh] inline-block">
-        <div className="h-[10vh]"></div>
-        <div className="mt-0 absolute z-10 h-[30vw] w-[30vw] top-[calc(50vh-15vw)] left-[calc(8vw-30px)] max-xl:top-[calc(10vw-3vh)] max-xl:w-[448px] max-xl:h-[448px] ">
+        <div className="mt-0 absolute z-10 h-[35vw] max-lg:h-[40vw] max-lg:w-[40vw] w-[35vw]  max-lg:top-[22%] top-[20%] left-[5%]  ">
           <Image src={heroImage} alt={"heroImage"} />
         </div>
         <svg
-          className=" z-0 h-[110vh] w-[40vw] absolute top-[10vh]"
+          className=" z-0 h-[110vh] w-[40vw] absolute"
           width="100%"
           height="100%"
           viewBox="0 0 782 960"
@@ -85,7 +84,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="absolute left-[40vw] inline-block w-[60vw] h-[100vh]">
+      <div className="absolute font-['poppins'] left-[40vw] inline-block w-[60vw] h-[100vh]">
         <div className="z-0 absolute right-0 bottom-[calc(23vh-3px)] w-[15vw] h-[55vh]">
           <svg
             width="100%"
@@ -116,16 +115,16 @@ const HeroSection = () => {
             />
           </svg>
         </div>
-        <div className=" absolute top-[calc(54vh-10vw)] right-[15vw] h-[30vw] w-[50vw] xl:w-[40vw] max-xl:top-[62vh] max-xl:right-[15vw] max-lg:right-[22vw] ">
-          <div className="font-inter font-bold text-5xl max-2xl:text-4xl max-xl:text-3xl max-sm:text-xl">
+        <div className=" absolute top-[20%] right-[15vw] h-[30vw] w-[40vw] mr-[-4vw]   ">
+          <div className="xl:leading-normal sm:leading-normal md:leading-normal lg:leading-normal 2xl:leading-normal font-[700] 2xl:text-5xl xl:text-[40px] lg:text-3xl max-sm:text-xl  max-lg:text-2xl my-[4%]">
             Save your form data now <br />{" "}
             <span className="text-[#00694B]">Easily</span> and{" "}
             <span className="text-[#00694B]">Securely.</span>
           </div>
-          <div className="mt-5 font-inter font-medium text-xl text-[#001E2B] max-xl:text-lg max-sm:text-xs">
-            No need to create a <span className="#00694B">Backend </span>for
+          <div className="mt-5 xl:leading-normal sm:leading-normal md:leading-normal lg:leading-normal 2xl:leading-normal font-semibold lg:text-lg xl:text-xl 2xl:text-2xl text-[#001E2B]  max-sm:text-xs mb-[2%] mt-[4%]">
+            No need to create a <span className="text-[#00694B]">Backend </span>for collecting
             <br />
-            collecting form responses on your application.
+             form responses on your application.
           </div>
           <Button
             type="primary"
