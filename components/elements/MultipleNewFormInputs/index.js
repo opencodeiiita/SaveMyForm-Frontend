@@ -64,7 +64,7 @@ const index = ({ inputs, setInputs }) => {
   const setOptions = () => {
     let tempOptions = options;
     inputs.forEach((input) => {
-      if (input.type === "file") tempOptions.splice(6, 1);
+      if (input.type === "file") tempOptions.splice(5, 1);
       // tempOptions.forEach((tempOption, index) => {
       // if (tempOption.label === input.type) {
       // tempOptions.splice(index, 1);
