@@ -10,7 +10,7 @@ import {
   Label,
 } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
-import MultipleNewFormInputs from "../../../../../components/elements/MultipleNewFormInputs";
+import MultipleNewFormInputs from "../../../../components/elements/MultipleNewFormInputs";
 import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
 
 export default function NewForm() {
