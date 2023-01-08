@@ -17,7 +17,7 @@ const responses = () => {
     <>
       <div className=" max-600:h-[80vh] h-[100vh] relative max-600:bg-[#001E2B]">
         <svg
-          className=" z-0 h-[100vh] w-[48.05vw] max-600:hidden -mt-[5px]"
+          className=" z-0 h-[100vh] w-[48.58%] max-600:hidden -mt-[5px] "
           preserveAspectRatio="none"
           width="100%"
           height="100%"
@@ -26,7 +26,7 @@ const responses = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M509.514 650.312C413.511 847.371 177.188 772.116 0 1006V0.000106758L831 0C831 150 621.596 153.921 589.385 337.02C557.173 520.119 522.716 622.173 509.514 650.312Z"
+            d="M509.514 650.312C413.511 847.371 177.188 772.116 0 1006V0.000106758L822 0C831 150 621.596 153.921 589.385 337.02C557.173 520.119 522.716 622.173 509.514 650.312Z"
             fill="url(#paint0_linear_759_98)"
           />
           <defs>
