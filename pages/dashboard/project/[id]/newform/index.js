@@ -28,9 +28,18 @@ export default function NewForm() {
     setReCaptchaSecret("");
     setIsChecked(false);
   };
-  const [inputs, setInputs] = useState([
-    { name: "", type: "", isRequired: false },
-  ]);
+  const [inputs, setInputs] = useState([]);
+  const formedJson = (e) => {
+    let name = e.target.name;
+    let type = e.target.type;
+    let isRequired = e.target.required;
+    let isTrue = inputs.filter((item) => item.name === name);
+    if (isTrue.length == 0) {
+      setInputs([...inputs, { name, type, isRequired }]);
+    }
+    let Json = JSON.stringify(inputs);
+    console.log("JSON", Json);
+  };
   return (
     <>
       <form className=" bg-[#FFFEFE] max-w-4xl mx-8 max-600:mx-2">
@@ -45,8 +54,13 @@ export default function NewForm() {
             className=" border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-normal rounded-md bg-[#FFFEFE] p-3 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
             type="text"
             value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
+            onChange={(e) => {
+              setProjectName(e.target.value);
+
+              formedJson(e);
+            }}
             required
+            name="project_name"
           />
         </Typography.Title>
         <Typography.Title
@@ -56,7 +70,12 @@ export default function NewForm() {
           reCAPTCHA v3:{" "}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
-        <Checkbox onChange={handleChange} checked={isChecked}>
+        <Checkbox
+          onChange={(e) => {
+            handleChange(e);
+          }}
+          checked={isChecked}
+        >
           Do you want reCaptcha Support?
         </Checkbox>
         {isChecked && (
@@ -72,7 +91,10 @@ export default function NewForm() {
               placeholder="Enter reCaptcha Secret"
               className=" border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-normal rounded-md bg-[#FFFEFE] p-3 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
               value={reCaptchaSecret}
-              onChange={(e) => setReCaptchaSecret(e.target.value)}
+              onChange={(e) => {
+                setReCaptchaSecret(e.target.value);
+                formedJson(e);
+              }}
               required
             />
           </>
