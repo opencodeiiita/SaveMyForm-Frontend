@@ -17,7 +17,7 @@ const responses = () => {
     <>
       <div className=" max-600:h-[80vh] h-[100vh] relative max-600:bg-[#001E2B]">
         <svg
-          className=" z-0 h-[100vh] w-[48.05vw] max-600:hidden -mt-[5px]"
+          className=" z-0 h-[100vh] w-[48.58%] max-600:hidden -mt-[5px] "
           preserveAspectRatio="none"
           width="100%"
           height="100%"
@@ -26,7 +26,7 @@ const responses = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M509.514 650.312C413.511 847.371 177.188 772.116 0 1006V0.000106758L831 0C831 150 621.596 153.921 589.385 337.02C557.173 520.119 522.716 622.173 509.514 650.312Z"
+            d="M509.514 650.312C413.511 847.371 177.188 772.116 0 1006V0.000106758L822 0C831 150 621.596 153.921 589.385 337.02C557.173 520.119 522.716 622.173 509.514 650.312Z"
             fill="url(#paint0_linear_759_98)"
           />
           <defs>
@@ -48,7 +48,8 @@ const responses = () => {
           ref={circle1}
           className={`reveal-bottom ${
             circle1Visible ? "active-reveal" : ""
-          } max-600:float-right max-600:top-[18vh] max-600:mt-4 max-600:ml-4 max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]`}
+          } max-600:float-right max-600:top-[18vh] max-600:mt-4 max-600:ml-4 max-600:right-8 max-600:left-auto max-600:w-[130px] max-600:h-[130px] absolute left-[10vw] top-[-5vw] homeCircleColor rounded-full w-[10vw] h-[10vw]
+          `}
         ></div>
         <div
           ref={circle2}
@@ -61,7 +62,7 @@ const responses = () => {
           ref={docImg}
           className={`reveal-bottom ${
             docImgVisible ? "active-reveal" : ""
-          } max-600:hidden max-800:-left-8 max-800:h-[300px] max-800:w-[300px] absolute top-[12vh] left-[10vw] z-10 h-[25vw] w-[25vw]`}
+          } max-600:hidden max-600:-left-8 max-600:h-[300px] max-600:w-[300px] sm:top-[45vh] md:top-[40vh] lg:top-[30vh] xl:top-[30vh] 2xl:top-[15vh] absolute top-[12vh] left-[10vw] z-10 h-[25vw] w-[25vw]`}
           width="100%"
           height="100%"
           viewBox="0 0 385 489"

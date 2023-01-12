@@ -54,7 +54,7 @@ html.dark {
 .ant-btn.ant-btn-default,
 .ant-modal .ant-modal-footer {
     color: var(--antd-card-foreground);
-    border: 1px solid var(--antd-card-border);
+    /* border: 1px solid var(--antd-card-border); */
 }
 
 .ant-btn.ant-btn-default:hover {
@@ -140,17 +140,17 @@ html.dark {
     background-color: var(--antd-card-background);
 }
 
-.ant-checkbox-checked,
+/* .ant-checkbox-checked,
 .ant-checkbox-checked .ant-checkbox-inner {
     border: 1px solid var(--blue-100) !important;
     background-color: var(--blue-100) !important;
-}
+} */
 
-.ant-checkbox-inner,
+/* .ant-checkbox-inner,
 .ant-checkbox-checked .ant-checkbox-inner {
     border: 1px solid var(--antd-card-border) !important;
     background-color: var(--antd-card-background);
-}
+} */
 
 .ant-collapse-content {
     border: 0px;
