@@ -27,7 +27,7 @@ const options = {
   "datetime-local": { type: "string", format: "date-time" },
   image: {
     type: "string",
-    format: "uri-template",
+    format: "uri",
   },
   hidden: { type: "boolean" },
   month: { type: "integer", minimum: 1, maximum: 12 },
@@ -44,9 +44,9 @@ const options = {
   },
   text: { type: "string" },
   time: { type: "string", format: "time" },
-  url: { type: "string", format: "uri-template" },
+  url: { type: "string", format: "uri" },
   week: { type: "number", minimum: 1, maximum: 53 },
-  file: { type: "string" },
+  file: { type: "string", format:'uri },
   password: { type: "string" },
 };
 
