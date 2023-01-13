@@ -61,7 +61,7 @@ export default function Dashboard() {
         <Row>
           <Col flex="none">
             <div className="h-24 w-24 bg-[#B1FE04] my-7 rounded-full mx-8 ">
-              <Avatar seed={"Name"} />
+              <Avatar seed={userData?.name} />
             </div>
           </Col>
           <Col flex="none">
