@@ -64,7 +64,7 @@ export default ()=>{
         {/* Below this */}
 
         <svg
-        className={`absolute top-[-90px] max-600:hidden`}
+        className={`absolute top-[-147px] max-600:hidden`}
         preserveAspectRatio="none"
         width="100%" height="120%" viewBox="0 0 1728 1225" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M-11.7092 97.9663H1618.62C1673.84 97.9663 1718.62 142.738 1718.62 197.966V1021.97C1718.62 1077.2 1673.84 1121.97 1618.62 1121.97H108.291C42.0166 1121.97 -11.7092 1068.24 -11.7092 1001.97V97.9663Z" fill="url(#paint0_linear_888_103)"/>
