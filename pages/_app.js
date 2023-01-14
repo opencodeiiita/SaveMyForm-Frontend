@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <NextUIProvider>
-        {/* <Alert /> */}
+        <Alert />
         <Appbar />
         <Component {...pageProps} />
       </NextUIProvider>
