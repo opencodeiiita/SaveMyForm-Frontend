@@ -7,7 +7,7 @@ function alert(props) {
             role="alert"
         >
             <div class="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-                <strong>Beta Alert</strong> SaveMyForm is still in beta phase,
+                <strong>Alpha Alert</strong> SaveMyForm is still in alpha phase,
                 things may break, please handle us with care.
             </div>
             <button
