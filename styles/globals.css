@@ -180,7 +180,29 @@ a {
 .nextui-collapse-title {
   color: #00694b !important;
 }
-
+.ant-popover-inner {
+  box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.25);
+}
+.ant-popover-inner-content .ant-btn-primary {
+  color: red;
+  background-color: transparent;
+  border-color: red;
+}
+.ant-popover-inner-content .ant-btn-primary:hover {
+  color: white;
+  background-color: red;
+  border-color: red;
+}
+.ant-popover-inner-content .ant-btn-default {
+  color: green;
+  border-color: green;
+  /* background-color: blue; */
+}
+.ant-popover-inner-content .ant-btn-default:hover {
+  color: white;
+  border-color: green;
+  background-color: green;
+}
 .reveal-bottom.active-reveal {
   transform: translateY(0px);
   opacity: 1;
