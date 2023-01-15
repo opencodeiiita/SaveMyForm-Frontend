@@ -62,11 +62,12 @@ a {
 .faq_details {
   font-size: 14px;
   overflow: hidden;
-  transition: max-height 0.5s linear, padding 0.75s ease;
+  transition: max-height 0.2s linear, padding 0.75s ease;
   max-height: 0px;
   padding: 0px 30px;
   padding-bottom: 0px;
 }
+
 /* @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
@@ -175,6 +176,9 @@ a {
   transform: translateY(300px);
   opacity: 0;
   transition: opacity, transform 0.3s ease;
+}
+.nextui-collapse-title {
+  color: #00694b !important;
 }
 
 .reveal-bottom.active-reveal {

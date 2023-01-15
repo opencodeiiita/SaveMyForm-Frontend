@@ -1,5 +1,0 @@
-{
-    "What exactly is SaveMyForm?": "For frontend-only applications if the developer wants to collect form submissions from his/her users, he/she requires to create a complete backend application for it. It Solves the problem by providing the developers a url which they can use for form submissions by sending a POST request to the url.",
-    "Does it have reCaptcha Support?": "Yes, SaveMyForm does offers reCaptcha Support which ensures your data and website is well protected from spam and bots.",
-    "Is SaveMyForm free to use?":"Yes, all of our services that we offer, are free-to-use."
-}

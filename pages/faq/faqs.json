@@ -1,0 +1,13 @@
+[
+    {"Question": "Is SaveMyForm free to use?", "Answer" : "Yes, all of our services that we offer, are free-to-use." } ,
+    {"Question" : "Can I add attachments to my form submissions? If so, is there a size limit for attachments?", "Answer" :"Yes, you can allow users to attach files to their form submissions. The maximum size for attachments is 10 MB. Note that you can only add 1 file input for each form submission."},
+    {"Question" :"Can I collaborate with other users on my form submissions?", "Answer":"Yes, our form submission service includes collaborator support, which allows you to invite other users to view and manage your form submissions. This can be useful for teams working on a project together or for sharing form submissions with clients or stakeholders."},
+    {"Question":"What is data compliance policy?","Answer" : "we maintian appropriate security of personal data, including protection against unauthorised or unlawful processing"},
+    {"Question":"how can i delete my account and remove data steps?","Answer" : "You can contact to our support team inorder to delete your account."},
+    {"Question":"How will it avoid bot submissions of spam submissions?" ,"Answer" : "It will avoid them by using reCaptcha."},
+    {"Question":"How can I extract the forms in my Computer?" ,"Answer" : "You can make use of our download in csv format and store data inside your computer."},
+    {"Question":"what about the security of my data when we submit on your website","Answer" : "we keep your data private and end to end encrypted with multiple security checks in our specialised directories."},
+    {"Question":"How do I contact customer service?","Answer" : "You can go to our official website xyz.com and get contact number of our customer service"},
+    {"Question":"Is there a time limit after which the submitted formsa are deleted?","Answer" : "Yes after 30 days from form submission the forms will be deleted"},
+    {"Question":"What exactly is SaveMyForm?","Answer" : "For frontend-only applications if the developer wants to collect form submissions from his/her users, he/she requires to create a complete backend application for it. It Solves the problem by providing the developers a url which they can use for form submissions by sending a POST request to the url."}    
+]
