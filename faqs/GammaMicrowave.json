@@ -1,7 +1,0 @@
-{
-  "How do I edit pages in the front end portion?" : "You can refer to our documentation page and make changes accordingly.",
-  "How will it avoid bot submissions of spam submissions?" : "It will avoid them by using reCaptcha.",
-  "What is the maximum amount of submissions allowed?" : "You can store a maximum of 10mb of data.",
-  "How can I extract the forms in my Computer?" : "You can make use of our download in csv format and store data inside your computer.",
-  "Can I give other people access to my form?" : "Yes we do have collaborator support, You can add people who can view and edit the forms stored in our database."
-}

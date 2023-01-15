@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 
 export default function index() {
   const router = useRouter();
-  const collapseItems = ["Home", "Dashboard", "Documentation", "FAQs"];
+  const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
   const [active, setActive] = useState([false, false, false, false]);
   useEffect(() => {
     if (router.pathname == "/") setActive([true, false, false, false]);
@@ -55,7 +55,7 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active[3]}
-          href="/faqs"
+          href="/faq"
           className="hover:text-[#116148] text-lg"
         >
           FAQs
@@ -93,7 +93,9 @@ export default function index() {
               css={{
                 minWidth: "100%",
               }}
-              href={item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase()}`}
+              href={
+                item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
+              }
               className="hover:text-[#00694B] duration-75"
             >
               {item}
