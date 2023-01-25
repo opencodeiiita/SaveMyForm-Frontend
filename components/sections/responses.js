@@ -3,15 +3,19 @@ import { useInView } from "react-intersection-observer";
 const responses = () => {
   const { ref: circle1, inView: circle1Visible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: circle2, inView: circle2Visible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: docImg, inView: docImgVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: text, inView: textVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   return (
     <>

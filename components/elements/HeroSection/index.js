@@ -2,9 +2,11 @@ import { Button, GrowIn } from "antd";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import heroImage from "../../../assets/images/illustrations/heroSection.png";
+import { useRouter } from "next/router";
 const HeroSection = () => {
+  const router = useRouter();
   const handleClick = () => {
-    console.log("button kyu dabaya?");
+    router.push("/signup");
   };
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -32,18 +34,16 @@ const HeroSection = () => {
         <div className="bg-[#00694B] font-poppins h-fit w-full">
           <div className=" w-[80%]">
             <Image
-              className="object-contain z-10 ml-6" 
+              className="object-contain z-10 ml-6"
               src={heroImage}
               alt={"heroImage"}
               priority={true}
             />
           </div>
-          <div >
+          <div>
             <div className=" ml-8 max-w-md text-[#FFFEFE] py-8">
               <div className="font-inter font-bold text-3xl">
                 Save your form data now Easily and Securely.
-
-  
               </div>
               <div className="mt-5 font-inter font-medium text-lg">
                 No need to create a form Backend for collecting form responses
@@ -122,9 +122,10 @@ const HeroSection = () => {
             <span className="text-[#00694B]">Securely.</span>
           </div>
           <div className="mt-5 xl:leading-normal sm:leading-normal md:leading-normal lg:leading-normal 2xl:leading-normal font-semibold lg:text-lg xl:text-xl 2xl:text-2xl text-[#001E2B]  max-sm:text-xs mb-[2%] mt-[4%]">
-            No need to create a <span className="text-[#00694B]">Backend </span>for collecting
+            No need to create a <span className="text-[#00694B]">Backend </span>
+            for collecting
             <br />
-             form responses on your application.
+            form responses on your application.
           </div>
           <Button
             type="primary"

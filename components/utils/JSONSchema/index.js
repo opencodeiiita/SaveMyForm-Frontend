@@ -46,7 +46,7 @@ const options = {
   time: { type: "string", format: "time" },
   url: { type: "string", format: "uri" },
   week: { type: "number", minimum: 1, maximum: 53 },
-  file: { type: "string", format:'uri },
+  file: { type: "string", format:'uri' },
   password: { type: "string" },
 };
 

@@ -7,15 +7,19 @@ import { useInView } from "react-intersection-observer";
 export default ()=>{
     const { ref: circle1, inView: circle1Visible } = useInView({
         triggerOnce: true,
+        rootMargin: "300px",
       });
       const { ref: circle2, inView: circle2Visible } = useInView({
         triggerOnce: true,
+        rootMargin: "300px",
       });
       const { ref: vectorImg, inView: vectorImgVisible } = useInView({
         triggerOnce: true,
+        rootMargin: "300px",
       });
       const { ref: text, inView: textVisible } = useInView({
         triggerOnce: true,
+        rootMargin: "300px",
       });
     return (
       <div className="relative">
