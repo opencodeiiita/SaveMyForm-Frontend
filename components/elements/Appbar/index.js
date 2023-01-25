@@ -78,6 +78,7 @@ export default function index() {
                 flat
                 auto
                 color="success"
+
                 className="hover:bg-[#90EE90]  hover:bg-opacity-25 rounded-md text-lg"
               >
                 Login
@@ -89,7 +90,10 @@ export default function index() {
                 flat
                 bordered
                 color={"success"}
+
                 className="bg-[#01EC64] text-[#00694B] hover:bg-[#11FC74] rounded-md text-lg"
+
+
               >
                 Sign Up
               </Button>
