@@ -81,11 +81,11 @@ const feature = () => {
             preserveAspectRatio="none"
           />
         </div>
-        <div className="absolute max-600:relative max-600:min-h-[120vh] max-600:h-fit top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh] w-full">
+        <div className="absolute max-600:relative max-600:min-h-[120vh] max-600:h-fit top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh] w-[100vw]">
           <div
-            className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-full`}
+            className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-[100vw]`}
           >
-            <div className="max-600:absolute max-600:top-0 max-600:w-full max-600:left-0 absolute flex justify-center left-[100px] top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
+            <div className="max-600:absolute max-600:top-0 max-600:w-full max-600:ml-0 max-600:pl-6 max-600:left-0 absolute flex justify-center left-[100px] top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
               <div
                 ref={text}
                 className={`reveal-bottom ${
