@@ -25,7 +25,7 @@ const feature = () => {
   });
   return (
     <>
-      <div className="relative min-h-[110vh] h-fit w-[100vw]">
+      <div className="relative min-h-[110vh] h-fit w-full">
         <svg
           className="max-600:hidden"
           width="100vw"
