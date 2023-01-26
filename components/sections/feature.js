@@ -73,7 +73,7 @@ const feature = () => {
           className={`reveal-bottom  ${
             codeVisible ? "active-reveal" : "opacity-0"
           } mt-0 absolute max-600:top-4 top-[30vh] right-[15%] z-10 h-[20vw] w-[20vw] min-w-[400px] min-h-[400px] 
-           max-xl:right-16 md:min-w-[300px] md:min-h[300px]  600:min-w-[200px] 600:min-h[200px] max-md:right-8 max-600:w-[90vw] max-600:min-h-[90vw] max-600:min-w-[90vw] max-600:h-[90vw] max-600:left-[5vw]`}
+           max-xl:right-16 md:min-w-[300px] md:min-h[300px]  600:min-w-[200px] 600:min-h[200px] max-md:right-8 max-600:w-[80vw] max-600:min-h-[80vw] max-600:min-w-[80vw] max-600:h-[80vw] max-600:left-[5vw]`}
         >
           <Image
             src={templateCode}
