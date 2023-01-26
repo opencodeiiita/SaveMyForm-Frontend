@@ -81,7 +81,7 @@ const feature = () => {
             preserveAspectRatio="none"
           />
         </div>
-        <div className="absolute max-600:relative max-600:min-h-[120vh] max-600:h-fit top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh] w-[100vw]">
+        <div className="absolute max-600:relative max-600:min-h-[120vh] max-600:h-fit top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh]">
           <div
             className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-[100vw]`}
           >
