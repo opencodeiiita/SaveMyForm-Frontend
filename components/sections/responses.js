@@ -3,19 +3,23 @@ import { useInView } from "react-intersection-observer";
 const responses = () => {
   const { ref: circle1, inView: circle1Visible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: circle2, inView: circle2Visible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: docImg, inView: docImgVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: text, inView: textVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   return (
     <>
-      <div className=" max-600:h-[80vh] h-[100vh] relative max-600:bg-[#001E2B]">
+      <div className=" h-[100vh] relative max-600:bg-[#001E2B]">
         <svg
           className=" z-0 h-[100vh] w-[48.58%] max-600:hidden -mt-[5px] "
           preserveAspectRatio="none"

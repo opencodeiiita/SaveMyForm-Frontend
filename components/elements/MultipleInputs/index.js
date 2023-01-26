@@ -44,9 +44,9 @@ const MultipleInputs = ({
                     placeholder={placeholder}
                     value={input.value}
                     onChange={(e) => inputChange(index, e)}
-                    className="ml-1 text-slate-500 font-medium transition-none w-[calc(100%-35px)] border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] rounded-lg bg-[#FFFEFE] focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+                    className="mb-2 ml-1 text-slate-500 font-medium h-8 transition-none w-[calc(100%-35px)] border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] bg-[#FFFEFE] focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
                     type={type}
-                    disabled
+                    // disabled
                   />
                 </>
               ) : (
@@ -60,7 +60,7 @@ const MultipleInputs = ({
                   <Input
                     placeholder={placeholder}
                     value={input.value}
-                    className="ml-1 w-[calc(100%-35px)] border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] rounded-lg bg-[#FFFEFE] focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+                    className=" ml-1 w-[calc(100%-35px)] border-2 h-8 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] bg-[#FFFEFE] focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
                     onChange={(e) => inputChange(index, e)}
                     type={type}
                   />

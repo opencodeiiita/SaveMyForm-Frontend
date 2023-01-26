@@ -5,6 +5,7 @@ import ProjectItem from "../../components/elements/ProjectItem";
 import Avatar from "../../components/elements/Avatar";
 import { get, getAccessToken } from "../../components/utils/API/index.js";
 import { useRouter } from "next/router";
+import { Link } from "@nextui-org/react";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -43,6 +44,7 @@ export default function Dashboard() {
         let tempDate = new Date(iostr).toDateString().slice(4);
         date.date_created = tempDate.slice(0, 6) + "," + tempDate.slice(6);
       });
+
       setUserData(data?.data?.data);
     }
   }
@@ -85,9 +87,11 @@ export default function Dashboard() {
           {size.width > 800 && (
             <>
               <Col flex="auto">
-                <Button className="absolute right-0 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
-                  Settings
-                </Button>
+                <Link href="/settings" className="absolute right-0">
+                  <Button className=" mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                    Settings
+                  </Button>
+                </Link>
               </Col>
             </>
           )}
@@ -96,9 +100,11 @@ export default function Dashboard() {
           <>
             <Row>
               <Col flex="auto">
-                <Button className="absolute ml-8  h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
-                  Settings
-                </Button>
+                <Link href="/settings" className="absolute">
+                  <Button className=" ml-8  h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                    Settings
+                  </Button>
+                </Link>
               </Col>
             </Row>
           </>
@@ -119,17 +125,22 @@ export default function Dashboard() {
           {size.width > 800 && (
             <>
               <Col flex="1">
-                <Button className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                <Button
+                  onClick={(e) => getUserDashboard()}
+                  className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
+                >
                   <ReloadOutlined className="mb-[5px] ml-[-3px]" />
                 </Button>
               </Col>
               <Col flex="1">
-                <Button
-                  type="primary"
-                  className="ml-5 mr-8 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
-                >
-                  Create Project
-                </Button>
+                <Link href="dashboard/project/newproject">
+                  <Button
+                    type="primary"
+                    className="ml-5 mr-8 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
+                  >
+                    Create Project
+                  </Button>
+                </Link>
               </Col>{" "}
             </>
           )}

@@ -3,9 +3,11 @@ import { useInView } from "react-intersection-observer";
 const SingleFileUpload = () => {
   const { ref: docImg, inView: docImgVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   const { ref: text, inView: textVisible } = useInView({
     triggerOnce: true,
+    rootMargin: "300px",
   });
   return (
     <>
@@ -99,7 +101,7 @@ const SingleFileUpload = () => {
             />
           </svg>
         </div>
-        <div className="absolute top-0 left-0 w-[35vw] h-[100vh] max-600:hidden">
+        <div className="absolute top-0 left-0 w-[30vw] h-[80vh] max-600:hidden">
           <svg
             width="100%"
             height="100%"
@@ -182,7 +184,7 @@ const SingleFileUpload = () => {
         <div className=" max-600:w-[90vw] max-600:top-[50vh] max-600:translate-y-[-40%] max-600:left-0 max-600:mx-8 absolute top-0 left-[40vw] inline-block w-[60vw] h-[100vh]">
           <div
             ref={text}
-            className={`reveal-bottom ${ 
+            className={`reveal-bottom ${
               textVisible ? "active-reveal" : ""
             } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(40vh-10vw)] left-0 h-[400px] w-[52vw] max-800:w-[54vw]`}
           >
