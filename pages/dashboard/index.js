@@ -6,7 +6,9 @@ import Avatar from "../../components/elements/Avatar";
 import { get, getAccessToken } from "../../components/utils/API/index.js";
 import { useRouter } from "next/router";
 import { Link } from "@nextui-org/react";
+
 import { AppbarContext } from "../../components/context";
+
 
 export default function Dashboard() {
   const router = useRouter();
@@ -105,6 +107,7 @@ export default function Dashboard() {
           {size.width > 800 && (
             <>
               <Col flex="auto">
+
                 {/* <Link href="/settings" className="absolute right-0"> */}
                 <Button
                   className="absolute right-0 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
@@ -157,6 +160,7 @@ export default function Dashboard() {
                 </Button>
               </Col>
               <Col flex="1">
+
                 {/* <Link href="dashboard/project/newproject"> */}
                 <Button
                   type="primary"
@@ -166,6 +170,7 @@ export default function Dashboard() {
                   Create Project
                 </Button>
                 {/* </Link> */}
+
               </Col>{" "}
             </>
           )}
