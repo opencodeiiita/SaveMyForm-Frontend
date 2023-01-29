@@ -1,7 +1,20 @@
 import Accordion from "../../components/elements/accordion";
 import faqs from "./faqs.json";
 import { Collapse, Text } from "@nextui-org/react";
+import { AppbarContext } from "../../components/context";
+import { useContext, useEffect } from "react";
 export default function FAQ() {
+  const { setActive } = useContext(AppbarContext);
+  // setActive({ home: false, dashboard: false, documentation: false, faq: true });
+  useEffect(() => {
+    //editing navbar
+    setActive({
+      home: false,
+      dashboard: false,
+      documentation: false,
+      faq: true,
+    });
+  }, []);
   if (process.browser) {
     let check = true;
     let a = document.getElementsByClassName("faq_header");

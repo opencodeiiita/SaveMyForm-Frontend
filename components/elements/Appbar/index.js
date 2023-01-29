@@ -3,25 +3,16 @@ import { Navbar, Button, Link, Text } from "@nextui-org/react";
 import { Popconfirm } from "antd";
 import Logo from "../../../assets/images/logos/AppbarLogo.svg";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { getLS, removeLS } from "../../utils/LocalStorage";
+import { UserContext, AppbarContext } from "../../context";
 
 export default function index() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const router = useRouter();
   const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
-  const [active, setActive] = useState([false, false, false, false]);
-  const [secret, setSecret] = useState(null);
-  useEffect(() => {
-    setSecret(getLS("secret"));
-    if (router.pathname == "/") setActive([true, false, false, false]);
-    else if (router.pathname == "/dashboard") {
-      setActive([false, true, false, false]);
-    } else if (router.pathname == "/documentation")
-      setActive([false, false, true, false]);
-    else if (router.pathname == "/faq") setActive([false, false, false, true]);
-  }, []);
-
+  const { active, setActive } = useContext(AppbarContext);
   return (
     <Navbar variant="sticky" className="w-full opacity-100 bg-[#FFFFFF]">
       <Navbar.Toggle
@@ -41,63 +32,77 @@ export default function index() {
       </Navbar.Brand>
       <Navbar.Content activeColor={"success"} hideIn="sm" variant={"default"}>
         <Navbar.Link
-          isActive={active[0]}
-          href="/"
+          isActive={active.home}
+          // href="/"
+          onClick={() => {
+            router.push("/");
+            // setActive([true, false, false, false]);
+          }}
           className="hover:text-[#116148] text-lg"
         >
           Home
         </Navbar.Link>
         <Navbar.Link
-          isActive={active[1]}
-          href="/dashboard"
+          isActive={active.dashboard}
+          // href="/dashboard"
+          onClick={() => {
+            router.push("/dashboard");
+            // setActive([false, true, false, false]);
+          }}
           className="hover:text-[#116148] text-lg"
         >
           Dashboard
         </Navbar.Link>
         <Navbar.Link
-          isActive={active[2]}
-          href="/documentation"
+          isActive={active.documentation}
+          // href="/documentation"
+          onClick={() => {
+            router.push("/documentation");
+            // setActive([false, false, true, false]);
+          }}
           className="hover:text-[#116148] text-lg"
         >
           Documentation
         </Navbar.Link>
         <Navbar.Link
-          isActive={active[3]}
-          href="/faq"
+          isActive={active.faq}
+          // href="/faq"
+          onClick={() => {
+            router.push("/faq");
+            // setActive([false, false, false, true]);
+          }}
           className="hover:text-[#116148] text-lg"
         >
           FAQs
         </Navbar.Link>
       </Navbar.Content>
       <Navbar.Content>
-        {secret === null ? (
+        {!isLoggedIn ? (
           <>
-            <Link href="/signin">
-              <Button
-                bordered
-                flat
-                auto
-                color="success"
-
-                className="hover:bg-[#90EE90]  hover:bg-opacity-25 rounded-md text-lg"
-              >
-                Login
-              </Button>
-            </Link>
-            <Link href="/signup">
-              <Button
-                auto
-                flat
-                bordered
-                color={"success"}
-
-                className="bg-[#01EC64] text-[#00694B] hover:bg-[#11FC74] rounded-md text-lg"
-
-
-              >
-                Sign Up
-              </Button>
-            </Link>
+            {/* <Link href="/signin"> */}
+            <Button
+              bordered
+              flat
+              auto
+              color="success"
+              className="hover:bg-[#90EE90]  hover:bg-opacity-25 rounded-md text-lg"
+              onClick={() => router.push("/signin")}
+            >
+              Login
+            </Button>
+            {/* </Link> */}
+            {/* <Link href="/signup"> */}
+            <Button
+              auto
+              flat
+              bordered
+              color={"success"}
+              className="bg-[#01EC64] text-[#00694B] hover:bg-[#11FC74] rounded-md text-lg"
+              onClick={() => router.push("/signup")}
+            >
+              Sign Up
+            </Button>
+            {/* </Link> */}
           </>
         ) : (
           <>
@@ -107,7 +112,8 @@ export default function index() {
               // description="Are you sure? You want to delete this task"
               onConfirm={() => {
                 removeLS("secret");
-                router.reload();
+                router.push("/");
+                setIsLoggedIn(false);
               }}
               okText="Yes"
               cancelText="No"
