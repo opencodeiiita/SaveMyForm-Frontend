@@ -1,18 +1,22 @@
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import backimage from "../../assets/images/illustrations/signin.png";
 import { post } from "../../components/utils/API";
 import { storeLS, getLS } from "../../components/utils/LocalStorage";
 import { message } from "antd";
 import { useRouter } from "next/router";
-import GoogleOAuth from "../../components/elements/GoogleOAuth"
+import GoogleOAuth from "../../components/elements/GoogleOAuth";
+import { UserContext } from "../../components/context";
+import { GoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function SignIn() {
   const router = useRouter();
+  const { setIsLoggedIn } = useContext(UserContext);
   useEffect(() => {
     if (getLS("secret")) {
-      router.replace("/dashboard");
+      setIsLoggedIn(true);
+      router.push("/dashboard");
     }
   }, []);
   let [open, setOpen] = useState(false);
@@ -42,7 +46,8 @@ export default function SignIn() {
       .then((res) => {
         storeLS("secret", res.data.data.secret);
         success();
-        router.replace("/dashboard");
+        setIsLoggedIn(true);
+        router.push("/dashboard");
       })
       .catch((err) => error());
   };
@@ -50,8 +55,8 @@ export default function SignIn() {
   return (
     <>
       {contextHolder}
-      <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full">
-        <div className="hidden sm:flex overflow-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-76px)] w-full">
+        <div className="hidden md:flex overflow-auto">
           <Image src={backimage} className="object-contain" />
         </div>
         <div className=" flex flex-col justify-center">
@@ -93,7 +98,7 @@ export default function SignIn() {
             >
               Submit
             </button>
-            <GoogleOAuth/>
+            <GoogleOAuth />
           </form>
         </div>
       </div>

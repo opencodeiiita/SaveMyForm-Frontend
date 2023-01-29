@@ -56,7 +56,7 @@ export default function SignUp() {
   }
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 h-screen w-full ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 h-[calc(100vh-76px)] w-full ">
         <div className="hidden sm:flex overflow-auto">
           <Image src={backimage} className="object-contain" />
         </div>
