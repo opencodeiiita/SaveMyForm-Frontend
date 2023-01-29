@@ -1,7 +1,8 @@
 import axios from "axios";
 import { getLS, removeLS } from "../LocalStorage/index";
 
-const API_URL = "http://172.19.12.25:8080";
+// const API_URL = "http://dev.savemyform.tk";
+const API_URL = "http://localhost:8080";
 
 const getAccessToken = () => {
   return getLS("secret");
@@ -80,11 +81,17 @@ const patch = async (endpoint, body, token = null) => {
   }
 };
 
-const remove = async (endpoint, token = null) => {
+const remove = async (endpoint, body, token = null) => {
   try {
-    const response = await axios.delete(API_URL + endpoint, getHeaders(token));
+    const response = await axios.delete(
+      API_URL + endpoint,
+      body,
+      getHeaders(token)
+    );
+    console.log(response.data);
     return response.data;
   } catch (err) {
+    console.log(err);
     console.error(err?.response?.data || err);
     if (err?.response?.status === 401) {
       console.log("Wrong password");
