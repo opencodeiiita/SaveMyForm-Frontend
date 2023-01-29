@@ -83,11 +83,9 @@ const patch = async (endpoint, body, token = null) => {
 
 const remove = async (endpoint, body, token = null) => {
   try {
-    const response = await axios.delete(
-      API_URL + endpoint,
-      body,
-      getHeaders(token)
-    );
+    let conf = getHeaders(token);
+    conf["data"] = body;
+    const response = await axios.delete(API_URL + endpoint, conf);
     console.log(response.data);
     return response.data;
   } catch (err) {

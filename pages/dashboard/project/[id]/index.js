@@ -61,8 +61,11 @@ export default function Project() {
     };
     const res = await remove(`/project/delete/${id}`, query);
     console.log(res);
-    setDeleteProjectPassword("");
-    setIsModalOpen(false);
+    if (res) {
+      setDeleteProjectPassword("");
+      setIsModalOpen(false);
+      router.replace("/dashboard");
+    }
   };
 
   const handleCancel = () => {
