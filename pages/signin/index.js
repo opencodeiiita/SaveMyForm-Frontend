@@ -57,7 +57,7 @@ export default function SignIn() {
       {contextHolder}
       <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-76px)] w-full">
         <div className="hidden md:flex overflow-auto">
-          <Image src={backimage} className="object-contain" />
+          <Image src={backimage} className="object-contain" alt = {"backImage"} />
         </div>
         <div className=" flex flex-col justify-center">
           <form

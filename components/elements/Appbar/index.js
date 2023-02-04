@@ -7,24 +7,29 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { getLS, removeLS } from "../../utils/LocalStorage";
 import { UserContext, AppbarContext } from "../../context";
+import { useRef } from "react";
 
 export default function index() {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const router = useRouter();
   const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
   const { active, setActive } = useContext(AppbarContext);
+  const [openCollapse, setOpenCollapse] = useState(false);
+  const navbarToggleRef = useRef();
   return (
     <Navbar variant="sticky" className="w-full opacity-100 bg-[#FFFFFF]">
       <Navbar.Toggle
         showIn={"sm"}
         aria-label="toggle navigation"
         className="mx-2 fill-[#00FF00]"
+        onChange={(isSelected) => setOpenCollapse(isSelected)}
+        ref={navbarToggleRef}
       />
       <Navbar.Brand>
-        <Link href="/">
-          <Image src={Logo} className="h-16 w-16 mr-4" />
+        <Link onClick={() => router.push("/")}>
+          <Image src={Logo} className="h-16 w-16 mr-4" alt="Logo" />
         </Link>
-        <Link href="/">
+        <Link onClick={() => router.push("/")}>
           <Text b color="success" hideIn="xs" className="text-2xl">
             SaveMyForm
           </Text>
@@ -46,6 +51,12 @@ export default function index() {
           isActive={active.dashboard}
           // href="/dashboard"
           onClick={() => {
+            setActive({
+              home: false,
+              dashboard: true,
+              documentation: false,
+              faq: false,
+            });
             router.push("/dashboard");
             // setActive([false, true, false, false]);
           }}
@@ -135,18 +146,21 @@ export default function index() {
       <Navbar.Collapse className="text-[#00694B]">
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item}>
-            <Link
-              color="success"
+            <div
+              // color="default"
               css={{
                 minWidth: "100%",
               }}
-              href={
-                item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
-              }
-              className="hover:text-[#00694B] duration-75"
+              onClick={() => {
+                router.push(
+                  item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
+                );
+                openCollapse && navbarToggleRef.current.click();
+              }}
+              className="hover:text-[#00694B] duration-75 text-left"
             >
               {item}
-            </Link>
+            </div>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
