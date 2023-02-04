@@ -7,15 +7,19 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { getLS, removeLS } from "../../utils/LocalStorage";
 import { UserContext, AppbarContext } from "../../context";
+
 import { useRef } from "react";
+
 
 export default function index() {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const router = useRouter();
   const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
   const { active, setActive } = useContext(AppbarContext);
+
   const [openCollapse, setOpenCollapse] = useState(false);
   const navbarToggleRef = useRef();
+
   return (
     <Navbar variant="sticky" className="w-full opacity-100 bg-[#FFFFFF]">
       <Navbar.Toggle
@@ -51,12 +55,6 @@ export default function index() {
           isActive={active.dashboard}
           // href="/dashboard"
           onClick={() => {
-            setActive({
-              home: false,
-              dashboard: true,
-              documentation: false,
-              faq: false,
-            });
             router.push("/dashboard");
             // setActive([false, true, false, false]);
           }}

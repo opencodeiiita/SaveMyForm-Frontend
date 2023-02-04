@@ -5,6 +5,7 @@ import { DeleteOutlined, DeleteFilled, DeleteTwoTone } from "@ant-design/icons";
 import { Popconfirm } from "antd";
 import { remove } from "../../utils/API";
 
+
 const index = ({
   name,
   numberOfForms,
@@ -13,6 +14,7 @@ const index = ({
   id,
   baseurl,
 }) => {
+
   const router = useRouter();
   return (
     <div
@@ -26,10 +28,12 @@ const index = ({
         >
           {name}
         </Col>
+
         <Col
           span={6}
           className="text-center pr-28 font-inter font-normal text-base my-1"
         >
+
           {numberOfForms}
         </Col>
         <Col span={6} className="px-8 font-inter font-normal text-base my-1">

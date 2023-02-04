@@ -6,6 +6,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { UserContext, AppbarContext } from "../components/context";
 import { useState, useEffect } from "react";
 import { existsLS, getLS } from "../components/utils/LocalStorage";
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -15,6 +16,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import { useQueryClient } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false),
     [user, setUser] = useState(null),

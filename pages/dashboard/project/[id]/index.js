@@ -41,6 +41,7 @@ export default function Project({ id }) {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteProjectPassword, setDeleteProjectPassword] = useState("");
+
   const projectQuery = useQuery({
     queryKey: ["projectData", id],
     queryFn: () => {
@@ -79,6 +80,7 @@ export default function Project({ id }) {
     //
     setIsModalOpen(false);
   };
+
 
   //Function to get screen size as the component is rendered on server side but we need the screen size of the user
   const size = useWindowSize();
@@ -166,6 +168,7 @@ export default function Project({ id }) {
                       >
                         {origin}
                         {index !== projectQuery.data?.allowedOrigins?.length - 1
+
                           ? " ,"
                           : null}
                       </span>
@@ -351,4 +354,5 @@ export async function getServerSideProps({ params: { id } }) {
       id,
     },
   };
+
 }
