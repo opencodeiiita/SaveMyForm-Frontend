@@ -11,9 +11,9 @@ import { useRef } from "react";
 
 export default function index() {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { active, setActive } = useContext(AppbarContext);
   const router = useRouter();
   const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
-  const { active, setActive } = useContext(AppbarContext);
   const [openCollapse, setOpenCollapse] = useState(false);
   const navbarToggleRef = useRef();
   return (
@@ -38,10 +38,8 @@ export default function index() {
       <Navbar.Content activeColor={"success"} hideIn="sm" variant={"default"}>
         <Navbar.Link
           isActive={active.home}
-          // href="/"
           onClick={() => {
             router.push("/");
-            // setActive([true, false, false, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -49,7 +47,6 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.dashboard}
-          // href="/dashboard"
           onClick={() => {
             setActive({
               home: false,
@@ -58,7 +55,6 @@ export default function index() {
               faq: false,
             });
             router.push("/dashboard");
-            // setActive([false, true, false, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -66,10 +62,8 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.documentation}
-          // href="/documentation"
           onClick={() => {
             router.push("/documentation");
-            // setActive([false, false, true, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -77,10 +71,8 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.faq}
-          // href="/faq"
           onClick={() => {
             router.push("/faq");
-            // setActive([false, false, false, true]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -90,7 +82,6 @@ export default function index() {
       <Navbar.Content>
         {!isLoggedIn ? (
           <>
-            {/* <Link href="/signin"> */}
             <Button
               bordered
               flat
@@ -101,8 +92,6 @@ export default function index() {
             >
               Login
             </Button>
-            {/* </Link> */}
-            {/* <Link href="/signup"> */}
             <Button
               auto
               flat
@@ -113,7 +102,6 @@ export default function index() {
             >
               Sign Up
             </Button>
-            {/* </Link> */}
           </>
         ) : (
           <>
@@ -135,7 +123,6 @@ export default function index() {
                 bordered
                 color={"danger"}
                 className="border-red-500 text-red-500 hover:bg-red-500 hover:text-[#FFF]  rounded-md text-lg"
-                // onClick={showModal}
               >
                 Log Out
               </Button>
@@ -147,7 +134,6 @@ export default function index() {
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item}>
             <div
-              // color="default"
               css={{
                 minWidth: "100%",
               }}

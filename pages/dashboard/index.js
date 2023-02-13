@@ -131,7 +131,9 @@ export default function Dashboard() {
               <>
                 <Col flex="1">
                   <Button
-                    onClick={(e) => getUserDashboard()}
+                    onClick={(e) => {
+                      userQuery.refetch();
+                    }}
                     className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
                   >
                     <ReloadOutlined className="mb-[5px] ml-[-3px]" />
@@ -155,7 +157,9 @@ export default function Dashboard() {
                 <Col>
                   <Button
                     className="ml-8 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300 shadow-md hover:shadow-green-300"
-                    onClick={(e) => getUserDashboard()}
+                    onClick={(e) => {
+                      userQuery.refetch();
+                    }}
                   >
                     <ReloadOutlined className="mb-[5px] ml-[-3px]" />
                   </Button>
@@ -211,7 +215,12 @@ export default function Dashboard() {
                 {/* <Col span={1}></Col> */}
               </Row>
               <div className="border-[#C@CBCB] border-[1px]"></div>
-              {userQuery.data &&
+              {userQuery.isRefetching ? (
+                <div className=" relative min-h-[40vh]">
+                  <Loader />
+                </div>
+              ) : (
+                userQuery.data &&
                 userQuery.data.projects &&
                 userQuery.data.projects.length > 0 &&
                 userQuery.data.projects.map((project, i) => (
@@ -224,7 +233,10 @@ export default function Dashboard() {
                     dateCreated={project?.date_created}
                     baseurl={"/dashboard/project"}
                   />
-                ))}
+                ))
+              )}
+
+              {/* {} */}
             </div>
           </div>
         </div>
@@ -242,10 +254,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-// export const getStaticPaths = async () => {
-//   return {
-//     paths: [],
-//     fallback: "blocking",
-//   };
-// };

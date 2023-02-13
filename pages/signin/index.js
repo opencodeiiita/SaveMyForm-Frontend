@@ -8,9 +8,10 @@ import { message } from "antd";
 import { useRouter } from "next/router";
 import GoogleOAuth from "../../components/elements/GoogleOAuth";
 import { UserContext } from "../../components/context";
-import { GoogleReCaptcha } from "react-google-recaptcha-v3";
+import { GoogleReCaptcha, useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 export default function SignIn() {
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const { setIsLoggedIn } = useContext(UserContext);
   useEffect(() => {
@@ -36,20 +37,33 @@ export default function SignIn() {
   let toggle = () => {
     setOpen(!open);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    post("/login", {
-      email: e.currentTarget.elements.email.value,
-      password: e.currentTarget.elements.password.value,
-      recaptcha_token: "breh",
-    })
-      .then((res) => {
-        storeLS("secret", res.data.data.secret);
-        success();
-        setIsLoggedIn(true);
-        router.push("/dashboard");
+    if (!executeRecaptcha) {
+      message.error("Recaptcha failed");
+      return;
+    }
+    try {
+      const token = await executeRecaptcha();
+      if (!token) {
+        message.error("Recaptcha Failed");
+        return;
+      }
+      post("/login", {
+        email: e.currentTarget.elements.email.value,
+        password: e.currentTarget.elements.password.value,
+        recaptcha_token: token,
       })
-      .catch((err) => error());
+        .then((res) => {
+          storeLS("secret", res.data.data.secret);
+          success();
+          setIsLoggedIn(true);
+          router.push("/dashboard");
+        })
+        .catch((err) => error());
+    } catch (err) {
+      error();
+    }
   };
 
   return (
@@ -57,7 +71,7 @@ export default function SignIn() {
       {contextHolder}
       <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-76px)] w-full">
         <div className="hidden md:flex overflow-auto">
-          <Image src={backimage} className="object-contain" alt = {"backImage"} />
+          <Image src={backimage} className="object-contain" alt={"backImage"} />
         </div>
         <div className=" flex flex-col justify-center">
           <form

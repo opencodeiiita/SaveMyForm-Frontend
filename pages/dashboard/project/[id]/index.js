@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography, Col, Row, Button, Input, Modal } from "antd";
+import { Typography, Col, Row, Button, Input, Modal, message } from "antd";
 import {
   SearchOutlined,
   ReloadOutlined,
@@ -31,13 +31,8 @@ async function getProjectData(id) {
 }
 
 export default function Project({ id }) {
-  // const getData = () => {
-  const queryClient = useQueryClient();
-  // return queryClient.getQueryData(["userData"]);
-  // };
-  //states and functions for modal.
   const router = useRouter();
-
+  const queryClient = useQueryClient();
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteProjectPassword, setDeleteProjectPassword] = useState("");
@@ -59,19 +54,28 @@ export default function Project({ id }) {
     if (!token) {
       // setResponse({ message: "Failed to Send!!!", status: "Failed" });
       //message error
+      message.error("Recaptcha Failed");
       return;
     }
     const query = {
       recaptcha_token: token,
       password: deleteProjectPassword,
     };
-    const res = await remove(`/project/delete/${id}`, query);
-    console.log(res);
-    if (res) {
-      setDeleteProjectPassword("");
-      setIsModalOpen(false);
-      router.replace("/dashboard");
-    }
+    remove(`/project/delete/${id}`, query)
+      .then((res) => {
+        console.log(res);
+        if (res.status === "OK") {
+          queryClient.invalidateQueries(["userData"]);
+          setDeleteProjectPassword("");
+          setIsModalOpen(false);
+          router.replace("/dashboard");
+        } else {
+          message.error(res.error);
+        }
+      })
+      .catch((err) => {
+        message.error(err.message);
+      });
   };
 
   const handleCancel = () => {
@@ -236,7 +240,12 @@ export default function Project({ id }) {
             {size.width > 800 && (
               <>
                 <Col flex="1">
-                  <Button className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                  <Button
+                    className="absolute right-0 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
+                    onClick={(e) => {
+                      projectQuery.refetch();
+                    }}
+                  >
                     <ReloadOutlined className="mb-[5px] ml-[-3px]" />
                   </Button>
                 </Col>
@@ -258,7 +267,12 @@ export default function Project({ id }) {
             <>
               <Row>
                 <Col>
-                  <Button className="ml-8 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300">
+                  <Button
+                    className="ml-8 h-12 w-12  border-[#00694B] border-2 text-[#00694B] font-medium font-inter text-xl mt-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
+                    onClick={(e) => {
+                      projectQuery.refetch();
+                    }}
+                  >
                     <ReloadOutlined className="mb-[5px] ml-[-3px]" />
                   </Button>
                 </Col>
@@ -316,19 +330,26 @@ export default function Project({ id }) {
               <div className="border-[#C@CBCB] border-[1px]"></div>
 
               {/* ProjectItem */}
-              {projectQuery.data?.forms?.map((form, i) => {
-                return (
-                  <ProjectItem
-                    key={i}
-                    name={form.name}
-                    numberOfForms={form.submission_count}
-                    allowedOrigin={form.last_updated}
-                    dateCreated={form.date_created}
-                    baseurl={`/dashboard/project/${id}`}
-                    id={form.id}
-                  />
-                );
-              })}
+              {projectQuery.isFetching ? (
+                <div className=" relative min-h-[20vh]">
+                  <Loader />
+                </div>
+              ) : (
+                projectQuery.data?.forms?.map((form, i) => {
+                  return (
+                    <ProjectItem
+                      key={i}
+                      name={form.name}
+                      numberOfForms={form.submission_count}
+                      allowedOrigin={form.last_updated}
+                      dateCreated={form.date_created}
+                      baseurl={`/dashboard/project/${id}`}
+                      id={form.id}
+                    />
+                  );
+                })
+              )}
+              {/* {} */}
             </div>
           </div>
         </div>
