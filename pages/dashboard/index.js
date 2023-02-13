@@ -16,6 +16,7 @@ import {
 import Loader from "../../components/elements/Loader";
 import { useWindowSize } from "../../components/utils/hooks/useWindowSize";
 
+
 async function getUserDashboard() {
   return await get("/user/dashboard").then((data) => {
     data?.data?.data?.projects.forEach((date) => {
@@ -31,7 +32,6 @@ export default function Dashboard() {
   const router = useRouter();
   const { setActive } = useContext(AppbarContext);
   const size = useWindowSize();
-
   const userQuery = useQuery({
     queryKey: ["userData"],
     queryFn: getUserDashboard,
@@ -49,6 +49,7 @@ export default function Dashboard() {
       });
       router.push("/signin");
     }
+
   }, []);
   if (userQuery?.isLoading) return <Loader />;
   if (userQuery?.isSuccess) {
@@ -98,6 +99,7 @@ export default function Dashboard() {
           </Row>
           {size.width <= 800 && (
             <>
+
               <Row>
                 <Col flex="auto">
                   <Button

@@ -16,6 +16,7 @@ import { get } from "../components/utils/API";
 // import { useQueryClient } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
+
 function MyApp({ Component, pageProps }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false),
     [user, setUser] = useState(null),
