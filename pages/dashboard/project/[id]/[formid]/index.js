@@ -1,27 +1,8 @@
 import { Row, Col, Typography, Button } from "antd";
 import { useState, useEffect } from "react";
+import { useWindowSize } from "../../../../../components/utils/hooks/useWindowSize";
 
 export default function Form() {
-  function useWindowSize() {
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
-    });
-
-    useEffect(() => {
-      function handleResize() {
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }
-      window.addEventListener("resize", handleResize);
-      //To make the button appear on reload
-      handleResize();
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-    return windowSize;
-  }
   const size = useWindowSize();
   return (
     <>
@@ -48,17 +29,6 @@ export default function Form() {
                 Project Name
               </Typography.Title>
             </Col>
-            {/* <Col className="justify-start">
-              <Typography.Title
-                level={5}
-                className="mb-0 text-2xl font-normal text-[#001E2B] text-left "
-              >
-                Collaborators:{" "}
-                <span className="hover:underline text-xl font-normal text-[#006DFB] text-left">
-                  pranavt150@gmail.com
-                </span>
-              </Typography.Title>
-            </Col> */}
             <Col className="justify-start">
               {size.width > 800 ? (
                 <Typography.Title

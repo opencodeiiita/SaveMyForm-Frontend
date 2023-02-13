@@ -37,7 +37,7 @@ export default function Verify() {
 
             <div className="bg-[#001E2B] flex flex-col justify-center items-center">
                 <div className="flex overflow-auto">
-                    <Image src={letter} className="h-44 w-36" />
+                    <Image src={letter} className="h-44 w-36" alt = {"letter"}/>
                 </div>
                 <div className="text-[#FFFFFF] text-4xl p-5 text-center font-semibold ">
                     Verify your account

@@ -12,6 +12,8 @@
     "@dicebear/avatars": "^4.10.7",
     "@dicebear/avatars-avataaars-sprites": "^4.10.7",
     "@nextui-org/react": "^1.0.0-beta.10",
+    "@tanstack/react-query": "^4.24.4",
+    "@tanstack/react-query-devtools": "^4.24.4",
     "antd": "^5.0.7",
     "axios": "^1.2.1",
     "flowbite": "^1.5.5",

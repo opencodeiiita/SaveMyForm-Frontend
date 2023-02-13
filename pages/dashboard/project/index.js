@@ -3,7 +3,6 @@ import { Typography, Col, Row, Button, Input, Modal } from "antd";
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import ProjectItem from "../../../components/elements/ProjectItem";
 import { AiOutlineDelete } from "react-icons/ai";
-
 export default function Project() {
   //states and functions for modal.
   const [isModalOpen, setIsModalOpen] = useState(false);

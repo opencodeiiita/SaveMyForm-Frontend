@@ -10,8 +10,12 @@ import {
 import MultipleInputs from "../../../../components/elements/MultipleInputs";
 import { post } from "../../../../components/utils/API";
 import { useRouter } from "next/router";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { useQueryClient } from "@tanstack/react-query";
 
 const newProject = () => {
+  const queryClient = useQueryClient();
+  const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [isChecked, setIsChecked] = useState(false);
   const [projectName, setProjectName] = useState("");
@@ -34,26 +38,38 @@ const newProject = () => {
   };
 
   const success = () => {
-    messageApi.open({
-      type: "success",
-      content: "Project successfully saved.",
-    });
+    // messageApi.open({
+    //   type: "success",
+    //   content: "Project successfully saved.",
+    // });
+    queryClient.invalidateQueries(["userData"]);
+    message.success("Project Successfully saved");
     router.push("/dashboard");
   };
   const error = (content) => {
-    messageApi.open({
-      type: "error",
-      content: content,
-    });
+    // messageApi.open({
+    //   type: "error",
+    //   content: content,
+    // });
+    message.error(content);
   };
 
-  function handleSubmit() {
+  async function handleSubmit() {
     var collaboratorNamesStrings = collaboratorNames.map(function (item) {
       return item["value"];
     });
     var domainNamesStrings = domainNames.map(function (item) {
       return item["value"];
     });
+    if (!executeRecaptcha) {
+      message.error("Recaptcha Failed");
+      return;
+    }
+    const token = await executeRecaptcha();
+    if (!token) {
+      message.error("Recaptcha Failed");
+      return;
+    }
     post("/project/new", {
       name: projectName,
       hasRecaptcha: isChecked,
@@ -61,7 +77,7 @@ const newProject = () => {
       recaptchaSecret: reCaptchaSecret,
       allowedOrigins: domainNamesStrings,
       collaborators: collaboratorNamesStrings,
-      recaptcha_token: "dunno",
+      recaptcha_token: token,
     })
       .catch((err) => {
         error();
@@ -161,7 +177,6 @@ const newProject = () => {
           type="primary"
           className=" ml-4 border-[#00694B] text-[#FFFEFE] font-medium font-inter rounded-md my-4 pb-2 "
           onClick={handleSubmit}
-          //   htmlType="submit"
         >
           Submit
         </Button>

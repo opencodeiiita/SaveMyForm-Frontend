@@ -8,23 +8,31 @@ import { useRouter } from "next/router";
 import { getLS, removeLS } from "../../utils/LocalStorage";
 import { UserContext, AppbarContext } from "../../context";
 
+import { useRef } from "react";
+
+
 export default function index() {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { active, setActive } = useContext(AppbarContext);
   const router = useRouter();
   const collapseItems = ["Home", "Dashboard", "Documentation", "FAQ"];
-  const { active, setActive } = useContext(AppbarContext);
+  const [openCollapse, setOpenCollapse] = useState(false);
+  const navbarToggleRef = useRef();
+
   return (
     <Navbar variant="sticky" className="w-full opacity-100 bg-[#FFFFFF]">
       <Navbar.Toggle
         showIn={"sm"}
         aria-label="toggle navigation"
         className="mx-2 fill-[#00FF00]"
+        onChange={(isSelected) => setOpenCollapse(isSelected)}
+        ref={navbarToggleRef}
       />
       <Navbar.Brand>
-        <Link href="/">
-          <Image src={Logo} className="h-16 w-16 mr-4" />
+        <Link onClick={() => router.push("/")}>
+          <Image src={Logo} className="h-16 w-16 mr-4" alt="Logo" />
         </Link>
-        <Link href="/">
+        <Link onClick={() => router.push("/")}>
           <Text b color="success" hideIn="xs" className="text-2xl">
             SaveMyForm
           </Text>
@@ -33,10 +41,8 @@ export default function index() {
       <Navbar.Content activeColor={"success"} hideIn="sm" variant={"default"}>
         <Navbar.Link
           isActive={active.home}
-          // href="/"
           onClick={() => {
             router.push("/");
-            // setActive([true, false, false, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -44,10 +50,8 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.dashboard}
-          // href="/dashboard"
           onClick={() => {
             router.push("/dashboard");
-            // setActive([false, true, false, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -55,10 +59,8 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.documentation}
-          // href="/documentation"
           onClick={() => {
             router.push("/documentation");
-            // setActive([false, false, true, false]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -66,10 +68,8 @@ export default function index() {
         </Navbar.Link>
         <Navbar.Link
           isActive={active.faq}
-          // href="/faq"
           onClick={() => {
             router.push("/faq");
-            // setActive([false, false, false, true]);
           }}
           className="hover:text-[#116148] text-lg"
         >
@@ -79,7 +79,6 @@ export default function index() {
       <Navbar.Content>
         {!isLoggedIn ? (
           <>
-            {/* <Link href="/signin"> */}
             <Button
               bordered
               flat
@@ -90,8 +89,6 @@ export default function index() {
             >
               Login
             </Button>
-            {/* </Link> */}
-            {/* <Link href="/signup"> */}
             <Button
               auto
               flat
@@ -102,7 +99,6 @@ export default function index() {
             >
               Sign Up
             </Button>
-            {/* </Link> */}
           </>
         ) : (
           <>
@@ -124,7 +120,6 @@ export default function index() {
                 bordered
                 color={"danger"}
                 className="border-red-500 text-red-500 hover:bg-red-500 hover:text-[#FFF]  rounded-md text-lg"
-                // onClick={showModal}
               >
                 Log Out
               </Button>
@@ -135,18 +130,20 @@ export default function index() {
       <Navbar.Collapse className="text-[#00694B]">
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem key={item}>
-            <Link
-              color="success"
+            <div
               css={{
                 minWidth: "100%",
               }}
-              href={
-                item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
-              }
-              className="hover:text-[#00694B] duration-75"
+              onClick={() => {
+                router.push(
+                  item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
+                );
+                openCollapse && navbarToggleRef.current.click();
+              }}
+              className="hover:text-[#00694B] duration-75 text-left"
             >
               {item}
-            </Link>
+            </div>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>

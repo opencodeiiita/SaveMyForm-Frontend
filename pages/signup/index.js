@@ -58,7 +58,7 @@ export default function SignUp() {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 h-[calc(100vh-76px)] w-full ">
         <div className="hidden sm:flex overflow-auto">
-          <Image src={backimage} className="object-contain" />
+          <Image src={backimage} className="object-contain" alt = {"backkImage"}/>
         </div>
         <div className=" flex flex-col justify-center">
           <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
