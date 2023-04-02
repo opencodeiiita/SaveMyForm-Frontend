@@ -46,8 +46,8 @@ export default () => {
               y2="809.363"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#001823" />
-              <stop offset="0.20714" stop-color="#001823" />
+              <stop stopColor="#001823" />
+              <stop offset="0.20714" stopColor="#001823" />
               <stop offset="0.903042" />
             </linearGradient>
           </defs>
@@ -72,27 +72,17 @@ export default () => {
         <Image
           ref={vectorImg}
           src={Vector}
-          className={`figma_vector xl:w-[40vw] mt-[-10%] reveal-bottom ${
-            vectorImgVisible ? "active-reveal" : ""
-          }`}
-          alt = {"circle3"}
+          className={`figma_vector xl:w-[40vw] mt-[-10%] reveal-bottom ${vectorImgVisible ? "active-reveal" : ""}`}
+          alt={"circle3"}
         />
 
-        <div
-          ref={text}
-          className={`text_container reveal-bottom ${
-            textVisible ? "active-reveal" : ""
-          }`}
-        >
+        <div ref={text} className={`text_container reveal-bottom ${textVisible ? "active-reveal" : ""}`}>
           <div className="dyfr_text1 w-full">Download your form Response!</div>
-          <div className="dyfr_text2">
-            We save your form easily and securely that no other platform can
-          </div>
+          <div className="dyfr_text2">We save your form easily and securely that no other platform can</div>
           <div className="dyfr_text3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute
           </div>
         </div>
       </div>

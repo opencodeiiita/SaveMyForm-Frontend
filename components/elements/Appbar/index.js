@@ -10,7 +10,6 @@ import { UserContext, AppbarContext } from "../../context";
 
 import { useRef } from "react";
 
-
 export default function index() {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const { active, setActive } = useContext(AppbarContext);
@@ -135,9 +134,7 @@ export default function index() {
                 minWidth: "100%",
               }}
               onClick={() => {
-                router.push(
-                  item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`
-                );
+                router.push(item.toLowerCase() === "home" ? "/" : `/${item.toLowerCase()}`);
                 openCollapse && navbarToggleRef.current.click();
               }}
               className="hover:text-[#00694B] duration-75 text-left"

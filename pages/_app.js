@@ -6,11 +6,7 @@ import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
 import { UserContext, AppbarContext } from "../components/context";
 import { useState, useEffect } from "react";
 import { existsLS, getLS, removeLS } from "../components/utils/LocalStorage";
-import {
-  QueryClient,
-  QueryClientProvider,
-  Hydrate,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider, Hydrate } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { get } from "../components/utils/API";
 // import { useQueryClient } from "@tanstack/react-query";
@@ -37,8 +33,7 @@ function MyApp({ Component, pageProps }) {
         if (err?.response?.status === 401) {
           setIsLoggedIn(false);
           removeLS("secret");
-        }
-        else{
+        } else {
           console.log(err?.response?.message);
         }
       });
@@ -56,9 +51,7 @@ function MyApp({ Component, pageProps }) {
           }}
         >
           <NextUIProvider>
-            <UserContext.Provider
-              value={{ isLoggedIn, setIsLoggedIn, user, setUser }}
-            >
+            <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn, user, setUser }}>
               <AppbarContext.Provider value={{ active, setActive }}>
                 <Alert />
                 <Appbar />
