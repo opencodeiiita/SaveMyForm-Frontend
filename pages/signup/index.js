@@ -12,10 +12,10 @@ import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 export default function SignUp() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
-  const [name, setName] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordToggle, setPasswordToggle] = useState(false);
   const [confirmPasswordToggle, setConfirmPasswordToggle] = useState(false);
   async function handleClick(e) {
@@ -34,7 +34,6 @@ export default function SignUp() {
         message.error("reCaptcha failed");
         return;
       }
-      console.log(token);
 
       let result = await post("/signup", {
         name: name,
@@ -58,13 +57,11 @@ export default function SignUp() {
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 h-[calc(100vh-76px)] w-full ">
         <div className="hidden sm:flex overflow-auto">
-          <Image src={backimage} className="object-contain" alt = {"backkImage"}/>
+          <Image src={backimage} className="object-contain" alt={"backkImage"} />
         </div>
         <div className=" flex flex-col justify-center">
           <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
-            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">
-              Sign up
-            </h2>
+            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">Sign up</h2>
             <div className="flex flex-col py-2 text-[#00694B] ">
               <input
                 placeholder="Name"
@@ -96,13 +93,9 @@ export default function SignUp() {
               ></input>
               <div className="text-2xl absolute top-5 right-3 cursor-[pointer] select-none">
                 {passwordToggle === false ? (
-                  <AiFillEyeInvisible
-                    onClick={() => setPasswordToggle((prev) => !prev)}
-                  />
+                  <AiFillEyeInvisible onClick={() => setPasswordToggle((prev) => !prev)} />
                 ) : (
-                  <AiFillEye
-                    onClick={() => setPasswordToggle((prev) => !prev)}
-                  />
+                  <AiFillEye onClick={() => setPasswordToggle((prev) => !prev)} />
                 )}
               </div>
             </div>
@@ -117,13 +110,9 @@ export default function SignUp() {
               ></input>
               <div className="text-2xl absolute top-5 right-3 cursor-[pointer] select-none">
                 {confirmPasswordToggle === false ? (
-                  <AiFillEyeInvisible
-                    onClick={() => setConfirmPasswordToggle((prev) => !prev)}
-                  />
+                  <AiFillEyeInvisible onClick={() => setConfirmPasswordToggle((prev) => !prev)} />
                 ) : (
-                  <AiFillEye
-                    onClick={() => setConfirmPasswordToggle((prev) => !prev)}
-                  />
+                  <AiFillEye onClick={() => setConfirmPasswordToggle((prev) => !prev)} />
                 )}
               </div>
             </div>
