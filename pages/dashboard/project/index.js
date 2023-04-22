@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Col, Row, Button, Input, Modal } from "antd";
-import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
-import ProjectItem from "../../../components/elements/ProjectItem";
-import { AiOutlineDelete } from "react-icons/ai";
+import React, { useState, useEffect } from 'react';
+import { Typography, Col, Row, Button, Input, Modal } from 'antd';
+import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
+import ProjectItem from '../../../components/elements/ProjectItem';
+import { AiOutlineDelete } from 'react-icons/ai';
 export default function Project() {
   //states and functions for modal.
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deleteProjectPassword, setDeleteProjectPassword] = useState("");
+  const [deleteProjectPassword, setDeleteProjectPassword] = useState('');
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -18,7 +18,7 @@ export default function Project() {
   };
 
   const handleCancel = () => {
-    setDeleteProjectPassword("");
+    setDeleteProjectPassword('');
     setIsModalOpen(false);
   };
 
@@ -37,10 +37,10 @@ export default function Project() {
           height: window.innerHeight,
         });
       }
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
       //To make the button appear on reload
       handleResize();
-      return () => window.removeEventListener("resize", handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }, []);
     return windowSize;
   }
@@ -49,7 +49,7 @@ export default function Project() {
     <>
       <div
         className={`${
-          size.width <= 800 ? "h-fit" : "h-[11rem]"
+          size.width <= 800 ? 'h-fit' : 'h-[11rem]'
         }   w-[90%] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] border-[#E7EEEC] border-2`}
       >
         <Modal
@@ -93,7 +93,7 @@ export default function Project() {
                 level={5}
                 className="mb-0 text-2xl font-normal text-[#001E2B] text-left "
               >
-                Collaborators:{" "}
+                Collaborators:{' '}
                 <span className="hover:underline text-xl font-normal text-[#006DFB] text-left">
                   pranavt150@gmail.com
                 </span>
@@ -105,11 +105,11 @@ export default function Project() {
                   level={5}
                   className="text-2xl font-normal text-[#001E2B] text-left"
                 >
-                  Allowed Origins:{" "}
+                  Allowed Origins:{' '}
                   <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">
                     Public
                   </span>
-                  reCAPTCHA:{" "}
+                  reCAPTCHA:{' '}
                   <span className="hover:underline text-xl font-medium text-[#00694B] text-left">
                     Available
                   </span>
@@ -120,7 +120,7 @@ export default function Project() {
                     level={5}
                     className="text-2xl font-normal text-[#001E2B] text-left mb-0"
                   >
-                    Allowed Origins:{" "}
+                    Allowed Origins:{' '}
                     <span className="hover:underline text-xl font-medium text-[#970606] text-left mr-4">
                       Public
                     </span>
@@ -129,7 +129,7 @@ export default function Project() {
                     level={5}
                     className="text-2xl font-normal text-[#001E2B] text-left mt-0"
                   >
-                    reCAPTCHA:{" "}
+                    reCAPTCHA:{' '}
                     <span className="hover:underline text-xl font-medium text-[#00694B] text-left">
                       Available
                     </span>
@@ -202,7 +202,7 @@ export default function Project() {
                 >
                   Create Form
                 </Button>
-              </Col>{" "}
+              </Col>{' '}
             </>
           )}
         </Row>

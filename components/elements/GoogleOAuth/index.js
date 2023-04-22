@@ -1,11 +1,11 @@
-import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import { get } from "../../utils/API";
+import React from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { get } from '../../utils/API';
 
 export default function GoogleOAuth() {
   const click = async () => {
-    const response = await get("/auth/google");
-    window.open(response.data.data.url, "_self");
+    const response = await get('/auth/google');
+    window.open(response.data.data.url, '_self');
   };
 
   return (
@@ -17,7 +17,9 @@ export default function GoogleOAuth() {
       <div className="px-1">
         <FcGoogle />
       </div>
-      <div className="w-full text-left opacity-80 font-inter font-semibold">Sign in with Google</div>
+      <div className="w-full text-left opacity-80 font-inter font-semibold">
+        Sign in with Google
+      </div>
     </div>
   );
 }

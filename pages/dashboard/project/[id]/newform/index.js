@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Button,
   Form,
@@ -8,28 +8,28 @@ import {
   Col,
   Checkbox,
   Label,
-} from "antd";
-import { ExclamationCircleOutlined } from "@ant-design/icons";
-import MultipleNewFormInputs from "../../../../../components/elements/MultipleNewFormInputs";
-import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+} from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import MultipleNewFormInputs from '../../../../../components/elements/MultipleNewFormInputs';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 export default function NewForm() {
   const [isChecked, setIsChecked] = useState(false);
-  const [projectName, setProjectName] = useState("");
-  const [reCaptchaKey, setReCaptchaKey] = useState("");
-  const [reCaptchaSecret, setReCaptchaSecret] = useState("");
+  const [projectName, setProjectName] = useState('');
+  const [reCaptchaKey, setReCaptchaKey] = useState('');
+  const [reCaptchaSecret, setReCaptchaSecret] = useState('');
   const [removeField, setRemoveField] = useState([]);
   const handleChange = (e) => {
     setIsChecked(e.target.checked);
   };
   const clearInputs = () => {
-    setProjectName("");
-    setReCaptchaKey("");
-    setReCaptchaSecret("");
+    setProjectName('');
+    setReCaptchaKey('');
+    setReCaptchaSecret('');
     setIsChecked(false);
   };
   const [inputs, setInputs] = useState([
-    { name: "", type: "", isRequired: false },
+    { name: '', type: '', isRequired: false },
   ]);
   return (
     <>
@@ -38,7 +38,7 @@ export default function NewForm() {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Form Name:{" "}
+          Form Name:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
           <Input
             placeholder="e.g example.com"
@@ -53,7 +53,7 @@ export default function NewForm() {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          reCAPTCHA v3:{" "}
+          reCAPTCHA v3:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <Checkbox onChange={handleChange} checked={isChecked}>

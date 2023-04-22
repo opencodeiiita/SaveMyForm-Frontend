@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Col, Row, Button, Input, Modal, message } from "antd";
+import React, { useState, useEffect } from 'react';
+import { Typography, Col, Row, Button, Input, Modal, message } from 'antd';
 import {
   SearchOutlined,
   ReloadOutlined,
   EditOutlined,
-} from "@ant-design/icons";
-import ProjectItem from "../../../../components/elements/ProjectItem";
-import { AiOutlineDelete } from "react-icons/ai";
-import { get, remove } from "../../../../components/utils/API";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useRouter } from "next/router";
-import { QueryClient, useQueryClient } from "@tanstack/react-query";
-import { useWindowSize } from "../../../../components/utils/hooks/useWindowSize";
-import { useQuery, dehydrate } from "@tanstack/react-query";
-import Loader from "../../../../components/elements/Loader";
+} from '@ant-design/icons';
+import ProjectItem from '../../../../components/elements/ProjectItem';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { get, remove } from '../../../../components/utils/API';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useRouter } from 'next/router';
+import { QueryClient, useQueryClient } from '@tanstack/react-query';
+import { useWindowSize } from '../../../../components/utils/hooks/useWindowSize';
+import { useQuery, dehydrate } from '@tanstack/react-query';
+import Loader from '../../../../components/elements/Loader';
 // import { getProjectData } from "../../../../components/utils/FetchData";
 
 async function getProjectData(id) {
@@ -23,8 +23,8 @@ async function getProjectData(id) {
       let iostr2 = form.last_updated;
       let tempDate = new Date(iostr).toDateString().slice(4);
       let tempDate2 = new Date(iostr2).toDateString().slice(4);
-      form.date_created = tempDate.slice(0, 6) + "," + tempDate.slice(6);
-      form.last_updated = tempDate2.slice(0, 6) + "," + tempDate2.slice(6);
+      form.date_created = tempDate.slice(0, 6) + ',' + tempDate.slice(6);
+      form.last_updated = tempDate2.slice(0, 6) + ',' + tempDate2.slice(6);
     });
     return data?.data?.data;
   });
@@ -35,10 +35,10 @@ export default function Project({ id }) {
   const queryClient = useQueryClient();
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [deleteProjectPassword, setDeleteProjectPassword] = useState("");
+  const [deleteProjectPassword, setDeleteProjectPassword] = useState('');
 
   const projectQuery = useQuery({
-    queryKey: ["projectData", id],
+    queryKey: ['projectData', id],
     queryFn: () => {
       return getProjectData(id);
     },
@@ -55,7 +55,7 @@ export default function Project({ id }) {
     if (!token) {
       // setResponse({ message: "Failed to Send!!!", status: "Failed" });
       //message error
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
     const query = {
@@ -65,11 +65,11 @@ export default function Project({ id }) {
     remove(`/project/delete/${id}`, query)
       .then((res) => {
         console.log(res);
-        if (res.status === "OK") {
-          queryClient.invalidateQueries(["userData"]);
-          setDeleteProjectPassword("");
+        if (res.status === 'OK') {
+          queryClient.invalidateQueries(['userData']);
+          setDeleteProjectPassword('');
           setIsModalOpen(false);
-          router.replace("/dashboard");
+          router.replace('/dashboard');
         } else {
           message.error(res.error);
         }
@@ -80,11 +80,10 @@ export default function Project({ id }) {
   };
 
   const handleCancel = () => {
-    setDeleteProjectPassword("");
+    setDeleteProjectPassword('');
     //
     setIsModalOpen(false);
   };
-
 
   //Function to get screen size as the component is rendered on server side but we need the screen size of the user
   const size = useWindowSize();
@@ -96,7 +95,7 @@ export default function Project({ id }) {
       <>
         <div
           className={`${
-            size.width <= 800 ? "h-fit" : "h-[13rem]"
+            size.width <= 800 ? 'h-fit' : 'h-[13rem]'
           }  mt-8 pt-4 w-[90%] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] border-[#E7EEEC] border-2`}
         >
           <Modal
@@ -142,7 +141,7 @@ export default function Project({ id }) {
                   className="mb-0 text-2xl font-normal text-[#001E2B] text-left "
                 >
                   {/* need to implement this */}
-                  Collaborators:{" "}
+                  Collaborators:{' '}
                   {projectQuery.data?.collaborators?.map(
                     (collaborator, index) => {
                       <span
@@ -151,10 +150,10 @@ export default function Project({ id }) {
                       >
                         {collaborator}
                         {index !== projectQuery.data?.collaborators?.length - 1
-                          ? " ,"
+                          ? ' ,'
                           : null}
                       </span>;
-                    }
+                    },
                   )}
                 </Typography.Title>
               </Col>
@@ -163,7 +162,7 @@ export default function Project({ id }) {
                   level={5}
                   className="text-2xl font-normal text-[#001E2B] text-left mb-0"
                 >
-                  Allowed Origins:{" "}
+                  Allowed Origins:{' '}
                   {projectQuery.data?.allowedOrigins?.map((origin, index) => {
                     return (
                       <span
@@ -172,8 +171,7 @@ export default function Project({ id }) {
                       >
                         {origin}
                         {index !== projectQuery.data?.allowedOrigins?.length - 1
-
-                          ? " ,"
+                          ? ' ,'
                           : null}
                       </span>
                     );
@@ -183,11 +181,11 @@ export default function Project({ id }) {
                   level={5}
                   className="text-2xl font-normal text-[#001E2B] text-left mt-0"
                 >
-                  reCAPTCHA:{" "}
+                  reCAPTCHA:{' '}
                   <span className="hover:underline text-xl font-medium text-[#00694B] text-left">
                     {projectQuery.data?.hasRecaptcha
-                      ? "Available"
-                      : "Unavailable"}
+                      ? 'Available'
+                      : 'Unavailable'}
                   </span>
                 </Typography.Title>
               </Col>
@@ -262,7 +260,7 @@ export default function Project({ id }) {
                   >
                     Create Form
                   </Button>
-                </Col>{" "}
+                </Col>{' '}
               </>
             )}
           </Row>
@@ -368,12 +366,11 @@ export default function Project({ id }) {
 
 export async function getServerSideProps({ params: { id } }) {
   const queryClient = new QueryClient();
-  await queryClient.fetchQuery(["projectData", id], getProjectData);
+  await queryClient.fetchQuery(['projectData', id], getProjectData);
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
       id,
     },
   };
-
 }

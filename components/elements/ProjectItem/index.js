@@ -1,10 +1,9 @@
-import React from "react";
-import { Row, Col } from "antd";
-import { useRouter } from "next/router";
-import { DeleteOutlined, DeleteFilled, DeleteTwoTone } from "@ant-design/icons";
-import { Popconfirm } from "antd";
-import { remove } from "../../utils/API";
-
+import React from 'react';
+import { Row, Col } from 'antd';
+import { useRouter } from 'next/router';
+import { DeleteOutlined, DeleteFilled, DeleteTwoTone } from '@ant-design/icons';
+import { Popconfirm } from 'antd';
+import { remove } from '../../utils/API';
 
 const index = ({
   name,
@@ -14,7 +13,6 @@ const index = ({
   id,
   baseurl,
 }) => {
-
   const router = useRouter();
   return (
     <div
@@ -33,7 +31,6 @@ const index = ({
           span={6}
           className="text-center pr-28 font-inter font-normal text-base my-1"
         >
-
           {numberOfForms}
         </Col>
         <Col span={6} className="px-8 font-inter font-normal text-base my-1">
