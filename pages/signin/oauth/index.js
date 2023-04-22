@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { post } from '../../../components/utils/API';
 import { useEffect } from 'react';
-import { UserContext } from '../../components/context';
+import { UserContext } from '../../../components/context';
 
 export default function OAuth() {
   const router = useRouter();
