@@ -1,28 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Typography, Col, Row, Button, Input } from "antd";
-import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
-import ProjectItem from "../../components/elements/ProjectItem";
-import Avatar from "../../components/elements/Avatar";
-import { get, getAccessToken } from "../../components/utils/API/index.js";
-import { useRouter } from "next/router";
-import { AppbarContext } from "../../components/context";
+import React, { useState, useEffect, useContext } from 'react';
+import { Typography, Col, Row, Button, Input } from 'antd';
+import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
+import ProjectItem from '../../components/elements/ProjectItem';
+import Avatar from '../../components/elements/Avatar';
+import { get, getAccessToken } from '../../components/utils/API/index.js';
+import { useRouter } from 'next/router';
+import { AppbarContext, UserContext } from '../../components/context';
 import {
   useQuery,
   useMutation,
   QueryClient,
   useQueryClient,
   dehydrate,
-} from "@tanstack/react-query";
-import Loader from "../../components/elements/Loader";
-import { useWindowSize } from "../../components/utils/hooks/useWindowSize";
-
+} from '@tanstack/react-query';
+import Loader from '../../components/elements/Loader';
+import { useWindowSize } from '../../components/utils/hooks/useWindowSize';
 
 async function getUserDashboard() {
-  return await get("/user/dashboard").then((data) => {
+  return await get('/user/dashboard').then((data) => {
     data?.data?.data?.projects.forEach((date) => {
       let iostr = date.date_created;
       let tempDate = new Date(iostr).toDateString().slice(4);
-      date.date_created = tempDate.slice(0, 6) + "," + tempDate.slice(6);
+      date.date_created = tempDate.slice(0, 6) + ',' + tempDate.slice(6);
     });
     return data?.data?.data;
   });
@@ -31,25 +30,27 @@ async function getUserDashboard() {
 export default function Dashboard() {
   const router = useRouter();
   const { setActive } = useContext(AppbarContext);
+  let { isLoggedIn, user } = useContext(UserContext);
   const size = useWindowSize();
   const userQuery = useQuery({
-    queryKey: ["userData"],
+    queryKey: ['userData'],
     queryFn: getUserDashboard,
     staleTime: 10 * 60 * 1000,
   });
 
   useEffect(() => {
-    const accessToken = getAccessToken();
-    if (!accessToken) {
+    if (!isLoggedIn) {
       setActive({
         home: false,
         dashboard: false,
         documentation: false,
         faq: false,
       });
-      router.push("/signin");
+      router.push('/signin');
     }
-
+    if (!user.verified) {
+      router.push('/verify');
+    }
   }, []);
   if (userQuery?.isLoading) return <Loader />;
   if (userQuery?.isSuccess) {
@@ -57,7 +58,7 @@ export default function Dashboard() {
       <>
         <div
           className={`${
-            size.width <= 800 ? "h-[15rem]" : "h-[10rem]"
+            size.width <= 800 ? 'h-[15rem]' : 'h-[10rem]'
           } mt-8  w-[90%] rounded-lg bg-[#FFFEFE] mx-auto shadow-[0_4px_4px_0px_#00000040] border-[#E7EEEC] border-2`}
         >
           <Row>
@@ -89,7 +90,7 @@ export default function Dashboard() {
                 <Col flex="auto">
                   <Button
                     className="absolute right-0 mx-4 h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl my-4 rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
-                    onClick={() => router.push("/settings")}
+                    onClick={() => router.push('/settings')}
                   >
                     Settings
                   </Button>
@@ -99,12 +100,11 @@ export default function Dashboard() {
           </Row>
           {size.width <= 800 && (
             <>
-
               <Row>
                 <Col flex="auto">
                   <Button
                     className="absolute ml-8  h-14 w-[12rem]  border-[#00694B] text-[#00694B] font-medium font-inter text-xl  rounded-lg hover:border-green-300] shadow-md hover:shadow-green-300"
-                    onClick={() => router.push("/settings")}
+                    onClick={() => router.push('/settings')}
                   >
                     Settings
                   </Button>
@@ -145,11 +145,11 @@ export default function Dashboard() {
                   <Button
                     type="primary"
                     className="ml-5 mr-8 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-[#00593B] shadow-md hover:shadow-green-300"
-                    onClick={() => router.push("dashboard/project/newproject")}
+                    onClick={() => router.push('dashboard/project/newproject')}
                   >
                     Create Project
                   </Button>
-                </Col>{" "}
+                </Col>{' '}
               </>
             )}
           </Row>
@@ -170,7 +170,7 @@ export default function Dashboard() {
                   <Button
                     type="primary"
                     className="ml-5 mr-8 h-12 w-[16.25rem]  border-[#00694B] border-2 text-[#FFFEFE] font-medium font-inter text-xl mt-4 rounded-lg hover:border-[#00593B] shadow-md hover:shadow-green-300"
-                    onClick={() => router.push("dashboard/project/newproject")}
+                    onClick={() => router.push('dashboard/project/newproject')}
                   >
                     Create Project
                   </Button>
@@ -231,9 +231,9 @@ export default function Dashboard() {
                     id={project?.id}
                     name={project?.name}
                     numberOfForms={project?.form_count}
-                    allowedOrigin={project?.allowed_origins?.join(" ")}
+                    allowedOrigin={project?.allowed_origins?.join(' ')}
                     dateCreated={project?.date_created}
-                    baseurl={"/dashboard/project"}
+                    baseurl={'/dashboard/project'}
                   />
                 ))
               )}
@@ -249,7 +249,7 @@ export default function Dashboard() {
 
 export async function getServerSideProps() {
   const queryClient = new QueryClient();
-  await queryClient.fetchQuery(["userData"], getUserDashboard);
+  await queryClient.fetchQuery(['userData'], getUserDashboard);
   return {
     props: {
       dehydratedState: dehydrate(queryClient),

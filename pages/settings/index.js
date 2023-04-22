@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Input, Button, message } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-import { patch } from "../../components/utils/API";
-import { UserContext } from "../../components/context";
-import { useContext } from "react";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useQueryClient } from "@tanstack/react-query";
+import React, { useState, useEffect } from 'react';
+import { Input, Button, message } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { patch } from '../../components/utils/API';
+import { UserContext } from '../../components/context';
+import { useContext } from 'react';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useQueryClient } from '@tanstack/react-query';
 
 const Settings = () => {
   const queryClient = useQueryClient();
@@ -18,13 +18,13 @@ const Settings = () => {
   const [passwordTab, setPasswordTab] = useState(false);
   const [name, setName] = useState(user?.name);
   const [email, setEmail] = useState(user?.email);
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confPassword, setConfPassword] = useState('');
   const [errorBool, setErrorBool] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [messageApi, contextHolder] = message.useMessage();
-  const [userPassword, setUserPassword] = useState("");
+  const [userPassword, setUserPassword] = useState('');
   useEffect(() => {
     setName(user?.name);
     setEmail(user?.email);
@@ -43,36 +43,36 @@ const Settings = () => {
   //   };
   async function handleSave() {
     if (!executeRecaptcha) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
     const token = await executeRecaptcha();
     if (!token) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
-    patch("/user/updatepassword", {
+    patch('/user/updatepassword', {
       oldPassword: oldPassword,
       newPassword: newPassword,
       recaptcha_token: token,
     })
       .catch((err) => {
-        message.error("Error Encountered");
+        message.error('Error Encountered');
       })
       .then(() => {
-        message.success("Password was successfully updated");
+        message.success('Password was successfully updated');
       });
   }
   function validatePasswords() {
-    if (oldPassword === "" || newPassword === "" || confPassword === "") {
+    if (oldPassword === '' || newPassword === '' || confPassword === '') {
       setErrorBool(true);
-      setErrorMessage("All fields are required");
+      setErrorMessage('All fields are required');
     } else if (newPassword.length < 7) {
       setErrorBool(true);
-      setErrorMessage("New password length >7 required!");
+      setErrorMessage('New password length >7 required!');
     } else if (newPassword !== confPassword) {
       setErrorBool(true);
-      setErrorMessage("Confirm Password does not match!");
+      setErrorMessage('Confirm Password does not match!');
     } else {
       setErrorBool(false);
       handleSave();
@@ -80,41 +80,41 @@ const Settings = () => {
   }
   const reset = () => {
     if (passwordTab == true) {
-      setOldPassword("");
-      setNewPassword("");
-      setConfPassword("");
+      setOldPassword('');
+      setNewPassword('');
+      setConfPassword('');
     } else {
-      setEmail("");
-      setName("");
+      setEmail('');
+      setName('');
     }
   };
 
   const updateUser = async () => {
     if (!executeRecaptcha) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
     const token = await executeRecaptcha();
     if (!token) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
-    patch("/user/update", {
+    patch('/user/update', {
       name: name,
       email: email,
       password: userPassword,
       recaptcha_token: token,
     })
       .catch((err) => {
-        message.error("Error Encountered");
+        message.error('Error Encountered');
       })
       .then(() => {
         setUser({
           name: name,
           email: email,
           verified: user.verified,
-        });  
-        message.success("User was successfully updated");
+        });
+        message.success('User was successfully updated');
       });
   };
   return (
@@ -124,7 +124,7 @@ const Settings = () => {
       <div className="mt-8 pl-2 flex rounded-lg h-10 w-[90%] ml-auto mr-auto max-w-5xl bg-[#FFFEFE] shadow-[0_3px_4px_0px_#00000040] border-[1px]">
         <div
           className={`${
-            passwordTab ? "" : " border-b-[2px]"
+            passwordTab ? '' : ' border-b-[2px]'
           } hover:bg-[#f4f4f4] border-black cursor-pointer w-20 flex justify-center items-center ml-2`}
           onClick={() => {
             setPasswordTab(false);
@@ -134,7 +134,7 @@ const Settings = () => {
         </div>
         <div
           className={`
-        ${!passwordTab ? "" : "border-b-[2px]"}
+        ${!passwordTab ? '' : 'border-b-[2px]'}
         hover:bg-[#f4f4f4] border-black
         cursor-pointer w-20 flex justify-center items-center ml-2`}
           onClick={() => {
@@ -149,7 +149,7 @@ const Settings = () => {
           <Input
             placeholder="Name"
             className={`${
-              passwordTab ? "hidden" : "block"
+              passwordTab ? 'hidden' : 'block'
             } mt-12 py-1 px-2 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
             onChange={(e) => {
               setName(e.target.value);
@@ -159,7 +159,7 @@ const Settings = () => {
           <Input
             placeholder="Email Address"
             className={`${
-              passwordTab ? "hidden" : "block"
+              passwordTab ? 'hidden' : 'block'
             } mt-12 py-1 px-2 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
             onChange={(e) => {
               setEmail(e.target.value);
@@ -168,7 +168,7 @@ const Settings = () => {
           />
           <Input.Password
             className={`${
-              passwordTab ? "hidden" : "p-2"
+              passwordTab ? 'hidden' : 'p-2'
             } my-12 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
             placeholder="Password"
             visibilityToggle={{
@@ -226,7 +226,7 @@ const Settings = () => {
           {passwordTab && errorBool && (
             <div
               className="error-message"
-              style={{ textAlign: "center", color: "red" }}
+              style={{ textAlign: 'center', color: 'red' }}
             >
               {errorMessage}
             </div>

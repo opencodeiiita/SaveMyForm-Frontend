@@ -1,31 +1,31 @@
-import React, { useState } from "react";
-import { Input, Checkbox, message } from "antd";
-import { Select, Button } from "antd";
-import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
+import React, { useState } from 'react';
+import { Input, Checkbox, message } from 'antd';
+import { Select, Button } from 'antd';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 const index = ({ inputs, setInputs }) => {
-  const [formName, setFormName] = useState("");
+  const [formName, setFormName] = useState('');
   const [isChecked, setIsChecked] = useState(false);
-  const [currentType, setCurentType] = useState("");
+  const [currentType, setCurentType] = useState('');
   const [messageApi, contextHolder] = message.useMessage();
   const addInput = () => {
     if (inputs.length > 10) {
       messageApi.open({
-        type: "error",
-        content: "You have already selected 10 input fields",
+        type: 'error',
+        content: 'You have already selected 10 input fields',
       });
       return;
     }
     let tempInputs = inputs;
-    if (formName !== "" && currentType !== "") {
+    if (formName !== '' && currentType !== '') {
       tempInputs[tempInputs.length - 1] = {
         name: formName,
         type: currentType,
         isRequired: isChecked,
       };
-      setInputs([...inputs, { name: "", type: "", isRequired: false }]);
-      setFormName("");
+      setInputs([...inputs, { name: '', type: '', isRequired: false }]);
+      setFormName('');
       setIsChecked(false);
-      setCurentType("");
+      setCurentType('');
     }
   };
   const removeInput = (index, e) => {
@@ -35,27 +35,27 @@ const index = ({ inputs, setInputs }) => {
   };
   const options = [
     // { label: "button", value: "button" },
-    { label: "checkbox", value: "checkbox" },
-    { label: "color", value: "color" },
-    { label: "date", value: "date" },
-    { label: "datetime-local", value: "datetime-local" },
-    { label: "email", value: "email" },
-    { label: "file", value: "file" },
-    { label: "hidden", value: "hidden" },
-    { label: "image", value: "image" },
-    { label: "month", value: "month" },
-    { label: "number", value: "number" },
-    { label: "password", value: "password" },
-    { label: "radio", value: "radio" },
-    { label: "range", value: "range" },
-    { label: "reset", value: "reset" },
-    { label: "search", value: "search" },
+    { label: 'checkbox', value: 'checkbox' },
+    { label: 'color', value: 'color' },
+    { label: 'date', value: 'date' },
+    { label: 'datetime-local', value: 'datetime-local' },
+    { label: 'email', value: 'email' },
+    { label: 'file', value: 'file' },
+    { label: 'hidden', value: 'hidden' },
+    { label: 'image', value: 'image' },
+    { label: 'month', value: 'month' },
+    { label: 'number', value: 'number' },
+    { label: 'password', value: 'password' },
+    { label: 'radio', value: 'radio' },
+    { label: 'range', value: 'range' },
+    { label: 'reset', value: 'reset' },
+    { label: 'search', value: 'search' },
     // { label: "submit", value: "submit" },
-    { label: "tel", value: "tel" },
-    { label: "text", value: "text" },
-    { label: "time", value: "time" },
-    { label: "url", value: "url" },
-    { label: "week", value: "week" },
+    { label: 'tel', value: 'tel' },
+    { label: 'text', value: 'text' },
+    { label: 'time', value: 'time' },
+    { label: 'url', value: 'url' },
+    { label: 'week', value: 'week' },
   ];
   const handleChange = (e) => {
     setIsChecked(e.target.checked);
@@ -64,7 +64,7 @@ const index = ({ inputs, setInputs }) => {
   const setOptions = () => {
     let tempOptions = options;
     inputs.forEach((input) => {
-      if (input.type === "file") tempOptions.splice(5, 1);
+      if (input.type === 'file') tempOptions.splice(5, 1);
       // tempOptions.forEach((tempOption, index) => {
       // if (tempOption.label === input.type) {
       // tempOptions.splice(index, 1);

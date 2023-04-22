@@ -1,37 +1,36 @@
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { useState, useEffect, useContext } from "react";
-import Image from "next/image";
-import backimage from "../../assets/images/illustrations/signin.png";
-import { post } from "../../components/utils/API";
-import { storeLS, getLS } from "../../components/utils/LocalStorage";
-import { message } from "antd";
-import { useRouter } from "next/router";
-import GoogleOAuth from "../../components/elements/GoogleOAuth";
-import { UserContext } from "../../components/context";
-import { GoogleReCaptcha, useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
+import { useState, useEffect, useContext } from 'react';
+import Image from 'next/image';
+import backimage from '../../assets/images/illustrations/signin.png';
+import { post } from '../../components/utils/API';
+import { storeLS } from '../../components/utils/LocalStorage';
+import { message } from 'antd';
+import { useRouter } from 'next/router';
+import GoogleOAuth from '../../components/elements/GoogleOAuth';
+import { UserContext } from '../../components/context';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
 export default function SignIn() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
-  const { setIsLoggedIn } = useContext(UserContext);
+  const { setIsLoggedIn, setUser, isLoggedIn } = useContext(UserContext);
   useEffect(() => {
-    if (getLS("secret")) {
-      setIsLoggedIn(true);
-      router.push("/dashboard");
+    if (isLoggedIn) {
+      router.push('/dashboard');
     }
   }, []);
   let [open, setOpen] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
   const success = () => {
     messageApi.open({
-      type: "success",
-      content: "Sign in was Successful",
+      type: 'success',
+      content: 'Sign in was Successful',
     });
   };
   const error = () => {
     messageApi.open({
-      type: "error",
-      content: "Sign in Failed",
+      type: 'error',
+      content: 'Sign in Failed',
     });
   };
   let toggle = () => {
@@ -40,25 +39,30 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!executeRecaptcha) {
-      message.error("Recaptcha failed");
+      message.error('Recaptcha failed');
       return;
     }
     try {
       const token = await executeRecaptcha();
       if (!token) {
-        message.error("Recaptcha Failed");
+        message.error('Recaptcha Failed');
         return;
       }
-      post("/login", {
+      post('/login', {
         email: e.target.elements.email.value,
         password: e.target.elements.password.value,
         recaptcha_token: token,
       })
         .then((res) => {
-          storeLS("secret", res.data.data.secret);
+          storeLS('secret', res.data.data.secret);
           success();
           setIsLoggedIn(true);
-          router.push("/dashboard");
+          setUser(res.data.data);
+          if (!res.data.data.verified) {
+            router.push('/verify');
+          } else {
+            router.push('/dashboard');
+          }
         })
         .catch((err) => error());
     } catch (err) {
@@ -72,7 +76,7 @@ export default function SignIn() {
       {contextHolder}
       <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-76px)] w-full">
         <div className="hidden md:flex overflow-auto">
-          <Image src={backimage} className="object-contain" alt={"backImage"} />
+          <Image src={backimage} className="object-contain" alt={'backImage'} />
         </div>
         <div className=" flex flex-col justify-center">
           <form onSubmit={handleSubmit} className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
@@ -90,7 +94,7 @@ export default function SignIn() {
               <input
                 placeholder="Password"
                 className="border-[1px] font-normal rounded-lg bg-[#FFFFFF] p-3 focus:border-green-500 pass_type transition-all"
-                type={open === false ? "password" : "text"}
+                type={open === false ? 'password' : 'text'}
                 id="password"
                 required
               ></input>

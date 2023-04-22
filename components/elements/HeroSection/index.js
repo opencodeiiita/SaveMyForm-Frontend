@@ -1,12 +1,12 @@
-import { Button, GrowIn } from "antd";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import heroImage from "../../../assets/images/illustrations/heroSection.png";
-import { useRouter } from "next/router";
+import { Button, GrowIn } from 'antd';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import heroImage from '../../../assets/images/illustrations/heroSection.png';
+import { useRouter } from 'next/router';
 const HeroSection = () => {
   const router = useRouter();
   const handleClick = () => {
-    router.push("/signup");
+    router.push('/signup');
   };
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -20,10 +20,10 @@ const HeroSection = () => {
           height: window.innerHeight,
         });
       }
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize);
       //To make the button appear on reload
       handleResize();
-      return () => window.removeEventListener("resize", handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }, []);
     return windowSize;
   }
@@ -36,7 +36,7 @@ const HeroSection = () => {
             <Image
               className="object-contain z-10 ml-6"
               src={heroImage}
-              alt={"heroImage"}
+              alt={'heroImage'}
               priority={true}
             />
           </div>
@@ -66,7 +66,7 @@ const HeroSection = () => {
     <>
       <div className="w-[40vw] h-[100vh] inline-block">
         <div className="mt-0 absolute z-10 h-[35vw] max-lg:h-[40vw] max-lg:w-[40vw] w-[35vw]  max-lg:top-[22%] top-[20%] left-[5%]  ">
-          <Image src={heroImage} alt={"heroImage"} />
+          <Image src={heroImage} alt={'heroImage'} />
         </div>
         <svg
           className=" z-0 h-[110vh] w-[40vw] absolute"
@@ -117,8 +117,8 @@ const HeroSection = () => {
         </div>
         <div className=" absolute top-[20%] right-[15vw] h-[30vw] w-[40vw] mr-[-4vw]   ">
           <div className="xl:leading-normal sm:leading-normal md:leading-normal lg:leading-normal 2xl:leading-normal font-[700] 2xl:text-5xl xl:text-[40px] lg:text-3xl max-sm:text-xl  max-lg:text-2xl my-[4%]">
-            Save your form data now <br />{" "}
-            <span className="text-[#00694B]">Easily</span> and{" "}
+            Save your form data now <br />{' '}
+            <span className="text-[#00694B]">Easily</span> and{' '}
             <span className="text-[#00694B]">Securely.</span>
           </div>
           <div className="mt-5 xl:leading-normal sm:leading-normal md:leading-normal lg:leading-normal 2xl:leading-normal font-semibold lg:text-lg xl:text-xl 2xl:text-2xl text-[#001E2B]  max-sm:text-xs mb-[2%] mt-[4%]">

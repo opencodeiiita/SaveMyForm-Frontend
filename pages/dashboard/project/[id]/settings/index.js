@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Typography, Checkbox } from "antd";
+import React, { useState } from 'react';
+import { Button, Form, Input, Typography, Checkbox } from 'antd';
 import {
   ExclamationCircleOutlined,
   PlusOutlined,
   UserAddOutlined,
   DeleteOutlined,
   UserDeleteOutlined,
-} from "@ant-design/icons";
-import MultipleInputs from "../../../../../components/elements/MultipleInputs";
+} from '@ant-design/icons';
+import MultipleInputs from '../../../../../components/elements/MultipleInputs';
 
 const newProject = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [projectName, setProjectName] = useState("");
-  const [reCaptchaKey, setReCaptchaKey] = useState("");
-  const [reCaptchaSecret, setReCaptchaSecret] = useState("");
-  const [domainNames, setDomainNames] = useState([{ value: "" }]);
-  const [collaboratorNames, setCollaboratorNames] = useState([{ value: "" }]);
+  const [projectName, setProjectName] = useState('');
+  const [reCaptchaKey, setReCaptchaKey] = useState('');
+  const [reCaptchaSecret, setReCaptchaSecret] = useState('');
+  const [domainNames, setDomainNames] = useState([{ value: '' }]);
+  const [collaboratorNames, setCollaboratorNames] = useState([{ value: '' }]);
   const handleChange = (e) => {
     setIsChecked(e.target.checked);
   };
   const clearInputs = () => {
-    setProjectName("");
-    setReCaptchaKey("");
-    setReCaptchaSecret("");
-    setDomainNames([{ value: "" }]);
-    setCollaboratorNames([{ value: "" }]);
+    setProjectName('');
+    setReCaptchaKey('');
+    setReCaptchaSecret('');
+    setDomainNames([{ value: '' }]);
+    setCollaboratorNames([{ value: '' }]);
     setIsChecked(false);
   };
 
@@ -35,7 +35,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Project Name:{" "}
+          Project Name:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
           <Input
             placeholder="e.g example.com"
@@ -50,7 +50,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          reCAPTCHA v3:{" "}
+          reCAPTCHA v3:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <Checkbox onChange={handleChange} checked={isChecked}>
@@ -78,7 +78,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Domain:{" "}
+          Domain:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <MultipleInputs
@@ -93,7 +93,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Collaborators:{" "}
+          Collaborators:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <MultipleInputs
