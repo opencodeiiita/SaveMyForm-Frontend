@@ -52,7 +52,7 @@ const feature = () => {
               y2="1595.72"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0.0999588" stop-color="#001E2B" />
+              <stop offset="0.0999588" stopColor="#001E2B" />
               <stop offset="0.629293" />
             </linearGradient>
             <linearGradient
@@ -63,7 +63,7 @@ const feature = () => {
               y2="1595.72"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0.0999588" stop-color="#001E2B" />
+              <stop offset="0.0999588" stopColor="#001E2B" />
               <stop offset="0.629293" />
             </linearGradient>
           </defs>
@@ -75,16 +75,10 @@ const feature = () => {
           } mt-0 absolute max-600:top-4 top-[30vh] right-[15%] z-10 h-[20vw] w-[20vw] min-w-[400px] min-h-[400px] 
            max-xl:right-16 md:min-w-[300px] md:min-h[300px]  600:min-w-[200px] 600:min-h[200px] max-md:right-8 max-600:w-[80vw] max-600:min-h-[80vw] max-600:min-w-[80vw] max-600:h-[80vw] max-600:left-[5vw]`}
         >
-          <Image
-            src={templateCode}
-            alt={"templateCode"}
-            preserveAspectRatio="none"
-          />
+          <Image src={templateCode} alt={"templateCode"} preserveAspectRatio="none" />
         </div>
         <div className="absolute max-600:relative max-600:min-h-[120vh] max-600:h-fit top-0 max-600:bg-[#001E2B] flex justify-center h-[100vh]">
-          <div
-            className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-[100vw]`}
-          >
+          <div className={`h-[100vh] w-[60vw] min-w-[0] max-600:min-w-full max-600:w-[100vw]`}>
             <div className="max-600:absolute max-600:top-0 max-600:w-full max-600:ml-0 max-600:pl-6 max-600:left-0 absolute flex justify-center left-[100px] top-0 w-[50%] h-[100%] max-md:justify-start max-md:ml-6">
               <div
                 ref={text}
@@ -103,10 +97,9 @@ const feature = () => {
                   <span className="text-[#01EC64]">JSON</span> Schema Validation
                 </h5>
                 <p className="max-600:w-full leading-normal   max-600:mt-4 mt-16 font-normal text-2xl w-[300px] max-md:text-xl">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute
                 </p>
               </div>
             </div>

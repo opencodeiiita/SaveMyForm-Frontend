@@ -42,7 +42,7 @@ const responses = () => {
               y2="826.778"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#001E2B" />
+              <stop stopColor="#001E2B" />
               <stop offset="0.772793" />
             </linearGradient>
           </defs>
@@ -97,9 +97,9 @@ const responses = () => {
               width="118.412"
               height="137.265"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -109,21 +109,9 @@ const responses = () => {
               <feOffset dx="4" dy="4" />
               <feGaussianBlur stdDeviation="2" />
               <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="BackgroundImageFix"
-                result="effect1_dropShadow_759_106"
-              />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_759_106"
-                result="shape"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_759_106" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_759_106" result="shape" />
             </filter>
             <clipPath id="clip0_759_106">
               <rect
@@ -144,22 +132,16 @@ const responses = () => {
             } max-600:pr-8 max-600:top-0 max-600:w-[90vw] absolute top-[calc(46vh-10vw)] left-0 h-[400px] w-[50vw] max-800:w-[54vw]`}
           >
             <div className=" max-600:text-2xl max-600:text-[#FFFFFF] max-800:text-3xl text-[52px] font-bold font-sans max-1140:text-4xl">
-              Save{" "}
-              <span className="text-[#116148] max-600:text-[#01EC64]">
-                1000
-              </span>{" "}
-              form responses for{" "}
-              <span className="text-[#116148] max-600:text-[#01EC64]">30</span>{" "}
-              days !
+              Save <span className="text-[#116148] max-600:text-[#01EC64]">1000</span> form responses for{" "}
+              <span className="text-[#116148] max-600:text-[#01EC64]">30</span> days !
             </div>
             <div className="max-600:text-[#FFFFFF] max-600:text-lg max-800:text-base max-800:w-[50vw]  font-medium font-sans text-xl w-[380px] max-1140:text-lg max-1140:mt-4">
               We save your form easily and securely that no other platform can
             </div>
             <div className="max-600:mt-16 max-600:text-[#FFFFFF] max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#116148] w-[75%] font-medium font-sans text-xl max-1140:text-lg max-1140:mt-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute{" "}
             </div>
           </div>
           <div className="max-600:hidden z-0 absolute right-0 bottom-[calc(23vh-3px)] w-[10vw] h-[55vh]">

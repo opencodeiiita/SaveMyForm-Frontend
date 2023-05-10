@@ -23,7 +23,7 @@ const SingleFileUpload = () => {
           <path
             d="M-40 3.06388C-15.7672 0.172317 47.2144 0.415924 91.7985 40.8607C151.056 94.6169 47.8532 184.829 -40 258.5"
             stroke="#01EC64"
-            stroke-width="3"
+            strokeWidth="3"
           />
         </svg>
 
@@ -38,7 +38,7 @@ const SingleFileUpload = () => {
           <path
             d="M186.744 3.51516C158.711 -0.860423 85.8514 -0.491787 34.2749 60.7103C-34.2766 142.056 12.0326 297.507 113.664 408.987"
             stroke="#01EC64"
-            stroke-width="3"
+            strokeWidth="3"
           />
         </svg>
         <svg
@@ -53,7 +53,7 @@ const SingleFileUpload = () => {
           <path
             d="M89.8348 1.1963C59.2167 33.1675 -8.65659 124.986 4.04639 235.269C20.9302 381.848 219.267 439.178 425.587 394.323"
             stroke="#01EC64"
-            stroke-width="3"
+            strokeWidth="3"
           />
         </svg>
         <svg
@@ -78,7 +78,7 @@ const SingleFileUpload = () => {
               y2="1185.24"
               gradientUnits="userSpaceOnUse"
             >
-              <stop offset="0.348527" stop-color="#001E2B" />
+              <stop offset="0.348527" stopColor="#001E2B" />
               <stop offset="0.866562" />
             </linearGradient>
           </defs>
@@ -92,13 +92,7 @@ const SingleFileUpload = () => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <ellipse
-              cx="-62.7374"
-              cy="470.863"
-              rx="596.263"
-              ry="470.863"
-              fill="#01EC64"
-            />
+            <ellipse cx="-62.7374" cy="470.863" rx="596.263" ry="470.863" fill="#01EC64" />
           </svg>
         </div>
         <div className="absolute top-0 left-0 w-[30vw] h-[80vh] max-600:hidden">
@@ -113,7 +107,7 @@ const SingleFileUpload = () => {
             <path
               d="M0 5.83374C103.454 -4.58614 372.335 -3.70828 562.673 142.036C815.656 335.749 522.816 677.049 147.754 942.526"
               stroke="#01EC64"
-              stroke-width="3"
+              strokeWidth="3"
             />
           </svg>
         </div>
@@ -150,9 +144,9 @@ const SingleFileUpload = () => {
               width="162.56"
               height="118.106"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feColorMatrix
                 in="SourceAlpha"
                 type="matrix"
@@ -162,21 +156,9 @@ const SingleFileUpload = () => {
               <feOffset dx="4" dy="4" />
               <feGaussianBlur stdDeviation="2" />
               <feComposite in2="hardAlpha" operator="out" />
-              <feColorMatrix
-                type="matrix"
-                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
-              />
-              <feBlend
-                mode="normal"
-                in2="BackgroundImageFix"
-                result="effect1_dropShadow_837_146"
-              />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="effect1_dropShadow_837_146"
-                result="shape"
-              />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
+              <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_837_146" />
+              <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_837_146" result="shape" />
             </filter>
           </defs>
         </svg>
@@ -195,10 +177,9 @@ const SingleFileUpload = () => {
               We save your form easily and securely that no other platform can
             </div>
             <div className="max-600:mt-16 max-600:w-[80vw] max-600:text-lg max-800:text-base text-[#FFFFFF] w-[75%] font-medium font-sans text-xl max-1140:text-lg mt-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute{" "}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Duis aute{" "}
             </div>
           </div>
         </div>

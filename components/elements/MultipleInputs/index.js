@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { PlusOutlined, DeleteOutlined } from "@ant-design/icons";
-import { Input, Button } from "antd";
+import React, { useState } from 'react';
+import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Input, Button } from 'antd';
 const MultipleInputs = ({
   addIcon,
   deleteIcon,
@@ -11,8 +11,8 @@ const MultipleInputs = ({
 }) => {
   const addInput = () => {
     const size = inputs.length;
-    if (inputs[size - 1].value == "") return;
-    setInputs([...inputs, { value: "" }]);
+    if (inputs[size - 1].value == '') return;
+    setInputs([...inputs, { value: '' }]);
   };
   const removeInput = (index, e) => {
     const temp = [...inputs];

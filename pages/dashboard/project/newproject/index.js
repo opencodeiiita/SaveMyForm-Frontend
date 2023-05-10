@@ -1,39 +1,39 @@
-import React, { useState } from "react";
-import { Button, Form, Input, Typography, Checkbox, message, Col } from "antd";
+import React, { useState } from 'react';
+import { Button, Form, Input, Typography, Checkbox, message, Col } from 'antd';
 import {
   ExclamationCircleOutlined,
   PlusOutlined,
   UserAddOutlined,
   DeleteOutlined,
   UserDeleteOutlined,
-} from "@ant-design/icons";
-import MultipleInputs from "../../../../components/elements/MultipleInputs";
-import { post } from "../../../../components/utils/API";
-import { useRouter } from "next/router";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useQueryClient } from "@tanstack/react-query";
+} from '@ant-design/icons';
+import MultipleInputs from '../../../../components/elements/MultipleInputs';
+import { post } from '../../../../components/utils/API';
+import { useRouter } from 'next/router';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useQueryClient } from '@tanstack/react-query';
 
 const newProject = () => {
   const queryClient = useQueryClient();
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [isChecked, setIsChecked] = useState(false);
-  const [projectName, setProjectName] = useState("");
-  const [reCaptchaKey, setReCaptchaKey] = useState("");
-  const [reCaptchaSecret, setReCaptchaSecret] = useState("");
-  const [domainNames, setDomainNames] = useState([{ value: "" }]);
-  const [collaboratorNames, setCollaboratorNames] = useState([{ value: "" }]);
+  const [projectName, setProjectName] = useState('');
+  const [reCaptchaKey, setReCaptchaKey] = useState('');
+  const [reCaptchaSecret, setReCaptchaSecret] = useState('');
+  const [domainNames, setDomainNames] = useState([{ value: '' }]);
+  const [collaboratorNames, setCollaboratorNames] = useState([{ value: '' }]);
   const [messageApi, contextHolder] = message.useMessage();
 
   const handleChange = (e) => {
     setIsChecked(e.target.checked);
   };
   const clearInputs = () => {
-    setProjectName("");
-    setReCaptchaKey("");
-    setReCaptchaSecret("");
-    setDomainNames([{ value: "" }]);
-    setCollaboratorNames([{ value: "" }]);
+    setProjectName('');
+    setReCaptchaKey('');
+    setReCaptchaSecret('');
+    setDomainNames([{ value: '' }]);
+    setCollaboratorNames([{ value: '' }]);
     setIsChecked(false);
   };
 
@@ -42,9 +42,9 @@ const newProject = () => {
     //   type: "success",
     //   content: "Project successfully saved.",
     // });
-    queryClient.invalidateQueries(["userData"]);
-    message.success("Project Successfully saved");
-    router.push("/dashboard");
+    queryClient.invalidateQueries(['userData']);
+    message.success('Project Successfully saved');
+    router.push('/dashboard');
   };
   const error = (content) => {
     // messageApi.open({
@@ -56,21 +56,21 @@ const newProject = () => {
 
   async function handleSubmit() {
     var collaboratorNamesStrings = collaboratorNames.map(function (item) {
-      return item["value"];
+      return item['value'];
     });
     var domainNamesStrings = domainNames.map(function (item) {
-      return item["value"];
+      return item['value'];
     });
     if (!executeRecaptcha) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
     const token = await executeRecaptcha();
     if (!token) {
-      message.error("Recaptcha Failed");
+      message.error('Recaptcha Failed');
       return;
     }
-    post("/project/new", {
+    post('/project/new', {
       name: projectName,
       hasRecaptcha: isChecked,
       recaptchaKey: reCaptchaKey,
@@ -85,7 +85,7 @@ const newProject = () => {
       })
       .then((res) => {
         console.log(res);
-        res.status == "error" ? error(res.error) : success();
+        res.status == 'error' ? error(res.error) : success();
       });
   }
 
@@ -97,7 +97,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Project Name:{" "}
+          Project Name:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
           <Input
             placeholder="e.g example.com"
@@ -112,7 +112,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          reCAPTCHA v3:{" "}
+          reCAPTCHA v3:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <Checkbox onChange={handleChange} checked={isChecked}>
@@ -140,7 +140,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Domain:{" "}
+          Domain:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <MultipleInputs
@@ -155,7 +155,7 @@ const newProject = () => {
           level={3}
           className="mt-10 mb-0 text-base font-inter font-bold text-left"
         >
-          Collaborators:{" "}
+          Collaborators:{' '}
           <ExclamationCircleOutlined className="text-lg text-[#7f7f7f] pl-4" />
         </Typography.Title>
         <MultipleInputs
