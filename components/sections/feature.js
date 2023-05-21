@@ -119,7 +119,7 @@ const feature = () => {
               ref={circle3}
               className={`reveal-bottom ${
                 circle3Visible ? "active-reveal" : "opacity-0"
-              } max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[12vw] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:right-[3%] max-xl:top-[26vh]`}
+              } max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[6vw] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:right-[3%] max-xl:top-[26vh]`}
             ></div>
           </div>
         </div>
