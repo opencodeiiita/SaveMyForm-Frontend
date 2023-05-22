@@ -54,8 +54,10 @@ export default function SignUp() {
         } else {
           router.push('/dashboard');
         }
-      } else {
-        alert('Registration Failed');
+      }
+      else{
+        console.log(result)
+        message.error(result.error);
       }
     } catch (err) {
       console.log(err);
