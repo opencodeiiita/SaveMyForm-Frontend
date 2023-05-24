@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { post } from '../../../components/utils/API';
 import { useEffect, useContext } from 'react';
 import { UserContext } from '../../../components/context';
+import { storeLS } from '../../../components/utils/LocalStorage';
 
 export default function OAuth() {
   const router = useRouter();
@@ -12,10 +13,10 @@ export default function OAuth() {
     const response = await post('/auth/google', {
       token: code,
     });
-    console.log(response.data.data);
     if (response.status === 201 || response.status === 200) {
-      setIsLoggedIn(true);
-      setUser(response.data.data);
+      storeLS('secret', response.data.data.secret);
+      await setIsLoggedIn(true);
+      await setUser(response.data.data);
       if (!response.data.data.verified) {
         router.push('/verify');
       } else {

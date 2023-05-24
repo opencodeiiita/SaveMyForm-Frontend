@@ -48,10 +48,10 @@ export default function Dashboard() {
       });
       router.push('/signin');
     }
-    if (!user.verified) {
+    if (user && user.verified === false) {
       router.push('/verify');
     }
-  }, []);
+  }, [user]);
   if (userQuery?.isLoading) return <Loader />;
   if (userQuery?.isSuccess) {
     return (
