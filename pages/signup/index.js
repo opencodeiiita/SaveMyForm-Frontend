@@ -54,8 +54,9 @@ export default function SignUp() {
         } else {
           router.push('/dashboard');
         }
-      } else {
-        console.log(result);
+      }
+      else{
+        console.log(result)
         message.error(result.error);
       }
     } catch (err) {
