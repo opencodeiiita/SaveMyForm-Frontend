@@ -12,7 +12,7 @@ export default function OAuth() {
     const response = await post('/auth/google', {
       token: code,
     });
-
+    console.log(response.data.data);
     if (response.status === 201 || response.status === 200) {
       setIsLoggedIn(true);
       setUser(response.data.data);
