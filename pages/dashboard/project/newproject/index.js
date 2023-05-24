@@ -84,7 +84,6 @@ const newProject = () => {
         console.log(err);
       })
       .then((res) => {
-        console.log(res);
         res.status == 'error' ? error(res.error) : success();
       });
   }

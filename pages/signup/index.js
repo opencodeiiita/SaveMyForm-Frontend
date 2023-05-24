@@ -45,18 +45,16 @@ export default function SignUp() {
       });
 
       if (result?.data?.data?.secret) {
-        storeLS('secret', result.data.data.secret);
-        message.success('Sign up succesful!');
+        storeLS('secret', result.data.secret);
+        message.success('Sign up succesfull!');
         setIsLoggedIn(true);
         setUser(res.data.data);
-        if (!res.data.data.verified) {
+        if (!res.data.verified) {
           router.push('/verify');
         } else {
           router.push('/dashboard');
         }
-      }
-      else{
-        console.log(result)
+      } else {
         message.error(result.error);
       }
     } catch (err) {
