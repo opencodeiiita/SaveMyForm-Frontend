@@ -108,18 +108,18 @@ const feature = () => {
               className={`reveal-bottom ${
                 circle1Visible ? "active-reveal" : "opacity-0"
               } max-600:hidden absolute right-[30vw] top-[10vh] homeCircleColor w-[18vw] h-[18vw] rounded-full min-w-[200px] min-h-[200px] 
-                min-[600px]:top-[22%] min-[600px]:right-[25%] md:right-[30%] lg:right-[25%] md:top-[20%] xl:top-[15%] min-[600px]:min-w-[100px] max-md:top-[38vw] max-md:right-[25vw] max-md:min-w-[130px] max-md:min-h-[130px] min-[600px]:min-h-[100px] `}
+                min-[600px]:top-[22%] min-[600px]:right-[25%] md:right-[30%] lg:right-[-18%] md:top-[20%] xl:top-[10%] min-[600px]:min-w-[100px] max-md:top-[38vw] max-md:right-[25vw] max-md:min-w-[130px] max-md:min-h-[130px] min-[600px]:min-h-[100px] `}
             ></div>
             <div
               ref={circle2}
-              className={`max-600:right-8 max-600:top-64 absolute xl:right-[7vw] top-[65vh] homeCircleColor w-[14vw] h-[14vw] rounded-full max-md:min-w-[100px] max-md:min-h-[100px] min-w-[200px] min-h-[200px] 
-               min-[600px]:right-[0%] max-md:top-[40%] sm:right-0  min-[600px]:min-w-[100px] min-[600px]:min-h-[100px] md:top-[47%] `}
+              className={`max-600:right-8 max-600:top-64 absolute xl:right-[-55%] top-[65vh] homeCircleColor w-[14vw] h-[14vw] rounded-full max-md:min-w-[100px] max-md:min-h-[100px] min-w-[200px] min-h-[200px] 
+               min-[600px]:right-[0%] max-md:top-[40%] sm:right-0  min-[600px]:min-w-[100px] min-[600px]:min-h-[100px] md:top-[50%] `}
             ></div>
             <div
               ref={circle3}
               className={`reveal-bottom ${
                 circle3Visible ? "active-reveal" : "opacity-0"
-              } max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[12vw] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:right-[3%] max-xl:top-[26vh]`}
+              } max-600:top-4 max-600:right-28 max-600:w-[100px] max-600:h-[100px] absolute right-[-45%] top-[22vh] homeCircleColor w-[5vw] h-[5vw] rounded-full min-w-[75px] min-h-[75px] max-xl:right-[3%] max-xl:top-[26vh]`}
             ></div>
           </div>
         </div>
