@@ -1,5 +1,7 @@
-import React from "react";
+import React from 'react';
 function alert(props) {
+  let [open, setOpen] = React.useState(true);
+  if (!open) return null;
   return (
     <div
       id="alert-1"
@@ -15,6 +17,7 @@ function alert(props) {
         className="ml-auto -mx-1.5 -my-1.5 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 inline-flex h-8 w-8 dark:text-yellow-600 dark:hover:bg-yellow-300"
         data-dismiss-target="#alert-1"
         aria-label="Close"
+        onClick={() => setOpen(false)}
       >
         <span className="sr-only">Close</span>
         <svg
