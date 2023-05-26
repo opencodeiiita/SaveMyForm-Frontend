@@ -2,6 +2,7 @@ import Card from '../../components/card'
 import PCard from '../../components/P_Card'
 import Icon from '../../assets/svgs/iconDash.svg'
 import Image from 'next/image'
+import Footer from '../../components/elements/Footer'
 export default ()=>{
     return (
         <div className="flex-col flex items-center border-0 border-yellow-500 font-[Poppins]">
@@ -48,7 +49,7 @@ export default ()=>{
                     </div>
                 </div>
             </div>
-
+            <Footer/>
         </div>
     )
 }
