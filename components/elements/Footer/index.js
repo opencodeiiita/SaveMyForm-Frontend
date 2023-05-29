@@ -1,7 +1,7 @@
 import AppbarLogo from "../../../assets/images/logos/Appbarlogo.svg" 
 export default function Footer(){
     return (
-      <div className="mt-16 flex justify-center">
+      <div className="mt-16 flex justify-center ml-8  md:ml-8">
         <div>
           <hr className=" mb-4 w-[250px] md:w-[1057.49px]  h-[2px] border-black" />
           <div className="flex justify-between items-center py-1 mb-6">
