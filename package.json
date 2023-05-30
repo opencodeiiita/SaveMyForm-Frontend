@@ -19,6 +19,7 @@
     "antd": "^5.5.1",
     "axios": "^1.2.1",
     "flowbite": "^1.5.5",
+    "moment": "^2.29.4",
     "next": "13.0.6",
     "nextra": "^2.0.3",
     "nextra-theme-docs": "^2.0.3",
