@@ -18,7 +18,7 @@ import { useWindowSize } from '../../components/utils/hooks/useWindowSize';
 import Card from '../../components/elements/card';
 import PCard from '../../components/elements/P_Card';
 import Icon from '../../assets/svgs/iconDash.svg';
-import Image from 'next/Image';
+import Image from 'next/image';
 import Footer from '../../components/elements/Footer';
 async function getUserDashboard() {
   return await get('/user/dashboard').then((data) => {
@@ -113,7 +113,7 @@ export default function Dashboard() {
                     id={project?.id}
                     formName={project?.name}
                     totalForms={project?.form_count}
-                    allowedOrigins={project?.allowed_origins?.join(' ')}
+                    allowedOrigins={project?.allowed_origins?.join(',')}
                     creationDate={project?.date_created}
                   />
                 ))

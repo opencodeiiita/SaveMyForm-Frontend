@@ -3,7 +3,7 @@ import Pop from '../../../../components/elements/popinfo';
 import { Input } from 'antd';
 import user from '../../../../assets/images/illustrations/user.png';
 import { Switch } from 'antd';
-import Image from 'next/Image';
+import Image from 'next/image';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { useState } from 'react';

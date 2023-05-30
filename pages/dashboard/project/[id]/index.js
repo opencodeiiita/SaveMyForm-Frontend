@@ -15,6 +15,7 @@ import { AppbarContext, UserContext } from '../../../../components/context';
 import Loader from '../../../../components/elements/Loader';
 import Form from '../../../../components/elements/Form';
 import Footer from '../../../../components/elements/Footer';
+import Link from 'next/link';
 async function getProjectData(id) {
   return await get(`/project/dashboard/${id}`).then((data) => {
     data?.data?.data?.forms?.forEach((form) => {
@@ -89,9 +90,15 @@ export default function Project({ id }) {
               <h1 className=" text-[#DEF7E5] font-bold text-[48px]">
                 {projectQuery?.data?.name}
               </h1>
-              <button className="text-[#DEF7E5] mt-2 md:mt-0 ml-12 md:ml-8 h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
-                Manage
-              </button>
+              {projectQuery?.data?.is_owner && (
+                <Link
+                  href={`/dashboard/project/${projectQuery?.data?.id}/settings`}
+                >
+                  <button className="text-[#DEF7E5] mt-2 md:mt-0 ml-12 md:ml-8 h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
+                    Manage
+                  </button>
+                </Link>
+              )}
             </div>
             <div className="absolute top-[191px] left-[110px] md:left-[1056px] mt-8">
               <button className=" ml-6 flex text-[#00694B] font-semibold rounded-md px-2 py-1 bg-[#92E3A9] items-center justify-around">
