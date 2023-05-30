@@ -73,6 +73,7 @@ export default function newProject(){
 
     return (
       <>
+        
         <div className="mb-[650px]">
           <div className="relative">
             <svg

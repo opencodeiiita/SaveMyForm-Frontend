@@ -16,7 +16,7 @@ import { useWindowSize } from '../../../../components/utils/hooks/useWindowSize'
 import { useQuery, dehydrate } from '@tanstack/react-query';
 import Loader from '../../../../components/elements/Loader';
 import Form from '../../../../components/elements/Form';
-
+import Footer from '../../../../components/elements/Footer';
 async function getProjectData(id) {
   return await get(`/project/dashboard/${id}`).then((data) => {
     data?.data?.data?.forms?.forEach((form) => {
@@ -358,7 +358,7 @@ export default function Project({ id }) {
       <div>
         <div className="relative">
           <svg
-            height="461"
+            className="w-full"
             viewBox="0 0 1728 461"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -380,28 +380,31 @@ export default function Project({ id }) {
               </clipPath>
             </defs>
           </svg>
-          <div className=" absolute top-[80px] left-[110px] md:left-[400px] flex-row md:justify-around md:flex justify-between items-center">
+          <div className=" absolute top-[80px] left-1/2 transform -translate-x-1/2 md:left-1/3 md:-translate-x-1/3 flex-row md:justify-around md:flex justify-between items-center">
             <h1 className=" text-[#DEF7E5] font-bold text-[48px]">Project1</h1>
             <button className="text-[#DEF7E5] mt-2 md:mt-0 ml-12 md:ml-8 h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
               Manage
             </button>
           </div>
-          <div className="absolute top-[191px] left-[110px] md:left-[1056px] mt-8">
-            <button className=" ml-6 flex text-[#00694B] font-semibold rounded-md px-2 py-1 bg-[#92E3A9] items-center justify-around">
+          <div className="absolute top-[191px] left-1/2 transform -translate-x-1/2 md:left-3/4 md:-translate-x-3/4 mt-8">
+            <button className=" flex text-[#00694B] font-semibold rounded-md px-2 py-1 bg-[#92E3A9] items-center justify-around mr-4  md:mr-20">
               <PlusOutlined className="mr-1" />
               Create a form
             </button>
           </div>
-          <div className="absolute left-[50px] md:left-[404px] top-[250px] md:top-[262px] mt-4 flex-row">
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
-            <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+          <div className="flex-row">
+            <div className="absolute left-1/2 transform -translate-x-1/2 top-[250px] md:top-[262px] mt-4 flex-row">
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+              <Form createdAt={'3'} formName={'Form1'} totalSubmissions={8} />
+            </div>
           </div>
         </div>
       </div>
+       
     </>
   );
   //   }
