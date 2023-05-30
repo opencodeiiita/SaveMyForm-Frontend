@@ -273,7 +273,6 @@ export default function Dashboard() {
               fill="#023430"
               stroke="black"
             />
-            {/* <path  d="M843 0C898.229 0 943 44.7715 943 100V324.686C943 381.743 888.726 423.166 833.691 408.114C811.616 402.076 788.049 405.034 768.15 416.338L730 438.01L691.202 453.704C679.288 458.523 666.557 461 653.705 461H63.1044C32.6848 461 6.59467 439.298 1.05515 409.387C0.353192 405.597 0 401.75 0 397.896V394.527C0 339.415 44.6773 294.738 99.7895 294.738H313.517H379.217C455.118 294.738 498.432 208.075 452.873 147.369C407.314 86.6627 450.628 0 526.528 0H843Z" fill="#00684A"/> */}
           </svg>
           <div
             className=" w-[clamp(200px,60%,900px)] project_cards relative top-[-150px] outline-[black]
@@ -285,18 +284,24 @@ export default function Dashboard() {
             </div>
             <div className="flex flex-wrap justify-center md:justify-start  gap-16 md:pl-8">
               <Card />
-              <PCard
-                formName="Project 1"
-                totalForms="10"
-                allowedOrigins={'Public'}
-                creationDate="25 Feb 2025"
-              />
-              <PCard
-                formName="Project 1"
-                totalForms="10"
-                allowedOrigins={'google'}
-                creationDate="25 Feb 2025"
-              />
+              {userQuery.isRefetching ? (
+                <div className=" relative min-h-[40vh]">
+                  <Loader />
+                </div>
+              ) : (
+                userQuery.data.projects &&
+                userQuery.data.projects.length > 0 &&
+                userQuery.data.projects.map((project, i) => (
+                  <PCard
+                    key={i}
+                    id={project?.id}
+                    formName={project?.name}
+                    totalForms={project?.form_count}
+                    allowedOrigins={project?.allowed_origins?.join(' ')}
+                    creationDate={project?.date_created}
+                  />
+                ))
+              )}
             </div>
           </div>
           <div className="mb-5 mt-[-100px] md:w-[clamp(0px,65%,900px)] w-[70%] flex flex-col md:flex-row">

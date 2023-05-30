@@ -52,8 +52,8 @@ export default function FAQ() {
           </Text>{' '}
         </Collapse>{' '}
       </div>
-      {faqs.map((faq) => (
-        <div className="flex justify-center my-2">
+      {faqs.map((faq, i) => (
+        <div className="flex justify-center my-2" key={i}>
           <Collapse
             className="font-bold text-xl w-full max-w-2xl text-[#00694B] rounded-lg shadow-[0_2px_2px_rgba(0,0,0,0.25)] px-4"
             title={faq.Question}
