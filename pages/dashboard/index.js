@@ -18,7 +18,7 @@ import { useWindowSize } from '../../components/utils/hooks/useWindowSize';
 import Card from '../../components/elements/card';
 import PCard from '../../components/elements/P_Card';
 import Icon from '../../assets/svgs/iconDash.svg';
-import Image from 'next/image';
+import Image from 'next/Image';
 import Footer from '../../components/elements/Footer';
 async function getUserDashboard() {
   return await get('/user/dashboard').then((data) => {
