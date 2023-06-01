@@ -1,10 +1,10 @@
 import menu from "../../../assets/images/illustrations/menu.png"
-import Image from "next/image";
+import Image from "next/Image";
 import clock from "../../../assets/images/illustrations/clock.png";
 export default function Form(props) {
   return (
     <div
-      className="bg-[#FFFEFE] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] h-[158px] w-[300px]  md:w-[800px] cursor-pointer
+      className="bg-[#FFFEFE] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] h-[158px] w-[300px] sm:w-[500px] md:w-[700px] cursor-pointer
         flex justify-center flex-col items-center hover:bg-[#DEF7E5] transition-all duration-200 my-3 rounded-lg
         "
     >

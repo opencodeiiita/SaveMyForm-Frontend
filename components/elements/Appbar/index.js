@@ -2,15 +2,49 @@ import React from 'react';
 import { Navbar, Button, Link, Text } from '@nextui-org/react';
 import { Popconfirm } from 'antd';
 import Logo from '../../../assets/images/logos/AppbarLogo.svg';
-import Image from 'next/image';
+import Image from 'next/Image';
 import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { getLS, removeLS } from '../../utils/LocalStorage';
 import { UserContext, AppbarContext } from '../../context';
-
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { Dropdown, Space } from 'antd';
 import { useRef } from 'react';
-
+import { CgProfile} from 'react-icons/cg';
+import { BiLogOut} from 'react-icons/bi';
 export default function index() {
+  const items = [
+    {
+      key: '1',
+      label: (
+        <Link onClick={() => router.push('/')}>
+          <span className='text-green-700 font-semibold'> Profile</span>
+        </Link>
+      ),
+      icon: <CgProfile className='text-green-700' />,
+    },
+    {
+      key: '2',
+      danger: true,
+      label: (
+        <Popconfirm
+          placement="leftTop"
+          title="Are you sure you want to Log Out?"
+          // description="Are you sure? You want to delete this task"
+          onConfirm={() => {
+            removeLS('secret');
+            router.push('/');
+            setIsLoggedIn(false);
+          }}
+          okText="Yes"
+          cancelText="No"
+        >
+          <Link onClick={() => router.push('/')}>logout</Link>
+        </Popconfirm>
+      ),
+      icon: <BiLogOut />,
+    },
+  ];
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const { active, setActive } = useContext(AppbarContext);
   const router = useRouter();
@@ -100,7 +134,19 @@ export default function index() {
           </>
         ) : (
           <>
-            <Popconfirm
+            <Dropdown
+              menu={{
+                items,
+              }}
+            >
+              <a onClick={(e) => e.preventDefault()}>
+                <Space className='font-semibold text-lg flex justify-between items-center'>
+                  My Account
+                  <DownOutlined className='text-lg mb-1'/>
+                </Space>
+              </a>
+            </Dropdown>
+            {/* <Popconfirm
               placement="leftTop"
               title="Are you sure you want to Log Out?"
               // description="Are you sure? You want to delete this task"
@@ -121,7 +167,7 @@ export default function index() {
               >
                 Log Out
               </Button>
-            </Popconfirm>
+            </Popconfirm> */}
           </>
         )}
       </Navbar.Content>
