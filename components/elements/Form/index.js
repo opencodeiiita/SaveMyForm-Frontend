@@ -1,6 +1,6 @@
-import menu from "../../../assets/images/illustrations/menu.png"
-import Image from "next/Image";
-import clock from "../../../assets/images/illustrations/clock.png";
+import menu from '../../../assets/images/illustrations/menu.png';
+import Image from 'next/image';
+import clock from '../../../assets/images/illustrations/clock.png';
 export default function Form(props) {
   return (
     <div

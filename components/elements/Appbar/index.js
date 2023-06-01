@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Button, Link, Text } from '@nextui-org/react';
 import { Popconfirm } from 'antd';
 import Logo from '../../../assets/images/logos/AppbarLogo.svg';
-import Image from 'next/Image';
+import Image from 'next/image';
 import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { getLS, removeLS } from '../../utils/LocalStorage';
@@ -10,18 +10,18 @@ import { UserContext, AppbarContext } from '../../context';
 import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
 import { useRef } from 'react';
-import { CgProfile} from 'react-icons/cg';
-import { BiLogOut} from 'react-icons/bi';
+import { CgProfile } from 'react-icons/cg';
+import { BiLogOut } from 'react-icons/bi';
 export default function index() {
   const items = [
     {
       key: '1',
       label: (
         <Link onClick={() => router.push('/')}>
-          <span className='text-green-700 font-semibold'> Profile</span>
+          <span className="text-green-700 font-semibold"> Profile</span>
         </Link>
       ),
-      icon: <CgProfile className='text-green-700' />,
+      icon: <CgProfile className="text-green-700" />,
     },
     {
       key: '2',
@@ -140,9 +140,9 @@ export default function index() {
               }}
             >
               <a onClick={(e) => e.preventDefault()}>
-                <Space className='font-semibold text-lg flex justify-between items-center'>
+                <Space className="font-semibold text-lg flex justify-between items-center">
                   My Account
-                  <DownOutlined className='text-lg mb-1'/>
+                  <DownOutlined className="text-lg mb-1" />
                 </Space>
               </a>
             </Dropdown>

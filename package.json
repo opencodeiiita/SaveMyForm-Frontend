@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-react": "^7.22.3",
     "@dicebear/avatars": "^4.10.7",
     "@dicebear/avatars-avataaars-sprites": "^4.10.7",
     "@material-tailwind/react": "^2.0.1",
