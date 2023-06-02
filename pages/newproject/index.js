@@ -6,7 +6,7 @@ import { Switch } from 'antd';
 import Image from 'next/image';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { message } from 'antd';
 
 export default function newProject() {
