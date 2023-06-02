@@ -4,7 +4,7 @@ import Appbar from '../components/elements/Appbar/index';
 import Alert from '../components/elements/Alert';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import { UserContext, AppbarContext } from '../components/context';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { existsLS, getLS, removeLS } from '../components/utils/LocalStorage';
 import {
   QueryClient,
