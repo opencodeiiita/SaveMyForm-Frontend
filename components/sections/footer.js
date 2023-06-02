@@ -76,7 +76,7 @@ export default function Footer() {
               </svg>
             </div>
             <div className="text-[#FFFFFF] md:text-center sm:text-left">
-              © 2022 <span className="text-[#01EC64]">SaveMyForm</span>. All Rights Reserved.
+              © 2023 <span className="text-[#01EC64]">SaveMyForm</span>. All Rights Reserved.
             </div>
             <div className="flex justify-between space-x-3">
               <svg

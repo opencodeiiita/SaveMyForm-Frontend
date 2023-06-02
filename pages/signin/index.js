@@ -53,11 +53,11 @@ export default function SignIn() {
         password: e.target.elements.password.value,
         recaptcha_token: token,
       })
-        .then((res) => {
+        .then(async (res) => {
           storeLS('secret', res.data.data.secret);
           success();
           setIsLoggedIn(true);
-          setUser(res.data.data);
+          await setUser(res.data.data);
           if (!res.data.data.verified) {
             router.push('/verify');
           } else {
@@ -79,8 +79,13 @@ export default function SignIn() {
           <Image src={backimage} className="object-contain" alt={'backImage'} />
         </div>
         <div className=" flex flex-col justify-center">
-          <form onSubmit={handleSubmit} className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
-            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">Log In</h2>
+          <form
+            onSubmit={handleSubmit}
+            className="max-w-[500px] w-full mx-auto rounded-lg p-10 "
+          >
+            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">
+              Log In
+            </h2>
             <div className="flex flex-col py-2 text-[#00694B] ">
               <input
                 placeholder="Email"
@@ -99,7 +104,11 @@ export default function SignIn() {
                 required
               ></input>
               <div className="text-2xl absolute top-5 right-3 cursor-[pointer] select-none">
-                {open === false ? <AiFillEyeInvisible onClick={toggle} /> : <AiFillEye onClick={toggle} />}
+                {open === false ? (
+                  <AiFillEyeInvisible onClick={toggle} />
+                ) : (
+                  <AiFillEye onClick={toggle} />
+                )}
               </div>
             </div>
             <button

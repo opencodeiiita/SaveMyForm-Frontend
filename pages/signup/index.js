@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import backimage from '../../assets/images/illustrations/signin.png';
 import { post } from '../../components/utils/API';
 import { storeLS } from '../../components/utils/LocalStorage';
@@ -45,17 +45,17 @@ export default function SignUp() {
       });
 
       if (result?.data?.data?.secret) {
-        storeLS('secret', result.data.data.secret);
-        message.success('Sign up succesful!');
+        storeLS('secret', result.data.secret);
+        message.success('Sign up succesfull!');
         setIsLoggedIn(true);
         setUser(res.data.data);
-        if (!res.data.data.verified) {
+        if (!res.data.verified) {
           router.push('/verify');
         } else {
           router.push('/dashboard');
         }
       } else {
-        alert('Registration Failed');
+        message.error(result.error);
       }
     } catch (err) {
       console.log(err);
@@ -73,7 +73,9 @@ export default function SignUp() {
         </div>
         <div className=" flex flex-col justify-center">
           <form className="max-w-[500px] w-full mx-auto rounded-lg p-10 ">
-            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">Sign up</h2>
+            <h2 className="text-4xl text-center text- p-5 text-[#00694B] font-bold">
+              Sign up
+            </h2>
             <div className="flex flex-col py-2 text-[#00694B] ">
               <input
                 placeholder="Name"
@@ -105,9 +107,13 @@ export default function SignUp() {
               ></input>
               <div className="text-2xl absolute top-5 right-3 cursor-[pointer] select-none">
                 {passwordToggle === false ? (
-                  <AiFillEyeInvisible onClick={() => setPasswordToggle((prev) => !prev)} />
+                  <AiFillEyeInvisible
+                    onClick={() => setPasswordToggle((prev) => !prev)}
+                  />
                 ) : (
-                  <AiFillEye onClick={() => setPasswordToggle((prev) => !prev)} />
+                  <AiFillEye
+                    onClick={() => setPasswordToggle((prev) => !prev)}
+                  />
                 )}
               </div>
             </div>
@@ -122,9 +128,13 @@ export default function SignUp() {
               ></input>
               <div className="text-2xl absolute top-5 right-3 cursor-[pointer] select-none">
                 {confirmPasswordToggle === false ? (
-                  <AiFillEyeInvisible onClick={() => setConfirmPasswordToggle((prev) => !prev)} />
+                  <AiFillEyeInvisible
+                    onClick={() => setConfirmPasswordToggle((prev) => !prev)}
+                  />
                 ) : (
-                  <AiFillEye onClick={() => setConfirmPasswordToggle((prev) => !prev)} />
+                  <AiFillEye
+                    onClick={() => setConfirmPasswordToggle((prev) => !prev)}
+                  />
                 )}
               </div>
             </div>

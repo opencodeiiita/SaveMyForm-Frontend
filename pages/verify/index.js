@@ -31,10 +31,11 @@ export default function Verify() {
       }
       if (user?.verified) {
         router.replace('/dashboard');
+      } else {
+        raiseVerification();
       }
-      raiseVerification();
     }
-  }, [router]);
+  }, [router, user]);
   if (loading) {
     return (
       <div className="grid h-screen place-content-center">
