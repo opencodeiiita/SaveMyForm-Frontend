@@ -2,7 +2,7 @@ import { message } from 'antd';
 import { get } from '../../../components/utils/API';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
+import React from 'react';
 export default function EmailVerification() {
   const router = useRouter();
 
