@@ -1,4 +1,3 @@
-import AppbarLogo from '../../../assets/images/logos/Appbarlogo.svg';
 import Link from 'next/link';
 export default function Footer() {
   return (
