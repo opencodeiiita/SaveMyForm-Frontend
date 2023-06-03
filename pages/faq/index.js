@@ -4,6 +4,7 @@ import { Collapse, Text } from '@nextui-org/react';
 import { AppbarContext } from '../../components/context';
 import { useContext, useEffect } from 'react';
 import Footer from '../../components/sections/footer';
+import React from 'react';
 export default function FAQ() {
   const { setActive } = useContext(AppbarContext);
   // setActive({ home: false, dashboard: false, documentation: false, faq: true });

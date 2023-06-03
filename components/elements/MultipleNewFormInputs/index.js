@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import { Input, Checkbox, message } from 'antd';
-import { Select, Button } from 'antd';
+import {
+  Input,
+  Checkbox,
+  message,
+  Select,
+  Button,
+  Switch,
+  Typography,
+} from 'antd';
 import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { AiOutlinePlus } from 'react-icons/ai';
+import { MdDelete } from 'react-icons/md';
+
 const index = ({ inputs, setInputs }) => {
   const [formName, setFormName] = useState('');
   const [isChecked, setIsChecked] = useState(false);
@@ -34,7 +44,6 @@ const index = ({ inputs, setInputs }) => {
     setInputs(temp);
   };
   const options = [
-    // { label: "button", value: "button" },
     { label: 'checkbox', value: 'checkbox' },
     { label: 'color', value: 'color' },
     { label: 'date', value: 'date' },
@@ -50,87 +59,52 @@ const index = ({ inputs, setInputs }) => {
     { label: 'range', value: 'range' },
     { label: 'reset', value: 'reset' },
     { label: 'search', value: 'search' },
-    // { label: "submit", value: "submit" },
     { label: 'tel', value: 'tel' },
     { label: 'text', value: 'text' },
     { label: 'time', value: 'time' },
     { label: 'url', value: 'url' },
     { label: 'week', value: 'week' },
   ];
-  const handleChange = (e) => {
-    setIsChecked(e.target.checked);
+  const onChange = (checked) => {
+    setIsChecked(checked);
   };
 
   const setOptions = () => {
     let tempOptions = options;
     inputs.forEach((input) => {
       if (input.type === 'file') tempOptions.splice(5, 1);
-      // tempOptions.forEach((tempOption, index) => {
-      // if (tempOption.label === input.type) {
-      // tempOptions.splice(index, 1);
-      // }
     });
     return tempOptions;
   };
   return (
     <>
       {contextHolder}
+      <div className="flex flex-row items-center gap-8">
+        <Typography.Title
+          level={3}
+          className=" mb-0 text-2xl text-[#116149] font-inter font-bold text-left"
+        >
+          Form Fields
+        </Typography.Title>
+        <button
+          className="bg-green-300 text-green-700 py-0.5  px-2 rounded-md flex justify-center items-center font-semibold"
+          onClick={addInput}
+        >
+          <AiOutlinePlus className="mr-1" />
+          Add
+        </button>
+      </div>
       {inputs.map((input, index) => {
         return (
           <>
             <Input.Group compact>
-              {index !== inputs.length - 1 ? (
+              {index !== 0 ? (
                 <>
-                  <div className=" rounded-lg shadow-[0_4px_4px_rgba(0,0,0,0.25)] p-2 pt-4 h-fit w-[calc(100%-16px)]">
-                    <Button
-                      type="primary"
-                      className="transition-all bg-red-500 border-red-500 inline-block mr-4"
-                      icon={<DeleteOutlined />}
-                      onClick={(e) => removeInput(index, e)}
-                    ></Button>
-                    <div className="w-[calc(95%-32px)] inline-block">
+                  <div className="w-full p-2 pt-4 h-fit">
+                    <div className="flex flex-row items-center gap-2">
                       <Input
-                        placeholder="Name"
-                        className="inline-block w-[35%] border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-xs rounded-md bg-[#FFFEFE]"
-                        type="text"
-                        value={input.name}
-                        disabled
-                        required
-                      />
-                      <Select
-                        mode="single"
-                        allowClear
-                        className="mx-[5%] inline-block w-[35%] py-2"
-                        placeholder="type"
-                        options={setOptions()}
-                        showArrow={true}
-                        onChange={(value) => setCurentType(value)}
-                        disabled
-                      />
-                      <Checkbox
-                        className="w-[20%]"
-                        onChange={handleChange}
-                        checked={input.isRequired}
-                        disabled
-                      >
-                        Required
-                      </Checkbox>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="rounded-lg shadow-[0_4px_4px_rgba(0,0,0,0.25)] p-2 pt-4 h-fit w-[calc(100%-16px)]">
-                    <Button
-                      type="primary"
-                      className="transition-all mr-4"
-                      icon={<PlusOutlined />}
-                      onClick={addInput}
-                    ></Button>
-                    <div className="w-[calc(95%-32px)] inline-block">
-                      <Input
-                        placeholder="Name"
-                        className="inline-block w-[35%] border-2 border-r-[#FFFEFE] border-t-[#FFFEFE] border-l-[#FFFEFE] border-b-[#C2C8CB] font-normal text-xs rounded-md bg-[#FFFEFE]"
+                        placeholder="Enter field name"
+                        className="mt-2 font-inter text-[#116149] border-[#116149] border-t-0 border-l-0 border-r-0 border-b-dark-100 p-0.5 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
                         type="text"
                         value={formName}
                         onChange={(e) => setFormName(e.target.value)}
@@ -146,13 +120,59 @@ const index = ({ inputs, setInputs }) => {
                         onChange={(value) => setCurentType(value)}
                         showSearch={false}
                       />
-                      <Checkbox
-                        className="w-[20%]"
-                        onChange={handleChange}
-                        checked={isChecked}
-                      >
-                        Required
-                      </Checkbox>
+                      <div className="flex flex-row gap-2 items-center">
+                        <div className="  text-base text-[#116149] font-inter font-bold ">
+                          Required
+                        </div>
+                        <Switch
+                          onChange={onChange}
+                          className={
+                            isChecked ? 'bg-green-700 w-12' : 'bg-gray-300 w-12'
+                          }
+                        />
+                      </div>
+                      <button className="ml-2">
+                        <MdDelete
+                          className=" w-6 h-6 text-red-500"
+                          onClick={(e) => removeInput(index, e)}
+                        />
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full p-2 pt-4 h-fit">
+                    <div className="flex flex-row items-center gap-2">
+                      <Input
+                        placeholder="Enter field name"
+                        className="mt-2 font-inter text-[#116149] border-[#116149] border-t-0 border-l-0 border-r-0 border-b-dark-100 p-0.5 focus:valid:border-b-green-500 focus:invalid:border-b-red-500 transition-all"
+                        type="text"
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                        required
+                      />
+                      <Select
+                        mode="single"
+                        allowClear
+                        className="mx-[5%] inline-block w-[35%] py-2"
+                        placeholder="type"
+                        options={setOptions()}
+                        showArrow={true}
+                        onChange={(value) => setCurentType(value)}
+                        showSearch={false}
+                      />
+                      <div className="flex flex-row gap-2 items-center">
+                        <div className="  text-base text-[#116149] font-inter font-bold ">
+                          Required
+                        </div>
+                        <Switch
+                          onChange={onChange}
+                          className={
+                            isChecked ? 'bg-green-700 w-12' : 'bg-gray-300 w-12'
+                          }
+                        />
+                      </div>
                     </div>
                   </div>
                 </>

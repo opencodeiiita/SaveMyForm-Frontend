@@ -1,4 +1,5 @@
 import { Popover, Button } from 'antd';
+import React from 'react';
 import infopopover from '../../assets/images/illustrations/info-popover.png';
 import Image from 'next/image';
 export default function Pop(props) {

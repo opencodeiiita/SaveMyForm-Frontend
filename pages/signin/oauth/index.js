@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { post } from '../../../components/utils/API';
-import { useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { UserContext } from '../../../components/context';
 import { storeLS } from '../../../components/utils/LocalStorage';
 

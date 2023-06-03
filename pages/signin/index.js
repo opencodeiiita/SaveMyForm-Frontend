@@ -1,5 +1,5 @@
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import backimage from '../../assets/images/illustrations/signin.png';
 import { post } from '../../components/utils/API';

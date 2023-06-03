@@ -17,7 +17,7 @@ export default function index() {
     {
       key: '1',
       label: (
-        <Link onClick={() => router.push('/')}>
+        <Link onClick={() => router.push('/settings')}>
           <span className="text-green-700 font-semibold"> Profile</span>
         </Link>
       ),
