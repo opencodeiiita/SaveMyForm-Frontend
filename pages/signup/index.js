@@ -145,7 +145,7 @@ export default function SignUp() {
             >
               Submit
             </button>
-            <GoogleOAuth />
+            <GoogleOAuth text="Sign Up with Google" />
           </form>
         </div>
       </div>
