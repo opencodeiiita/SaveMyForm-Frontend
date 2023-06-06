@@ -1,16 +1,18 @@
-import { useInView } from "react-intersection-observer";
+import { useInView } from 'react-intersection-observer';
+import React from 'react';
+
 export default () => {
   const { ref: text1, inView: text1Visible } = useInView({
     triggerOnce: true,
-    rootMargin: "300px",
+    rootMargin: '300px',
   });
   const { ref: text2, inView: text2Visible } = useInView({
     triggerOnce: true,
-    rootMargin: "300px",
+    rootMargin: '300px',
   });
   const { ref: Img, inView: ImgVisible } = useInView({
     triggerOnce: true,
-    rootMargin: "300px",
+    rootMargin: '300px',
   });
   return (
     <div className="h-[100vh] bg-[#01EC64] relative overflow-clip max-600:bg-[#01694b]">
@@ -78,7 +80,13 @@ export default () => {
           d="M-11.7092 97.9663H1618.62C1673.84 97.9663 1718.62 142.738 1718.62 197.966V1021.97C1718.62 1077.2 1673.84 1121.97 1618.62 1121.97H108.291C42.0166 1121.97 -11.7092 1068.24 -11.7092 1001.97V97.9663Z"
           fill="url(#paint0_linear_888_103)"
         />
-        <ellipse cx="1721.64" cy="618.348" rx="730.639" ry="501.348" fill="#01EC64" />
+        <ellipse
+          cx="1721.64"
+          cy="618.348"
+          rx="730.639"
+          ry="501.348"
+          fill="#01EC64"
+        />
         <path
           d="M1776 126.833C1630.39 116.415 1251.96 117.293 984.072 263.013C628.014 456.693 1213.1 957.569 1740.98 1223"
           stroke="#01EC64"
@@ -109,9 +117,21 @@ export default () => {
             <feOffset dx="4" dy="4" />
             <feGaussianBlur stdDeviation="2" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_888_103" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_888_103" result="shape" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_888_103"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_888_103"
+              result="shape"
+            />
           </filter>
           <linearGradient
             id="paint0_linear_888_103"
@@ -143,7 +163,7 @@ export default () => {
       <svg
         ref={Img}
         className={`reveal-bottom ${
-          ImgVisible ? "active-reveal" : ""
+          ImgVisible ? 'active-reveal' : ''
         } absolute w-[30vw] right-[20vw] top-[130px] max-600:hidden`}
         width="479"
         height="539"
@@ -199,9 +219,21 @@ export default () => {
             <feOffset dx="4" dy="4" />
             <feGaussianBlur stdDeviation="2" />
             <feComposite in2="hardAlpha" operator="out" />
-            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_888_113" />
-            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_888_113" result="shape" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_888_113"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_888_113"
+              result="shape"
+            />
           </filter>
           <clipPath id="clip0_888_113">
             <rect
@@ -218,7 +250,7 @@ export default () => {
         <div
           ref={text1}
           className={`reveal-bottom ${
-            text1Visible ? "active-reveal" : ""
+            text1Visible ? 'active-reveal' : ''
           } font-[600] text-[min(64px,5vw)] max-600:text-2xl max-600:w-[65vw] max-600:text-right`}
         >
           Recaptcha support!
@@ -226,19 +258,20 @@ export default () => {
         <div
           ref={text2}
           className={`reveal-bottom ${
-            text2Visible ? "active-reveal" : ""
+            text2Visible ? 'active-reveal' : ''
           } w-[30vw] mt-6 text-[min(20px,2vw)] font-[500] max-600:text-lg max-600:w-[65vw] max-600:mt-8`}
         >
           We save your form easily and securely that no other platform can
         </div>
         <div
           className={`reveal-bottom ${
-            text2Visible ? "active-reveal" : ""
+            text2Visible ? 'active-reveal' : ''
           } mt-6 text-[min(20px,2vw)] font-[400] max-600:text-lg max-600:text-center max-600:mt-16`}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute{" "}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute{' '}
         </div>
       </div>
 

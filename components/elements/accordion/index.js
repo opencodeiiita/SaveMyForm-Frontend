@@ -1,3 +1,4 @@
+import React from 'react';
 export default (props) => {
   const data = props?.data;
   return (

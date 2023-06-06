@@ -98,7 +98,7 @@ export default function Dashboard() {
             <div className="text-xl font-bold md:m-2 mb-2 text-[#DEF7E5] text-center md:pl-8 md:text-start">
               Your Projects
             </div>
-            <div className="flex flex-wrap justify-center md:justify-start  gap-16 md:pl-8">
+            <div className="grid gap-2 grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
               <Card />
               {userQuery.isRefetching ? (
                 <div className=" relative min-h-[40vh]">
@@ -113,7 +113,7 @@ export default function Dashboard() {
                     id={project?.id}
                     formName={project?.name}
                     totalForms={project?.form_count}
-                    allowedOrigins={project?.allowed_origins?.join(',')}
+                    allowedOrigins={project?.allowed_origins}
                     creationDate={project?.date_created}
                   />
                 ))

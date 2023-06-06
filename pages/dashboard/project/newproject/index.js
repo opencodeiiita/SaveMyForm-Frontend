@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Footer from '../../../../components/elements/Footer';
 import Pop from '../../../../components/elements/popinfo';
 import { Input } from 'antd';
@@ -6,16 +7,14 @@ import { Switch } from 'antd';
 import Image from 'next/image';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
-import { useState } from 'react';
 import { message } from 'antd';
 import { post } from '../../../../components/utils/API';
 import { useRouter } from 'next/router';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
-export default function newProject() {
+export default function NewProject() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
-
   const [state, setState] = useState(false);
   const [firstDom, setFirstDom] = useState('');
   const [firstCollab, setFirstCollab] = useState('');
@@ -111,7 +110,7 @@ export default function newProject() {
   };
   return (
     <>
-      <div className="mb-[650px]">
+      <div className="">
         <div className="relative">
           <svg
             width="100%"
@@ -138,9 +137,9 @@ export default function newProject() {
               New Project
             </h1>
           </div>
-          <div className="absolute left-5 md:left-1/4 ml-auto mx-auto top-[250px] md:top-[242px] w-full  mt-4 mb-8 flex-row">
-            <div className="bg-[#FFFEFE] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] h-[800px] w-11/12  md:w-1/2 rounded-[12px] flex justify-evenly flex-col items-center p-2  md:p-4 ">
-              <div className="project-name flex-row justify-between items-center w-[80%] h-[24px]  md:h-[48px] mb-2  md:mb-4">
+          <div className="w-full flex flex-col gap-4 -mt-32 justify-center items-center">
+            <div className="bg-[#FFFEFE] shadow-[0px_4px_8px_rgba(0,0,0,0.25)]  w-11/12  md:w-1/2 rounded-[12px] flex justify-evenly flex-col items-center p-2 gap-8  md:p-4 ">
+              <div className="project-name flex-row justify-between items-center w-[80%]  mt-8 mb-4">
                 <div className="flex justify-between items-center">
                   <h1 className="text-[#116149] font-bold text-[24px]">
                     Project Name
@@ -160,7 +159,7 @@ export default function newProject() {
                   />
                 </div>
               </div>
-              <div className="recaptcha flex-row justify-between items-center w-[80%]  mb-8 ">
+              <div className="recaptcha flex-row justify-between items-center w-[80%]  mb-4 ">
                 <div className="flex justify-between items-center">
                   <div className="flex justify-evenly items-center">
                     <h1 className="text-[#116149] font-bold text-[24px]">
@@ -201,7 +200,7 @@ export default function newProject() {
                 )}
               </div>
 
-              <div className="Allowed Domains flex-row justify-between items-center w-[80%] h-[32px]  md:h-[48px]  mb-8">
+              <div className="Allowed Domains flex-row justify-between items-center w-[80%]   mb-4">
                 <div className="flex justify-between items-center">
                   <h1 className="text-[#116149] font-bold text-[24px]">
                     Allowed Domains
@@ -222,7 +221,7 @@ export default function newProject() {
                 </div>
                 <div
                   className={
-                    domain.length > 3
+                    domain.length >= 3
                       ? 'h-24 md:h-32 overflow-y-scroll'
                       : 'h-16'
                   }
@@ -291,7 +290,7 @@ export default function newProject() {
                   })}
                 </div>
               </div>
-              <div className="Collaborators flex-row justify-between items-center w-[80%] h-[32px]  md:h-[48px] mb-8  md:mb-16 mt-8 ">
+              <div className="Collaborators flex-row justify-between items-center w-[80%]  mb-8  md:mb-16  ">
                 <div className="flex justify-between items-center">
                   <h1 className="text-[#116149] font-bold text-[24px]">
                     Collaborators
@@ -314,7 +313,9 @@ export default function newProject() {
                 </div>
                 <div
                   className={
-                    collaborators.length > 3 ? 'h-32 overflow-y-scroll' : 'h-32'
+                    collaborators.length >= 3
+                      ? 'h-24 md:h-32 overflow-y-scroll'
+                      : 'h-16'
                   }
                 >
                   <div className="flex justify-evenly items-center w-auto md:w-96 mt-2 mb-2">
@@ -362,7 +363,7 @@ export default function newProject() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 w-72 flex justify-between">
+            <div className="mt-8 w-72 flex gap-2 ">
               <button
                 className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-green-300 p-2 w-32"
                 onClick={handleSubmit}
@@ -377,12 +378,7 @@ export default function newProject() {
               </button>
             </div>
           </div>
-          <div></div>
-        </div>
-        <div className="flex justify-center">
-          <div className="absolute w-11/12 top-[1300px]">
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </div>
     </>

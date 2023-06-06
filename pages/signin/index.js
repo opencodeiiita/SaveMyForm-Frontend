@@ -1,5 +1,5 @@
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import backimage from '../../assets/images/illustrations/signin.png';
 import { post } from '../../components/utils/API';
@@ -117,7 +117,7 @@ export default function SignIn() {
             >
               Submit
             </button>
-            <GoogleOAuth />
+            <GoogleOAuth text="Sign In with Google" />
           </form>
         </div>
       </div>

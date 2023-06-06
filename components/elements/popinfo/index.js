@@ -1,3 +1,4 @@
+import React from 'react';
 import { Popover, Button } from 'antd';
 import infopopover from '../../../assets/images/illustrations/info-popover.png';
 import Image from 'next/image';
