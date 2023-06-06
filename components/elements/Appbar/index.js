@@ -39,7 +39,7 @@ export default function index() {
           okText="Yes"
           cancelText="No"
         >
-          <Link onClick={() => router.push('/')}>logout</Link>
+          logout
         </Popconfirm>
       ),
       icon: <BiLogOut />,

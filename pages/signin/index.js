@@ -117,7 +117,7 @@ export default function SignIn() {
             >
               Submit
             </button>
-            <GoogleOAuth />
+            <GoogleOAuth text="Sign In with Google" />
           </form>
         </div>
       </div>

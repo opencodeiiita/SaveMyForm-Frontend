@@ -2,7 +2,7 @@ import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { get } from '../../utils/API';
 
-export default function GoogleOAuth() {
+export default function GoogleOAuth({ text }) {
   const click = async () => {
     const response = await get('/auth/google');
     window.open(response.data.data.url, '_self');
@@ -18,7 +18,7 @@ export default function GoogleOAuth() {
         <FcGoogle />
       </div>
       <div className="w-full text-left opacity-80 font-inter font-semibold">
-        Sign in with Google
+        {text}
       </div>
     </div>
   );

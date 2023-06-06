@@ -61,6 +61,7 @@ function MyApp({ Component, pageProps }) {
       <Hydrate state={pageProps.dehydratedState}>
         <GoogleReCaptchaProvider
           reCaptchaKey={'6LcZo3cjAAAAAPEshUhFpjSOLdDaTQEbSoEwwB67'}
+          // reCaptchaKey='1081830613309-46fos7bns3vhlh8qpbvdidm5qvapioob.apps.googleusercontent.com'
           scriptProps={{
             async: false,
             defer: true,
