@@ -1,14 +1,14 @@
 import Footer from '../../../../../components/elements/Footer';
 import Pop from '../../../../../components/elements/popinfo';
 import { Input } from 'antd';
-import user from '../../../../../assets/images/illustrations/user.png';
+import userImg from '../../../../../assets/images/illustrations/user.png';
 import { Switch } from 'antd';
 import Image from 'next/image';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, use } from 'react';
 import { message } from 'antd';
-import { post, get } from '../../../../../components/utils/API';
+import { post,patch, get } from '../../../../../components/utils/API';
 import { useRouter } from 'next/router';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import {
@@ -20,20 +20,8 @@ import {
 import { AppbarContext, UserContext } from '../../../../../components/context';
 import Loader from '../../../../../components/elements/Loader';
 
-async function getProjectData(id) {
-  return await get(`/project/dashboard/${id}`).then((data) => {
-    data?.data?.data?.forms?.forEach((form) => {
-      let iostr = form.date_created;
-      let iostr2 = form.last_updated;
-      let tempDate = new Date(iostr).toDateString().slice(4);
-      let tempDate2 = new Date(iostr2).toDateString().slice(4);
-      form.date_created = tempDate.slice(0, 6) + ',' + tempDate.slice(6);
-      form.last_updated = tempDate2.slice(0, 6) + ',' + tempDate2.slice(6);
-    });
-    return data?.data?.data;
-  });
-}
-export default function editProject({ id }) {
+export default function editProject() {
+  
   const { setActive } = useContext(AppbarContext);
   let { isLoggedIn, user } = useContext(UserContext);
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -44,13 +32,33 @@ export default function editProject({ id }) {
   const [recaptchaSecret, setReCaptchaSecret] = useState(null);
   const [domain, setDomain] = useState([]);
   const [collaborators, setCollaborators] = useState([]);
-  const projectQuery = useQuery({
-    queryKey: ['projectData', id],
-    queryFn: () => {
-      return getProjectData(id);
-    },
-    staleTime: 10 * 60 * 1000,
-  });
+  const [data,setData]=useState({});
+  const [loading,setLoading]=useState(false);
+  const id = router.query.id;
+   console.log(id);
+   useEffect(() => {
+    if(id){
+       getProjectDat(id);
+    }
+   }, [id]);
+  
+  async function getProjectDat(id){
+    setLoading(true)
+
+    const res= await get(`/project/dashboard/${id}`);
+    console.log(res);
+    const data=res.data.data;
+    setProjectName(data.name);
+    setCollaborators(data.collaborators);
+    setDomain(data.allowedOrigins);
+    setReCaptchaKey(data.recaptchaKey);
+    setReCaptchaSecret(data.recaptchaSecret);
+    setState(data.hasRecaptcha);
+    console.log({projectName,recaptchaKey,recaptchaSecret,domain,collaborators,state});
+    setData(data);
+    setLoading(false);
+  }
+ 
   useEffect(() => {
     if (!isLoggedIn) {
       setActive({
@@ -73,10 +81,8 @@ export default function editProject({ id }) {
     setState(checked);
   };
   function handleAddDomain() {
-    if (firstDom === '') {
-      message.error('Please fill the previous domain');
-      return;
-    } else if (domain[domain.length - 1] == '') {
+
+    if (domain[domain.length - 1] == '' && domain.length > 0) {
       message.error('Please fill the previous domain');
       return;
     }
@@ -84,10 +90,8 @@ export default function editProject({ id }) {
     setDomain(dom);
   }
   function handleAddCollab() {
-    if (firstCollab === '') {
-      message.error('Please fill the previous Collaborator');
-      return;
-    } else if (collaborators[collaborators.length - 1] == '') {
+
+     if (collaborators[collaborators.length - 1] == '' && collaborators.length > 0) {
       message.error('Please fill the previous Collaborator');
       return;
     }
@@ -128,7 +132,7 @@ export default function editProject({ id }) {
       message.error('Recaptcha Failed');
       return;
     }
-    const res = await post('/project/new', {
+    const res = await patch(`/project/update/${id}`, {
       name: projectName,
       hasRecaptcha: state,
       recaptchaKey: recaptchaKey,
@@ -140,22 +144,18 @@ export default function editProject({ id }) {
     res.status === 'error' ? message.error(res.error) : success();
   };
   const handleCancel = async () => {
-    setProjectName(null);
-    setReCaptchaKey(null);
-    setReCaptchaSecret(null);
-    setState(false);
-    setDomain([]);
-    setCollaborators([]);
+    setProjectName(data.name);
+    setReCaptchaKey(data.recaptchaKey);
+    setReCaptchaSecret(data.recaptchaSecret);
+    setState(data.hasRecaptcha);
+    setDomain(data.allowedOrigins);
+    setCollaborators(data.collaborators);
   };
-  if (projectQuery?.isLoading) return <Loader />;
-  // if (projectQuery?.isSuccess || projectQuery.isRefetching) {
-  //   setProjectName(projectQuery?.data?.name);
-  //   setReCaptchaKey(projectQuery?.data?.recaptchaKey);
-  //   setReCaptchaSecret(projectQuery?.data?.recaptchaSecret);
-  //   setState(projectQuery?.data?.hasRecaptcha);
-  //   setDomain(projectQuery?.data?.allowedOrigins);
-  //   setCollaborators(projectQuery?.data?.collaborators);
-  // }
+  if(loading){
+    return <Loader/>
+  }
+  else{
+
   return (
     <>
       <div className="mb-[650px]">
@@ -278,7 +278,7 @@ export default function editProject({ id }) {
                     return (
                       <div className="flex justify-evenly items-center w-auto md:w-96 mt-1">
                         <Image
-                          src={user}
+                          src={userImg}
                           className="w-5 h-5 mt-1 mr-2 "
                           alt="user"
                         />
@@ -288,6 +288,7 @@ export default function editProject({ id }) {
                           onChange={(e) => {
                             handleDomainChange(e, index);
                           }}
+                          value={item}
                         />
                         <button className="ml-2">
                           <MdDelete
@@ -343,6 +344,7 @@ export default function editProject({ id }) {
                           onChange={(e) => {
                             handleCollabChange(e, index);
                           }}
+                          value={item}
                         />
                         <button className="ml-2">
                           <MdDelete
@@ -363,7 +365,7 @@ export default function editProject({ id }) {
                 className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-green-300 p-2 w-32"
                 onClick={handleSave}
               >
-                Save
+                Edit
               </button>
               <button
                 className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-white p-2 w-32"
@@ -383,14 +385,5 @@ export default function editProject({ id }) {
       </div>
     </>
   );
-}
-export async function getServerSideProps({ params: { id } }) {
-  const queryClient = new QueryClient();
-  await queryClient.fetchQuery(['projectData', id], getProjectData);
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-      id,
-    },
-  };
+  }
 }
