@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Button, Link, Text } from '@nextui-org/react';
 import { Popconfirm } from 'antd';
 import Logo from '../../../assets/images/logos/AppbarLogo.svg';
-import Image from 'next/image';
+import Image from 'next/Image';
 import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { getLS, removeLS } from '../../utils/LocalStorage';
