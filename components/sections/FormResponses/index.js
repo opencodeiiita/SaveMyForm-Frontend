@@ -1,4 +1,3 @@
-import Bgimg from "../../../assets/svgs/DYFR_Background.svg";
 import Image from "next/image";
 import Ellips from "../../../assets/svgs/DYFR_Ellip.svg";
 import Vector from "../../../assets/svgs/DYFR_Vector.svg";

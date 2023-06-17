@@ -1,12 +1,15 @@
-import { Button, GrowIn } from "antd";
-import React, { useState, useEffect } from "react";
+import { Button } from "antd";
+import React, { useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import heroImage from "../../../assets/images/illustrations/heroSection.png";
 import { useRouter } from "next/router";
+import { UserContext } from "../../context";
 const HeroSection = () => {
+    let { isLoggedIn, user } = useContext(UserContext);
     const router = useRouter();
     const handleClick = () => {
-        router.push("/signup");
+        if (isLoggedIn) router.push("/dashboard");
+        else router.push("/signup");
     };
     function useWindowSize() {
         const [windowSize, setWindowSize] = useState({

@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from "react";
-import { get, getAccessToken } from "../../components/utils/API/index.js";
+import { get } from "../../components/utils/API/index.js";
 import { useRouter } from "next/router";
 import { AppbarContext, UserContext } from "../../components/context";
 import { useQuery, QueryClient, dehydrate } from "@tanstack/react-query";
 import Loader from "../../components/elements/Loader";
-import { useWindowSize } from "../../components/utils/hooks/useWindowSize";
 import ProjectCard from "../../components/elements/ProjectCard";
 import Icon from "../../assets/svgs/iconDash.svg";
 import Image from "next/image";
@@ -26,7 +25,6 @@ export default function Dashboard() {
     const router = useRouter();
     const { setActive } = useContext(AppbarContext);
     let { isLoggedIn, user } = useContext(UserContext);
-    const size = useWindowSize();
     const userQuery = useQuery({
         queryKey: ["userData"],
         queryFn: getUserDashboard,
