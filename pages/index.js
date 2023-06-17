@@ -1,10 +1,10 @@
-import HeroSection from "../components/elements/HeroSection";
-import Feature from "../components/sections/feature.js";
-import Footer from "../components/sections/footer";
-import Responses from "../components/sections/responses.js";
-import DownloadFormResponses from "../components/sections/FormResponsesSection";
+import HeroSection from "../components/sections/HeroSection";
+import Feature from "../components/sections/Feature";
+import Footer from "../components/sections/Footer";
+import Responses from "../components/sections/Responses";
+import DownloadFormResponses from "../components/sections/FormResponses";
 import SingleFileUpload from "../components/sections/SingleFileUpload";
-import ReCaptcha from "../components/sections/reCaptcha";
+import ReCaptcha from "../components/sections/ReCaptcha";
 import React, { useContext, useEffect } from "react";
 import { AppbarContext } from "../components/context";
 import SEO from "../components/utils/SEO";

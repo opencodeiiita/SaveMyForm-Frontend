@@ -10,6 +10,7 @@ import { UserContext } from "../../components/context";
 import GoogleOAuth from "../../components/elements/GoogleOAuth";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import SEO from "../../components/utils/SEO";
+import Footer from "../../components/elements/Footer";
 export default function SignUp() {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const router = useRouter();
@@ -177,6 +178,7 @@ export default function SignUp() {
                     </form>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
