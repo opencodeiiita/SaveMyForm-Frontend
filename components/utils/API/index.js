@@ -98,4 +98,4 @@ const remove = async (endpoint, body, token = null) => {
   }
 };
 
-export { getAccessToken, post, get, patch, remove };
+export { getAccessToken, post, get, patch, remove, API_URL };

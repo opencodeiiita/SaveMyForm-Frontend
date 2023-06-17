@@ -48,13 +48,4 @@ const createJSONSchema = (inputs) => {
   console.log(JSONSchema);
   return JSONSchema;
 };
-createJSONSchema([
-  { name: 'name', type: 'text', isRequired: true },
-  { name: 'email', type: 'email', isRequired: true },
-  { name: 'password', type: 'password', isRequired: true },
-  { name: 'checkbox', type: 'checkbox', isRequired: true },
-  { name: 'color', type: 'color', isRequired: true },
-  { name: 'date', type: 'date', isRequired: true },
-]);
-
-// export default createJSONSchema;
+export default createJSONSchema;

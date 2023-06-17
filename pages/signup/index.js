@@ -48,8 +48,8 @@ export default function SignUp() {
         storeLS('secret', result.data.secret);
         message.success('Sign up succesfull!');
         setIsLoggedIn(true);
-        setUser(res.data.data);
-        if (!res.data.verified) {
+        setUser(result.data.data);
+        if (!result.data.verified) {
           router.push('/verify');
         } else {
           router.push('/dashboard');
