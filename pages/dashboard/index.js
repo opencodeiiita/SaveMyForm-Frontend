@@ -146,7 +146,7 @@ export default function Dashboard() {
                                 <div className="ml-2 m-2">Learn More</div>
                             </div>
                             <div className="md:w-[70%] md:flex justify-center items-center hidden mb-[-20px]">
-                                <Image src={Icon} />
+                                <Image src={Icon} alt="icon" />
                             </div>
                         </div>
                         <div className="border-[#001E2B] p-3 border-[1px] mt-5 md:mt-0 rounded-[12px] flex flex-col items-center justify-between md:w-[30%] md:ml-auto ">

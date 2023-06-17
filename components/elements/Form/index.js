@@ -22,11 +22,15 @@ export default function Form(props) {
                                 {moment(props.createdAt).fromNow()}
                             </span>
                             <button>
-                                <Image src={clock} className="w-3 h-3 ml-1" />
+                                <Image
+                                    src={clock}
+                                    className="w-3 h-3 ml-1"
+                                    alt="clock"
+                                />
                             </button>
                         </div>
                     </div>
-                    <Image src={menu} className="float-right" />
+                    <Image src={menu} className="float-right" alt="menu" />
                 </div>
                 <div className="h-1/2 w-full p-5 pl-6 text-2xs flex items-end text-[#116149] font-medium">
                     <div>{props.totalSubmissions} Submissions</div>
