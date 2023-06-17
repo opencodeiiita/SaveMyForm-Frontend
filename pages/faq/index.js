@@ -4,11 +4,10 @@ import { AppbarContext } from "../../components/context";
 import { useContext, useEffect } from "react";
 import Footer from "../../components/sections/footer";
 import React from "react";
+import SEO from "../../components/utils/SEO";
 export default function FAQ() {
     const { setActive } = useContext(AppbarContext);
-    // setActive({ home: false, dashboard: false, documentation: false, faq: true });
     useEffect(() => {
-        //editing navbar
         setActive({
             home: false,
             dashboard: false,
@@ -35,9 +34,14 @@ export default function FAQ() {
             });
         }
     }
-    //   console.log(faqs);
     return (
         <>
+            <SEO
+                title="SaveMyForm | FAQs"
+                desc="FAQs SaveMyForm. SaveMyForm is a platform where yoy save your form data now
+                easily and securely.No need to create a Backend for collecting
+                form responses on your application"
+            />
             <div className="flex justify-center">
                 <Collapse
                     className="mt-8 mb-2 font-bold text-xl w-full max-w-2xl text-[#00694B] rounded-lg shadow-[0_2px_2px_rgba(0,0,0,0.25)] px-4"

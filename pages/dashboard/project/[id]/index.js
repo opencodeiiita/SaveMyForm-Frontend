@@ -7,6 +7,7 @@ import Loader from "../../../../components/elements/Loader";
 import Form from "../../../../components/elements/Form";
 import Footer from "../../../../components/elements/Footer";
 import Link from "next/link";
+import SEO from "../../../../components/utils/SEO";
 async function getProjectData(id) {
     return await get(`/project/dashboard/${id}`).then((data) => {
         data?.data?.data?.forms?.forEach((form) => {
@@ -53,6 +54,12 @@ export default function Project({ id }) {
     if (projectQuery?.isSuccess) {
         return (
             <>
+                <SEO
+                    title={`SaveMyForm | Project | ${projectQuery?.data?.name}}`}
+                    desc={`Dashboard of project ${projectQuery?.data?.name}. SaveMyForm is a platform where yoy save your form data now
+                easily and securely.No need to create a Backend for collecting
+                form responses on your application`}
+                />
                 <div className="flex-col flex items-center border-0 border-yellow-500 font-[Poppins]">
                     <svg
                         height="461"

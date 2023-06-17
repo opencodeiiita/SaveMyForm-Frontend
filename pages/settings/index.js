@@ -28,18 +28,6 @@ const Settings = () => {
         setName(user?.name);
         setEmail(user?.email);
     }, [user]);
-    //   const success = () => {
-    //     messageApi.open({
-    //       type: "success",
-    //       content: "Password was successfully updated",
-    //     });
-    //   };
-    //   const error = () => {
-    //     messageApi.open({
-    //       type: "error",
-    //       content: "Error encountered",
-    //     });
-    //   };
     async function handleSave() {
         if (!executeRecaptcha) {
             message.error("Recaptcha Failed");
@@ -164,20 +152,6 @@ const Settings = () => {
                             setEmail(e.target.value);
                         }}
                         value={email}
-                    />
-                    <Input.Password
-                        className={`${
-                            passwordTab ? "hidden" : "p-2"
-                        } my-12 border-2 border-[#C2C8CB] text-xl font-inter font-medium rounded-lg`}
-                        placeholder="Password"
-                        visibilityToggle={{
-                            visible: userPasswordVisible,
-                            onVisibleChange: setUserPasswordVisible,
-                        }}
-                        onChange={(e) => {
-                            setUserPassword(e.target.value);
-                        }}
-                        value={userPassword}
                     />
 
                     {passwordTab && (

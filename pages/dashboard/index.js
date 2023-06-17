@@ -5,12 +5,13 @@ import { AppbarContext, UserContext } from "../../components/context";
 import { useQuery, QueryClient, dehydrate } from "@tanstack/react-query";
 import Loader from "../../components/elements/Loader";
 import { useWindowSize } from "../../components/utils/hooks/useWindowSize";
-import PCard from "../../components/elements/ProjectCard";
+import ProjectCard from "../../components/elements/ProjectCard";
 import Icon from "../../assets/svgs/iconDash.svg";
 import Image from "next/image";
 import Footer from "../../components/elements/Footer";
 import Link from "next/link";
 import { PlusOutlined } from "@ant-design/icons";
+import SEO from "../../components/utils/SEO";
 async function getUserDashboard() {
     return await get("/user/dashboard").then((data) => {
         data?.data?.data?.projects.forEach((date) => {
@@ -62,6 +63,12 @@ export default function Dashboard() {
     if (userQuery?.isSuccess) {
         return (
             <>
+                <SEO
+                    title="SaveMyForm | Dashboard"
+                    desc={`Dashboard of ${user.name}. SaveMyForm is a platform where yoy save your form data now
+                easily and securely.No need to create a Backend for collecting
+                form responses on your application`}
+                />
                 <div className="flex-col flex items-center border-0 border-yellow-500 font-[Poppins]">
                     <svg
                         width="100%"
@@ -111,7 +118,7 @@ export default function Dashboard() {
                                 userQuery.data.projects &&
                                 userQuery.data.projects.length > 0 &&
                                 userQuery.data.projects.map((project, i) => (
-                                    <PCard
+                                    <ProjectCard
                                         key={i}
                                         id={project?.id}
                                         formName={project?.name}

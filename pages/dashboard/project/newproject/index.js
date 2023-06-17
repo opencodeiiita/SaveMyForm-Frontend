@@ -11,7 +11,7 @@ import { message } from "antd";
 import { post } from "../../../../components/utils/API";
 import { useRouter } from "next/router";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-
+import SEO from "../../../../components/utils/SEO";
 export default function NewProject() {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const router = useRouter();
@@ -110,6 +110,12 @@ export default function NewProject() {
     };
     return (
         <>
+            <SEO
+                title="SaveMyForm | NewProject"
+                desc={`Create new project on SaveMyForm. SaveMyForm is a platform where yoy save your form data now
+                easily and securely.No need to create a Backend for collecting
+                form responses on your application`}
+            />
             <div className="">
                 <div className="relative">
                     <svg

@@ -9,6 +9,7 @@ import createJSONSchema from "../../../../../components/utils/JSONSchema";
 import { useRouter } from "next/router";
 import { AppbarContext, UserContext } from "../../../../../components/context";
 import { post, API_URL } from "../../../../../components/utils/API";
+import SEO from "../../../../../components/utils/SEO";
 export default function NewForm() {
     const { setActive } = useContext(AppbarContext);
     let { isLoggedIn, user } = useContext(UserContext);
@@ -27,7 +28,6 @@ export default function NewForm() {
             ),
         [fields]
     );
-    const addField = () => {};
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -69,6 +69,12 @@ export default function NewForm() {
 
     return (
         <>
+            <SEO
+                title="SaveMyForm | NewForm"
+                desc={`Create New Form on SaveMyForm. SaveMyForm is a platform where yoy save your form data now
+                easily and securely.No need to create a Backend for collecting
+                form responses on your application`}
+            />
             <div className="grid place-items-center w-screen relative">
                 <div className="absolute w-full h-96 bg-[#023430] top-0 z-0">
                     <Image
