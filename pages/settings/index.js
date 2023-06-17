@@ -125,7 +125,7 @@ const Settings = () => {
                         </div>
                     </div>
                     <div className="flex flex-col gap-8 shadow-[0_4px_4px_0px_fbeefc] rounded-lg p-8 bg-[#ffffff]">
-                        <div className="flex flex-row items-center gap-8 bg-[#fbeefc]  rounded-lg px-4 pl-0">
+                        <div className="flex flex-row items-center gap-4 bg-[#fbeefc]  rounded-lg px-4 pl-0">
                             <div
                                 className="cursor-pointer text-lg font-semibold hover:bg-[#EEA5F4] hover:rounded-l-lg p-4 "
                                 onClick={() => {
