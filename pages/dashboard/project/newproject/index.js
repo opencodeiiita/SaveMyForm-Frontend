@@ -16,44 +16,34 @@ export default function NewProject() {
     const { executeRecaptcha } = useGoogleReCaptcha();
     const router = useRouter();
     const [state, setState] = useState(false);
-    const [firstDom, setFirstDom] = useState("");
     const [projectName, setProjectName] = useState(null);
     const [recaptchaKey, setReCaptchaKey] = useState(null);
     const [recaptchaSecret, setReCaptchaSecret] = useState(null);
-    const [domain, setDomain] = useState([]);
+    const [domain, setDomain] = useState([""]);
     const onChange = (checked) => {
         setState(checked);
     };
-    function handleFirstDomainChange(e) {
-        setFirstDom(e.target.value);
-    }
-    function handleAddDomain() {
-        if (firstDom === "") {
-            message.error("Please fill the previous domain");
-            return;
-        } else if (domain[domain.length - 1] == "") {
-            message.error("Please fill the previous domain");
-            return;
-        }
-        const dom = [...domain, []];
-        setDomain(dom);
-    }
-
-    function handleDomainChange(e, index) {
-        const dom = [...domain];
-        dom[index] = e.target.value;
-        setDomain(dom);
-    }
-
-    function handleDeleteDomain(index) {
-        const delVal = [...domain];
-        delVal.splice(index, 1);
-        setDomain(delVal);
-    }
-
     const success = () => {
         message.success("Project Successfully saved");
         router.push("/dashboard");
+    };
+    const addDomain = () => {
+        if (domain.length < 3) {
+            setDomain([...domain, ""]);
+        } else {
+            message.error("You cannot add more than 3 allowed origins");
+        }
+    };
+    const handleDeleteDomain = (i) => {
+        if (domain.length > 1) {
+            setDomain((prev) => {
+                let nDomains = [...prev];
+                nDomains.splice(i, 1);
+                return nDomains;
+            });
+        } else {
+            message.error("At least 1 field is required");
+        }
     };
     const handleSubmit = async () => {
         if (!executeRecaptcha) {
@@ -80,8 +70,7 @@ export default function NewProject() {
         setReCaptchaKey(null);
         setReCaptchaSecret(null);
         setState(false);
-        setDomain([]);
-        setFirstDom("");
+        setDomain([""]);
     };
     return (
         <>
@@ -162,16 +151,6 @@ export default function NewProject() {
                             <div className="text-lg text-[#01684a] font-bold">
                                 Add Allowed Domains
                             </div>
-                            <div className="flex flex-row items-center">
-                                <Input
-                                    placeholder="Domain"
-                                    className="rounded-lg border-solid border-2 border-[#01684a]"
-                                    onChange={(e) => {
-                                        handleFirstDomainChange(e);
-                                    }}
-                                    value={firstDom}
-                                />
-                            </div>
                             {domain.map((item, index) => {
                                 return (
                                     <div
@@ -181,9 +160,15 @@ export default function NewProject() {
                                         <Input
                                             placeholder="Domain"
                                             className="rounded-lg border-solid border-2 border-[#01684a]"
-                                            onChange={(e) => {
-                                                handleDomainChange(e, index);
-                                            }}
+                                            onChange={(e) =>
+                                                setDomain((prev) => {
+                                                    let nFields = [...prev];
+                                                    nFields[index] =
+                                                        e.target.value;
+                                                    return nFields;
+                                                })
+                                            }
+                                            value={item}
                                         />
                                         <button
                                             className="ml-2"
@@ -205,7 +190,7 @@ export default function NewProject() {
                         <div>
                             <button
                                 className="rounded-lg bg-[#DEF7E5] text-[#023430] font-semibold p-2 w-32"
-                                onClick={() => handleAddDomain()}
+                                onClick={addDomain}
                                 type="button"
                             >
                                 <Space>

@@ -18,6 +18,9 @@ export default (props) => {
                         {props.allowedOrigins.map((origin, i) => (
                             <div className="text-[#970606]" key={i}>
                                 {origin}
+                                {i !== props.allowedOrigins.length - 1
+                                    ? ","
+                                    : ""}
                             </div>
                         ))}
                     </div>

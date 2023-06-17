@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, message } from "antd";
+import { Input, Button, message, notification } from "antd";
 import { patch } from "../../components/utils/API";
 import { UserContext } from "../../components/context";
 import { useContext } from "react";
@@ -8,13 +8,38 @@ import { useQueryClient } from "@tanstack/react-query";
 import Avatar from "../../components/elements/Avatar";
 import SEO from "../../components/utils/SEO";
 import Footer from "../../components/elements/Footer";
+import { useRouter } from "next/router";
 const Settings = () => {
-    const queryClient = useQueryClient();
+    const router = useRouter();
+    const [api, contextHolder] = notification.useNotification();
+    const openNotification = (placement) => {
+        const description = (
+            <div>
+                <p>
+                    Verify your Email to get access to all the features of
+                    SaveMyForm
+                </p>
+                <Button
+                    className="mt-2  rounded-lg bg-[#fbeefc]"
+                    onClick={() => {
+                        router.push("/verify");
+                    }}
+                >
+                    Verify
+                </Button>
+            </div>
+        );
+        api.warning({
+            message: `Email not verified`,
+            description: description,
+            placement,
+            duration: 5,
+        });
+    };
     const { executeRecaptcha } = useGoogleReCaptcha();
     const { user, setUser } = useContext(UserContext);
     const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
     const [newPasswordVisible, setNewPasswordVisible] = useState(false);
-    const [userPasswordVisible, setUserPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [passwordTab, setPasswordTab] = useState(false);
     const [name, setName] = useState(user?.name);
@@ -22,13 +47,12 @@ const Settings = () => {
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const [errorBool, setErrorBool] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const [messageApi, contextHolder] = message.useMessage();
-    const [userPassword, setUserPassword] = useState("");
     useEffect(() => {
         setName(user?.name);
         setEmail(user?.email);
+        if (!user?.verified) {
+            openNotification("top");
+        }
     }, [user]);
     async function handleSave() {
         if (!executeRecaptcha) {
@@ -91,7 +115,6 @@ const Settings = () => {
         patch("/user/update", {
             name: name,
             email: email,
-            password: userPassword,
             recaptcha_token: token,
         })
             .catch((err) => {

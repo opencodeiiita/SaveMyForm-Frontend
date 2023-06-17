@@ -5,7 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { get } from "../../components/utils/API";
 import React from "react";
-import SEO from "../../components/SEO";
+import SEO from "../../components/utils/SEO";
 export default function Verify() {
     const router = useRouter();
     let { isLoggedIn, user } = useContext(UserContext);

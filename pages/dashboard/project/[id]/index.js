@@ -57,7 +57,7 @@ export default function Project({ id }) {
         return (
             <>
                 <SEO
-                    title={`SaveMyForm | Project | ${projectQuery?.data?.name}}`}
+                    title={`SaveMyForm | Project | ${projectQuery?.data?.name}`}
                     desc={`Dashboard of project ${projectQuery?.data?.name}. SaveMyForm is a platform where yoy save your form data now
                 easily and securely.No need to create a Backend for collecting
                 form responses on your application`}
