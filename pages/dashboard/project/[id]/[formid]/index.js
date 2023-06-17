@@ -21,7 +21,9 @@ import FormResponse from "../../../../../components/elements/FormResponse";
 import DashboardVector from "../../../../../assets/svgs/dashboardsVector.svg";
 import Image from "next/image";
 import SEO from "../../../../../components/utils/SEO";
-export default function Project() {
+export default function FormDashboard() {
+    const router = useRouter();
+    const { formid } = router.query;
     const { setActive } = useContext(AppbarContext);
     let { isLoggedIn, user } = useContext(UserContext);
     useEffect(() => {
@@ -60,7 +62,7 @@ export default function Project() {
                         className="ml-auto object-cover h-full"
                     />
                 </div>
-                <div className="flex flex-col gap-8 md:w-1/2 w-9/12 z-20 mt-16">
+                <div className="flex flex-col gap-8 lg:w-1/2 w-5/6 z-20 mt-16">
                     <div className="flex flex-col gap-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <h1 className=" text-[#DEF7E5] font-bold text-5xl">
