@@ -5,11 +5,12 @@ import { AppbarContext, UserContext } from "../../components/context";
 import { useQuery, QueryClient, dehydrate } from "@tanstack/react-query";
 import Loader from "../../components/elements/Loader";
 import { useWindowSize } from "../../components/utils/hooks/useWindowSize";
-import Card from "../../components/elements/card";
-import PCard from "../../components/elements/P_Card";
+import PCard from "../../components/elements/ProjectCard";
 import Icon from "../../assets/svgs/iconDash.svg";
 import Image from "next/image";
 import Footer from "../../components/elements/Footer";
+import Link from "next/link";
+import { PlusOutlined } from "@ant-design/icons";
 async function getUserDashboard() {
     return await get("/user/dashboard").then((data) => {
         data?.data?.data?.projects.forEach((date) => {
@@ -88,7 +89,20 @@ export default function Dashboard() {
                             Your Projects
                         </div>
                         <div className="grid gap-2 grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))]">
-                            <Card />
+                            <Link href="/dashboard/project/newproject">
+                                <div
+                                    className="bg-[#FFFEFE] shadow-[0px_4px_8px_rgba(0,0,0,0.25)] h-[180px] w-full cursor-pointer rounded-[12px]
+        flex justify-center flex-col items-center hover:bg-[#DEF7E5] transition-all duration-200
+        "
+                                >
+                                    <div>
+                                        <PlusOutlined className="text-[30px]" />
+                                    </div>
+                                    <div className="select-none text-base text-[#023430] font-semibold">
+                                        Create a Project
+                                    </div>
+                                </div>
+                            </Link>
                             {userQuery.isRefetching ? (
                                 <div className=" relative min-h-[40vh]">
                                     <Loader />

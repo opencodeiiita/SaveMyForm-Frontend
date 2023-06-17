@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../../../../components/elements/Footer";
-import Pop from "../../../../components/elements/popinfo";
+import Pop from "../../../../components/elements/Popinfo";
 import { Input } from "antd";
 import user from "../../../../assets/images/illustrations/user.png";
 import { Switch } from "antd";
