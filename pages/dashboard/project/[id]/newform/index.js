@@ -3,7 +3,6 @@ import Image from "next/image";
 import DashboardVector from "../../../../../assets/svgs/dashboardsVector.svg";
 import { Input, Space, Checkbox, message } from "antd";
 import FormInput from "../../../../../components/elements/FormInput";
-import { AiOutlinePlus } from "react-icons/ai";
 import Footer from "../../../../../components/elements/Footer";
 import createJSONSchema from "../../../../../components/utils/JSONSchema";
 import { useRouter } from "next/router";
@@ -42,8 +41,10 @@ export default function NewForm() {
                 hostUrl: API_URL,
             };
             const response = await post(`/form/new/${id}`, body);
-            //   message.success('Form Created Successfully');
-            //   router.replace(`/dashboard/project/${id}/`);
+            if (response.status === "Inserted") {
+                message.success("Form Created Successfully");
+                router.replace(`/dashboard/project/${id}/${response.data.id}`);
+            }
         } catch (err) {
             message.error("Error in creating form");
         }
@@ -85,17 +86,17 @@ export default function NewForm() {
                         className="ml-auto object-cover h-full"
                     />
                 </div>
-                <div className="flex flex-col gap-8 md:w-1/2 w-9/12 z-20 mt-16">
+                <div className="flex flex-col gap-8 lg:w-1/2 w-5/6 z-20 mt-16">
                     <div className="flex flex-col gap-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <h1 className=" text-[#DEF7E5] font-bold text-5xl">
-                                {"Form1"}
+                                {"New Form"}
                             </h1>
                         </div>
                         <div>
-                            <div className=" text-[#DEF7E5] font-base text-xl">
+                            {/* <div className=" text-[#DEF7E5] font-base text-xl">
                                 {"Project1"}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <form onSubmit={handleSubmit}>

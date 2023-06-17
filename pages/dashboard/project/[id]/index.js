@@ -8,6 +8,8 @@ import Form from "../../../../components/elements/Form";
 import Footer from "../../../../components/elements/Footer";
 import Link from "next/link";
 import SEO from "../../../../components/utils/SEO";
+import DashboardVector from "../../../../assets/svgs/dashboardsVector.svg";
+import Image from "next/image";
 async function getProjectData(id) {
     return await get(`/project/dashboard/${id}`).then((data) => {
         data?.data?.data?.forms?.forEach((form) => {
@@ -60,75 +62,61 @@ export default function Project({ id }) {
                 easily and securely.No need to create a Backend for collecting
                 form responses on your application`}
                 />
-                <div className="flex-col flex items-center border-0 border-yellow-500 font-[Poppins]">
-                    <svg
-                        height="461"
-                        viewBox="0 0 1728 461"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <g clip-path="url(#clip0_1604_86)">
-                            <path
-                                d="M1727.5 0.5H0.5V460.5H1727.5V0.5Z"
-                                fill="#023430"
-                                stroke="black"
-                            />
-                            <path
-                                d="M1628 0C1683.23 0 1728 44.7715 1728 100V324.686C1728 381.743 1673.73 423.166 1618.69 408.114C1596.62 402.076 1573.05 405.034 1553.15 416.338L1515 438.01L1476.2 453.704C1464.29 458.523 1451.56 461 1438.7 461H848.104C817.685 461 791.595 439.298 786.055 409.387C785.353 405.597 785 401.75 785 397.896V394.527C785 339.415 829.677 294.738 884.79 294.738H1098.52H1164.22C1240.12 294.738 1283.43 208.075 1237.87 147.369C1192.31 86.6627 1235.63 0 1311.53 0H1628Z"
-                                fill="#00684A"
-                            />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_1604_86">
-                                <rect width="1728" height="461" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                    <div
-                        className=" w-[clamp(200px,60%,900px)] project_cards relative top-[-250px] outline-[black]
-             flex flex-col 
-            "
-                    >
-                        <div className="flex  justify-start flex-row gap-4 items-center">
-                            <h1 className=" text-[#DEF7E5] font-bold text-5xl">
-                                {projectQuery?.data?.name}
-                            </h1>
-                            {projectQuery?.data?.is_owner && (
-                                <Link
-                                    href={`/dashboard/project/${projectQuery?.data?.id}/settings`}
-                                >
-                                    <button className="text-[#DEF7E5]  h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
-                                        Manage
+                <div className="grid place-items-center w-screen relative">
+                    <div className="absolute w-full h-96 bg-[#023430] top-0 z-0">
+                        <Image
+                            src={DashboardVector.src}
+                            height={384}
+                            width={786}
+                            alt="Dashboard Vector"
+                            className="ml-auto object-cover h-full"
+                        />
+                    </div>
+                    <div className="flex flex-col gap-8 lg:w-1/2 w-5/6 z-20 mt-16">
+                        <div className="flex flex-col gap-2 ">
+                            <div className="flex flex-row gap-2 items-center">
+                                <h1 className=" text-[#DEF7E5] font-bold text-5xl">
+                                    {projectQuery?.data?.name}
+                                </h1>
+                                {projectQuery?.data?.is_owner && (
+                                    <Link
+                                        href={`/dashboard/project/${projectQuery?.data?.id}/settings`}
+                                    >
+                                        <button className="text-[#DEF7E5]  h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
+                                            Manage
+                                        </button>
+                                    </Link>
+                                )}
+                            </div>
+                            <div className="self-end">
+                                <Link href={`/dashboard/project/${id}/newform`}>
+                                    <button className="rounded-lg bg-[#DEF7E5] text-[#023430] font-semibold p-1 px-2 ">
+                                        <div className="flex flex-row items-center gap-2">
+                                            <PlusOutlined
+                                                size={16}
+                                                strokeWidth={12}
+                                            />
+                                            Create New Form
+                                        </div>
                                     </button>
                                 </Link>
-                            )}
+                            </div>
                         </div>
-                        <div className="flex flex-row justify-end items-center gap-2">
-                            <Link
-                                href={`/dashboard/project/${projectQuery?.data?.id}/newform`}
-                            >
-                                <div className=" mt-8">
-                                    <button className=" ml-6 flex text-[#00694B] font-semibold rounded-md px-2 py-1 bg-[#92E3A9] items-center justify-around">
-                                        <PlusOutlined className="mr-1" />
-                                        Create a form
-                                    </button>
-                                </div>
-                            </Link>
+                        <div className="flex flex-col gap-4 ] rounded-lg py-8 ">
+                            <div className="flex flex-col gap-4">
+                                {projectQuery.data.forms.map((form) => (
+                                    <Form
+                                        createdAt={form.date_created}
+                                        formName={form.name}
+                                        id={form.id}
+                                        projectId={projectQuery.data.id}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </div>
-                    <div className="w-full flex -mt-56  flex-col items-center justify-center">
-                        {projectQuery.data.forms.map((form) => (
-                            <Form
-                                createdAt={form.date_created}
-                                formName={form.name}
-                                id={form.id}
-                                projectId={projectQuery.data.id}
-                            />
-                        ))}
-                    </div>
-
-                    <Footer />
                 </div>
+                <Footer />
             </>
         );
     }
