@@ -86,16 +86,14 @@ export default () => {
                     <div className="dyfr_text1 w-full">
                         Download your form Response!
                     </div>
-                    <div className="dyfr_text2">
-                        We save your form easily and securely that no other
-                        platform can
-                    </div>
+
                     <div className="dyfr_text3">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute
+                        With our user-friendly interface, downloading form
+                        responses is a breeze. Navigate effortlessly through our
+                        intuitive platform and locate the precise data you need.
+                        Customize your downloads by selecting specific time
+                        frames, filters, or even export formats, empowering you
+                        to tailor the data to your requirements effortlessly.
                     </div>
                 </div>
             </div>

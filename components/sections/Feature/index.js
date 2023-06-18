@@ -105,12 +105,18 @@ const feature = () => {
                                     Schema Validation
                                 </h5>
                                 <p className="max-600:w-full leading-normal   max-600:mt-4 mt-16 font-normal text-2xl w-[300px] max-md:text-xl">
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua.
-                                    Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip
-                                    ex ea commodo consequat. Duis aute
+                                    Our JSON Schema Validation is like a
+                                    vigilant guardian that meticulously checks
+                                    every piece of data against predefined
+                                    rules, ensuring that it perfectly aligns
+                                    with your specified schema.
+                                    {/* Gone are the
+                                    days of frustrating data mismatches and
+                                    compatibility issues. With our cutting-edge
+                                    validation system, you can rest assured that
+                                    your data is always in its optimal form,
+                                    meeting all the necessary requirements
+                                    effortlessly. */}
                                 </p>
                             </div>
                         </div>
