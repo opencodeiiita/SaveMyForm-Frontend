@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Footer from "../../../../components/elements/Footer";
-import Pop from "../../../../components/elements/Popinfo";
 import { Input } from "antd";
-import user from "../../../../assets/images/illustrations/user.png";
 import { Switch, Space } from "antd";
 import Image from "next/image";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
