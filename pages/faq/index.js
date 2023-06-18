@@ -2,7 +2,7 @@ import faqs from "./faqs.json";
 import { Collapse, Text } from "@nextui-org/react";
 import { AppbarContext } from "../../components/context";
 import { useContext, useEffect } from "react";
-import Footer from "../../components/sections/footer";
+import Footer from "../../components/sections/Footer";
 import React from "react";
 import SEO from "../../components/utils/SEO";
 export default function FAQ() {
