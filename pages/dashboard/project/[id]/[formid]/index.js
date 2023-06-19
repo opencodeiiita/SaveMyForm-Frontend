@@ -26,6 +26,12 @@ export default function FormDashboard() {
     const { formid } = router.query;
     const { setActive } = useContext(AppbarContext);
     let { isLoggedIn, user } = useContext(UserContext);
+    const [form, setForm] = useState(null);
+    const getFormDashboard = async () => {
+        const res = await get(`/form/dashboard/${formid}`);
+        const data = res?.data?.data[0];
+        setForm(data);
+    };
     useEffect(() => {
         if (!isLoggedIn) {
             setActive({
@@ -43,7 +49,9 @@ export default function FormDashboard() {
             faq: false,
         });
     }, [user]);
-
+    useEffect(() => {
+        if (formid) getFormDashboard();
+    }, [formid]);
     return (
         <>
             <SEO
@@ -66,7 +74,7 @@ export default function FormDashboard() {
                     <div className="flex flex-col gap-2 ">
                         <div className="flex flex-row gap-2 items-center">
                             <h1 className=" text-[#DEF7E5] font-bold text-5xl">
-                                {"Form1"}
+                                {form?.name}
                             </h1>
                             <button className="text-[#DEF7E5]  h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">
                                 Manage
@@ -74,7 +82,7 @@ export default function FormDashboard() {
                         </div>
                         <div>
                             <div className=" text-[#DEF7E5] font-base text-xl">
-                                {"Project1"}
+                                {form?.project?.name}
                             </div>
                         </div>
                     </div>
