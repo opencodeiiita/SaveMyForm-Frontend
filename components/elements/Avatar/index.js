@@ -1,9 +1,9 @@
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/avatars-avataaars-sprites";
-
+import React from "react";
 function Avatar({ seed }) {
     let svg = createAvatar(style, {
-        seed: seed, //random avatar will be generated when the users' name is placed here.
+        seed: seed,
         dataUri: true,
         scale: 80,
     });
