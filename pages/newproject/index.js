@@ -1,5 +1,5 @@
 import Footer from '../../components/elements/Footer';
-import Pop from '../../components/popinfo';
+import Pop from '../../components/Popinfo';
 import { Input } from 'antd';
 import user from '../../assets/images/illustrations/user.png';
 import { Switch } from 'antd';
