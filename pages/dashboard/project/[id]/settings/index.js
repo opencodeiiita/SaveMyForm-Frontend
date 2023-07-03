@@ -227,7 +227,7 @@ export default function editProject({ id }) {
                   <h1 className="text-[#116149] font-bold text-[24px]">Allowed Domains</h1>
                   <div className="flex justify-between w-24  md:w-28 items-center">
                     <button
-                      className="bg-green-300 text-green-700 py-0.5  px-2 rounded-md flex justify-center items-center font-semibold"
+                      className="bg-[#DEF7E5] text-green-700 py-0.5  px-2 rounded-md flex justify-center items-center font-semibold"
                       onClick={() => handleAddDomain()}
                     >
                       <AiOutlinePlus className="mr-1" />
@@ -266,7 +266,7 @@ export default function editProject({ id }) {
                   <h1 className="text-[#116149] font-bold text-[24px]">Collaborators</h1>
                   <div className="flex justify-between w-24  md:w-28 items-center">
                     <button
-                      className="bg-green-300 text-green-700 py-0.5  px-2 rounded-md flex justify-center items-center font-semibold"
+                      className="bg-[#DEF7E5] text-green-700 py-0.5  px-2 rounded-md flex justify-center items-center font-semibold"
                       onClick={() => {
                         handleAddCollab();
                       }}
@@ -306,7 +306,7 @@ export default function editProject({ id }) {
             </div>
             <div className="mt-8 w-72 flex justify-between">
               <button
-                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-green-300 p-2 w-32"
+                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32"
                 onClick={handleSave}
               >
                 Save

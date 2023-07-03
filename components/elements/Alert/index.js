@@ -1,16 +1,11 @@
-import React from 'react';
+import React from "react";
 function alert(props) {
   let [open, setOpen] = React.useState(true);
   if (!open) return null;
   return (
-    <div
-      id="alert-1"
-      className="flex p-4 bg-yellow-300 dark:bg-yellow-200"
-      role="alert"
-    >
+    <div id="alert-1" className="flex p-4 py-8 bg-yellow-300 dark:bg-yellow-200 fixed z-[1000] w-full" role="alert">
       <div className="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-        <strong>Alpha Alert</strong> SaveMyForm is still in alpha phase, things
-        may break, please handle us with care.
+        <strong>Alpha Alert</strong> SaveMyForm is still in alpha phase, things may break, please handle us with care.
       </div>
       <button
         type="button"
