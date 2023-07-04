@@ -3,6 +3,7 @@ import Footer from "../../../../components/elements/Footer";
 import { Input } from "antd";
 import { Switch, Space } from "antd";
 import Image from "next/image";
+import { Loading } from "@nextui-org/react";
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import { message } from "antd";
 import { post } from "../../../../components/utils/API";
@@ -10,13 +11,17 @@ import { useRouter } from "next/router";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import SEO from "../../../../components/utils/SEO";
 import DashboardVector from "../../../../assets/svgs/dashboardsVector.svg";
+import { useQueryClient } from "@tanstack/react-query";
+
 export default function NewProject() {
+  let queryClient = useQueryClient();
   const { executeRecaptcha } = useGoogleReCaptcha();
   const router = useRouter();
   const [state, setState] = useState(false);
   const [projectName, setProjectName] = useState(null);
   const [recaptchaKey, setReCaptchaKey] = useState(null);
   const [recaptchaSecret, setReCaptchaSecret] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [domain, setDomain] = useState([""]);
   const onChange = (checked) => {
     setState(checked);
@@ -24,6 +29,7 @@ export default function NewProject() {
   const success = () => {
     message.success("Project Successfully saved");
     router.push("/dashboard");
+    queryClient.invalidateQueries(["userData"]);
   };
   const addDomain = () => {
     if (domain.length < 3) {
@@ -53,6 +59,7 @@ export default function NewProject() {
       message.error("Recaptcha Failed");
       return;
     }
+    setLoading(true);
     const res = await post("/project/new", {
       name: projectName,
       hasRecaptcha: state,
@@ -61,14 +68,11 @@ export default function NewProject() {
       allowedOrigins: domain,
       recaptcha_token: token,
     });
+    setLoading(false);
     res.status === "error" ? message.error(res.error) : success();
   };
   const handleCancel = async () => {
-    setProjectName(null);
-    setReCaptchaKey(null);
-    setReCaptchaSecret(null);
-    setState(false);
-    setDomain([""]);
+    router.back();
   };
   return (
     <>
@@ -173,10 +177,11 @@ export default function NewProject() {
             </div>
             <div className="flex flex-row gap-2">
               <button
-                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-lg  rounded-lg bg-green-300 p-2 w-32"
+                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-lg rounded-lg bg-[#DEF7E5] p-2 w-32"
                 onClick={handleSubmit}
+                disabled={loading}
               >
-                Submit
+                {loading ? <Loading color="success" size="sm" /> : "Save"}
               </button>
               <button
                 className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-lg  rounded-lg bg-white p-2 w-32"

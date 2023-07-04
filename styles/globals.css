@@ -5,12 +5,13 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: Inter, sans-serif;
-  overscroll-behavior:none;
+  overscroll-behavior: none;
 }
 
 a {
@@ -20,7 +21,9 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
+
 .faq_header {
   cursor: pointer;
   width: 700px;
@@ -32,6 +35,7 @@ a {
   padding-bottom: 0px;
   position: relative;
 }
+
 .faq_header::before {
   content: "+";
   font-weight: 100;
@@ -43,6 +47,7 @@ a {
   transform: rotate(var(--angle, 0deg)) scale(2.4);
   transition: transform 0.2s ease;
 }
+
 .faq_header h1 {
   padding-left: 30px;
   padding-bottom: 20px;
@@ -50,6 +55,7 @@ a {
   font-size: 24px;
   color: #00694b;
 }
+
 .faq_container {
   font-family: "Inter", sans-serif;
   width: 100vw;
@@ -60,6 +66,7 @@ a {
   top: 100px;
   margin: 15px 0px;
 }
+
 .faq_details {
   font-size: 14px;
   overflow: hidden;
@@ -96,6 +103,7 @@ a {
   color: white;
   position: relative;
 }
+
 .figma_ellipse {
   height: 200px;
   width: 200px;
@@ -104,6 +112,7 @@ a {
   left: 40%;
   top: 100px;
 }
+
 .figma_ellipse2 {
   height: 16vw;
   width: 16vw;
@@ -112,6 +121,7 @@ a {
   left: clamp(10px, 5%, 100px);
   top: 20vw;
 }
+
 .figma_vector {
   width: 500px;
   position: absolute;
@@ -131,6 +141,7 @@ a {
   top: clamp(10px, 20%, 150px);
   width: 678px;
 }
+
 .dyfr_text1 {
   font-family: "Poppins";
   font-style: normal;
@@ -139,6 +150,7 @@ a {
   color: #fffefe;
   margin-bottom: 30px;
 }
+
 .dyfr_text2 {
   font-family: "Poppins";
   font-style: normal;
@@ -149,6 +161,7 @@ a {
   color: #fffefe;
   margin-bottom: 30px;
 }
+
 .dyfr_text3 {
   font-family: "Poppins";
   font-style: normal;
@@ -159,18 +172,15 @@ a {
 }
 
 .homeCircleColor {
-  background: linear-gradient(
-    158deg,
-    #01ec64 14.39%,
-    rgba(217, 217, 217, 0) 90.67%
-  );
+  background: linear-gradient(158deg,
+      #01ec64 14.39%,
+      rgba(217, 217, 217, 0) 90.67%);
 }
+
 .homeCircleColor2 {
-  background: linear-gradient(
-    153.43deg,
-    #01ec64 -16.67%,
-    rgba(217, 217, 217, 0) 66.67%
-  );
+  background: linear-gradient(153.43deg,
+      #01ec64 -16.67%,
+      rgba(217, 217, 217, 0) 66.67%);
 }
 
 .reveal-bottom {
@@ -178,44 +188,54 @@ a {
   /* opacity: 0; */
   transition: opacity, transform 0.4s ease !important;
 }
+
 .nextui-collapse-title {
   color: #00694b !important;
 }
+
 .ant-popover-inner {
   box-shadow: 0px 4px 4px rgb(0, 0, 0, 0.25);
 }
+
 .ant-popover-inner-content .ant-btn-primary {
   color: red;
   background-color: transparent;
   border-color: red;
 }
+
 .ant-popover-inner-content .ant-btn-primary:hover {
   color: white;
   background-color: red;
   border-color: red;
 }
+
 .ant-popover-inner-content .ant-btn-default {
   color: green;
   border-color: green;
   /* background-color: blue; */
 }
+
 .ant-popover-inner-content .ant-btn-default:hover {
   color: white;
   border-color: green;
   background-color: green;
 }
+
 .reveal-bottom.active-reveal {
   transform: translateY(0px);
   opacity: 1 !important;
 }
+
 @media screen and (max-width: 1280px) {
   .figma_vector {
     right: 10px;
   }
+
   .text_container {
     left: 60px;
   }
 }
+
 @media screen and (max-width: 1024px) {
   .text_container {
     width: unset;
@@ -228,61 +248,74 @@ a {
     margin-bottom: 10px;
     width: 500px;
   }
+
   .dyfr_text2 {
     font-size: 18px;
     margin-bottom: 10px;
     width: 400px;
     line-height: unset;
   }
+
   .dyfr_text3 {
     font-size: 18px;
   }
+
   .figma_vector {
     width: 350px;
     top: unset;
   }
 }
+
 @media screen and (max-width: 799px) {
   .text_container {
     left: 30px;
   }
+
   .dyfr_text1 {
     font-size: 30px;
     width: 400px;
   }
+
   .dyfr_text2 {
     font-size: 15px;
     width: 330px;
     line-height: unset;
   }
+
   .dyfr_text3 {
     font-size: 15px;
     width: 330px;
   }
+
   .figma_vector {
     width: 250px;
     top: unset;
   }
 }
+
 @media screen and (max-width: 599px) {
   .dyfr_background {
     background: #001e2b;
   }
+
   .figma_ellipse {
     height: 120px;
     width: 120px;
     left: 5%;
     top: 50px;
   }
+
   .figma_vector {
     width: calc(20vh + 40vw);
     position: absolute;
     right: unset;
     top: 90px;
   }
+
   .figma_ellipse2 {
     display: none;
   }
+
   .text_container {
     width: 90%;
     top: unset;
@@ -291,18 +324,21 @@ a {
 
     /* height: 300px; */
   }
+
   .dyfr_text1 {
     font-weight: 600;
     font-size: 4vh;
     margin-bottom: 10px;
     line-height: unset;
   }
+
   .dyfr_text2 {
     font-size: 2vh;
     width: auto;
     margin-bottom: 10px;
     line-height: unset;
   }
+
   .dyfr_text3 {
     font-size: 2vh;
     width: auto;
