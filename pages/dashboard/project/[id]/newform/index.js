@@ -6,7 +6,7 @@ import { useQuery, dehydrate, QueryClient } from "@tanstack/react-query";
 import DashboardVector from "../../../../../assets/svgs/dashboardsVector.svg";
 import FormInput from "../../../../../components/elements/FormInput";
 import Footer from "../../../../../components/elements/Footer";
-import createJSONSchema from "../../../../../components/utils/JSONSchema";
+import {createJSONSchema} from "../../../../../components/utils/JSONSchema";
 import { useRouter } from "next/router";
 import { AppbarContext, UserContext } from "../../../../../components/context";
 import { get, post, API_URL } from "../../../../../components/utils/API";
