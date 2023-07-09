@@ -1,7 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useQuery, dehydrate, QueryClient, useQueryClient } from "@tanstack/react-query";
+import {
+  useQuery,
+  dehydrate,
+  QueryClient,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { BiSortAlt2 } from "react-icons/bi";
 import { Modal, Button, Input, Space } from "antd";
 
@@ -19,7 +24,8 @@ export default function FormDashboard() {
   const { setActive } = useContext(AppbarContext);
   let { isLoggedIn, user } = useContext(UserContext);
   const [form, setForm] = useState(null);
-  const [newFormSubmissionLinkModalOpen, setNewFormSubmissionLinkModalOpen] = useState(false);
+  const [newFormSubmissionLinkModalOpen, setNewFormSubmissionLinkModalOpen] =
+    useState(false);
 
   const getFormDashboard = async () => {
     const res = await get(`/form/dashboard/${formid}`);
@@ -74,23 +80,41 @@ export default function FormDashboard() {
         <div className="flex flex-col gap-8 lg:w-1/2 w-5/6 z-20 mt-16">
           <div className="flex flex-col gap-2 ">
             <div className="flex flex-row gap-2 items-center">
-              <h1 className=" text-[#DEF7E5] font-bold text-5xl">{form?.name}</h1>
+              <h1 className=" text-[#DEF7E5] font-bold text-5xl">
+                {form?.name}
+              </h1>
               {form?.is_owner && (
-                <button className="text-[#DEF7E5]  h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] ">Manage</button>
+                <button
+                  className="text-[#DEF7E5]  h-[31px] px-2 rounded-lg border-2 border-[#DEF7E5] "
+                  onClick={() => {
+                    router.push(
+                      `/dashboard/project/${router.query.id}/${router.query.formid}/settings`
+                    );
+                  }}
+                >
+                  Manage
+                </button>
               )}
             </div>
             <div>
-              <div className=" text-[#DEF7E5] font-base text-xl">{form?.project?.name}</div>
+              <div className=" text-[#DEF7E5] font-base text-xl">
+                {form?.project?.name}
+              </div>
             </div>
           </div>
           <div className="flex flex-col gap-4 shadow-[0_4px_4px_0px_#00000040] rounded-lg p-8 bg-[#ffffff]">
             <div className="flex flex-row items-center  justify-between">
               <div className=" text-[#016749] font-bold text-5xl">
-                {"45"} <span className="text-[#01684a] font-medium tracking-wide text-xl">Responses</span>
+                {"45"}{" "}
+                <span className="text-[#01684a] font-medium tracking-wide text-xl">
+                  Responses
+                </span>
               </div>
               <div className="flex flex-row gap-2 items-center">
                 <BiSortAlt2 fill="#00694b" size={24} />
-                <span className="text-[#00694b] font-medium tracking-wide text-xl">Latest</span>
+                <span className="text-[#00694b] font-medium tracking-wide text-xl">
+                  Latest
+                </span>
               </div>
             </div>
             <div className="flex flex-col gap-4">
@@ -100,8 +124,12 @@ export default function FormDashboard() {
               <FormResponse />
             </div>
             <div className="flex flex-row items-center gap-2 justify-center">
-              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">Prev</button>
-              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">Next</button>
+              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">
+                Prev
+              </button>
+              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">
+                Next
+              </button>
             </div>
           </div>
         </div>
@@ -115,7 +143,9 @@ export default function FormDashboard() {
             type="primary"
             onClick={() => {
               setNewFormSubmissionLinkModalOpen(false);
-              router.replace(router.asPath.split("?")[0], undefined, { shallow: true });
+              router.replace(router.asPath.split("?")[0], undefined, {
+                shallow: true,
+              });
             }}
           >
             Ok
@@ -124,10 +154,15 @@ export default function FormDashboard() {
       >
         <h3 className="font-semibold text-xl">Submission Link</h3>
         <p className="leading-5">
-          Here is your form submission link, send POST request to this link to store your form submission
+          Here is your form submission link, send POST request to this link to
+          store your form submission
         </p>
         <Space.Compact style={{ width: "100%", marginTop: 16 }}>
-          <Input defaultValue={submissionLink} disabled className="h-8 border-gray-300 rounded-l-lg" />
+          <Input
+            defaultValue={submissionLink}
+            disabled
+            className="h-8 border-gray-300 rounded-l-lg"
+          />
           <Button onClick={copySubmissionLink}>
             <MdOutlineContentCopy />
           </Button>
