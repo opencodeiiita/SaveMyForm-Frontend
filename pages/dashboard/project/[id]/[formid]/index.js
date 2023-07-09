@@ -20,21 +20,51 @@ import { MdOutlineContentCopy } from "react-icons/md";
 
 export default function FormDashboard() {
   const router = useRouter();
+  const limit = 10;
   const { formid, isNew, submissionLink } = router.query;
   const { setActive } = useContext(AppbarContext);
   let { isLoggedIn, user } = useContext(UserContext);
   const [form, setForm] = useState(null);
   const [newFormSubmissionLinkModalOpen, setNewFormSubmissionLinkModalOpen] =
     useState(false);
-
+  const [page, setPage] = useState(0),
+    [formSubmissions, setFormSubmissions] = useState(null),
+    [formSubmissionsCount, setFormSubmissionsCount] = useState(null);
   const getFormDashboard = async () => {
     const res = await get(`/form/dashboard/${formid}`);
     const data = res?.data?.data;
     setForm(data);
   };
-
+  const getFormResponses = async () => {
+    const res = await get(
+      `/form/submissions/${formid}?limit=${limit}&skip=${page * limit}`
+    );
+    const data = res?.data?.data;
+    setFormSubmissions(data?.submissions);
+    setFormSubmissionsCount(data?.totalSubmissions);
+  };
   const copySubmissionLink = () => {
     navigator.clipboard.writeText(submissionLink);
+  };
+  const handlePrevPage = () => {
+    if (page === 0) return;
+    setPage((prev) => prev - 1);
+  };
+  const handleNextPage = () => {
+    setPage((prev) => prev + 1);
+  };
+  const exportCSV = async () => {
+    const res = await get(`/form/csv/${formid}`);
+    console.log(res);
+    const data = res?.data?.data;
+    let encodeUri = data.encodeUri;
+    console.log(encodeUri);
+    let link = document.createElement("a");
+    link.setAttribute("href", encodeUri);
+    link.setAttribute("download", "responses.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
   useEffect(() => {
     if (!isLoggedIn) {
@@ -56,6 +86,9 @@ export default function FormDashboard() {
   useEffect(() => {
     if (formid) getFormDashboard();
   }, [formid]);
+  useEffect(() => {
+    if (formid) getFormResponses();
+  }, [formid, page]);
   useEffect(() => {
     if (isNew && submissionLink) setNewFormSubmissionLinkModalOpen(true);
   }, [isNew, submissionLink]);
@@ -105,29 +138,39 @@ export default function FormDashboard() {
           <div className="flex flex-col gap-4 shadow-[0_4px_4px_0px_#00000040] rounded-lg p-8 bg-[#ffffff]">
             <div className="flex flex-row items-center  justify-between">
               <div className=" text-[#016749] font-bold text-5xl">
-                {"45"}{" "}
+                {formSubmissionsCount}{" "}
                 <span className="text-[#01684a] font-medium tracking-wide text-xl">
                   Responses
                 </span>
               </div>
               <div className="flex flex-row gap-2 items-center">
-                <BiSortAlt2 fill="#00694b" size={24} />
-                <span className="text-[#00694b] font-medium tracking-wide text-xl">
-                  Latest
-                </span>
+                <button
+                  className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32"
+                  onClick={exportCSV}
+                >
+                  Download
+                </button>
               </div>
             </div>
             <div className="flex flex-col gap-4">
-              <FormResponse />
-              <FormResponse />
-              <FormResponse />
-              <FormResponse />
+              {formSubmissions &&
+                formSubmissions.map((formSubmission) => (
+                  <FormResponse response={formSubmission} />
+                ))}
             </div>
             <div className="flex flex-row items-center gap-2 justify-center">
-              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">
+              <button
+                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32"
+                onClick={handlePrevPage}
+                disabled={page === 0}
+              >
                 Prev
               </button>
-              <button className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32">
+              <button
+                className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] rounded-lg bg-[#DEF7E5] p-2 w-32"
+                onClick={handleNextPage}
+                disabled={(page + 1) * limit > formSubmissionsCount}
+              >
                 Next
               </button>
             </div>
