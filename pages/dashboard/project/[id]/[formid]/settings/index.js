@@ -15,7 +15,12 @@ import {
   AppbarContext,
   UserContext,
 } from "../../../../../../components/context";
-import { get, patch, API_URL } from "../../../../../../components/utils/API";
+import {
+  get,
+  patch,
+  remove,
+  API_URL,
+} from "../../../../../../components/utils/API";
 import Loader from "../../../../../../components/elements/Loader";
 import SEO from "../../../../../../components/utils/SEO";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
@@ -54,10 +59,9 @@ export default function NewForm() {
   const [hasRecaptcha, setHasRecaptcha] = useState(false);
   const [password, setPassword] = useState("");
   const [enterPasswordModalOpen, setEnterPasswordModalOpen] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   const router = useRouter();
   const { id, formid } = router.query;
-  //   const formName = useRef(null),
-  // reCAPTCHA = useRef(null);
 
   const hasFileField = useMemo(
     () =>
@@ -67,6 +71,19 @@ export default function NewForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (isDelete) {
+        const response = await remove(`/form/${formid}`, { password });
+        if (response.status === "OK") {
+          message.success("Form deleted successfully");
+          setIsDelete((prev) => !prev);
+          router.push(`/dashboard/project/${id}`);
+        } else {
+          message.error(response.data.error);
+        }
+        setPassword("");
+        setIsDelete((prev) => false);
+        return;
+      }
       if (!executeRecaptcha) return message.error("Recaptcha not loaded");
       const token = await executeRecaptcha("form");
       if (!token) return message.error("Recaptcha not verified");
@@ -134,18 +151,21 @@ export default function NewForm() {
       return getFormData(formid);
     },
     staleTime: 10 * 60 * 1000,
-    onSuccess: (data) => {
-      if (data) {
-        const fields = schemaToInputsConverter(data.schema);
-        setFields((prev) => {
-          const data = JSON.parse(JSON.stringify(fields));
-          return data;
-        });
-        setFormName(data.name);
-        setHasRecaptcha(data.hasRecaptchaVerification);
-      }
-    },
+    enabled: !!formid,
   });
+
+  useEffect(() => {
+    if (formQuery?.data) {
+      const data = formQuery?.data;
+      const fields = schemaToInputsConverter(data.schema);
+      setFields((prev) => {
+        const data = JSON.parse(JSON.stringify(fields));
+        return data;
+      });
+      setFormName(data.name);
+      setHasRecaptcha(data.hasRecaptchaVerification);
+    }
+  }, [formQuery?.data]);
 
   if (projectQuery?.isLoading) return <Loader />;
 
@@ -213,20 +233,29 @@ export default function NewForm() {
                   </div>
                 </div>
                 <div className="flex flex-row gap-2">
-                  <button
-                    className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-md rounded-lg bg-[#DEF7E5] p-2 w-32"
+                  <Button
+                    className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-md rounded-lg bg-[#DEF7E5] w-32 h-fit pt-2 hover:border-[#01684a] hover:text-[#01684a]"
                     onClick={() => {
                       setEnterPasswordModalOpen(true);
                     }}
                   >
                     Submit
-                  </button>
-                  <button
-                    className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-md rounded-lg bg-white p-2 w-32"
+                  </Button>
+                  <Button
+                    className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-md rounded-lg bg-white w-32 h-fit pt-2 hover:border-[#01684a] hover:text-[#01684a]"
                     onClick={handleCancel}
                   >
                     Cancel
-                  </button>
+                  </Button>
+                  <Button
+                    className="shadow-[0px_4px_8px_rgba(0,0,0,0.25)] text-md rounded-lg bg-white w-32 text-red-500 h-fit pt-2 hover:border-red-500 hover:text-red-500"
+                    onClick={() => {
+                      setIsDelete((prev) => true);
+                      setEnterPasswordModalOpen(true);
+                    }}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </div>
             </form>
@@ -240,17 +269,23 @@ export default function NewForm() {
           footer={[
             <Button
               type="primary"
+              className={
+                isDelete
+                  ? "text-red-500 bg-white hover:bg-white border-red-500 hover:border-red-500 hover:shadow-[0px_4px_8px_rgba(0,0,0,0.25)]"
+                  : "bg-[#01684a] hover:bg-[#01684a]"
+              }
               onClick={(e) => {
                 setEnterPasswordModalOpen(false);
                 handleSubmit(e);
               }}
             >
-              Ok
+              {isDelete ? "Delete" : "Submit"}
             </Button>,
             <Button
               type="primary"
               onClick={(e) => {
                 setPassword("");
+                setIsDelete(false);
                 setEnterPasswordModalOpen(false);
               }}
             >
