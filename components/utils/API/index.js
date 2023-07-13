@@ -66,7 +66,11 @@ const get = async (endpoint, token = null) => {
 
 const patch = async (endpoint, body, token = null) => {
   try {
-    const response = await axios.patch(API_URL + endpoint, body, getHeaders(token));
+    const response = await axios.patch(
+      API_URL + endpoint,
+      body,
+      getHeaders(token)
+    );
     return response.data;
   } catch (err) {
     console.error(err?.response?.data || err);
