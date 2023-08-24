@@ -3,11 +3,11 @@ import { getLS, removeLS } from "../LocalStorage/index";
 
 const API_URL =
   process.env.NEXT_PUBLIC_ENVIORNMENT === "prod"
-    ? "https://api.savemyform.tk"
+    ? "https://api.savemyform.in.net"
     : process.env.NEXT_PUBLIC_ENVIORNMENT === "pro-dev"
     ? "http://localhost:8080"
-    : "https://dev-api.savemyform.tk";
-    
+    : "https://dev-api.savemyform.in.net";
+
 const getAccessToken = () => {
   return getLS("secret");
 };

@@ -16,6 +16,7 @@ import { AppbarContext, UserContext } from "../../../../../components/context";
 import Loader from "../../../../../components/elements/Loader";
 
 async function getProjectData(id) {
+  console.log(id);
   return await get(`/project/dashboard/${id}`).then((data) => {
     data?.data?.data?.forms?.forEach((form) => {
       let iostr = form.date_created;
@@ -332,7 +333,9 @@ export default function editProject({ id }) {
 }
 export async function getServerSideProps({ params: { id } }) {
   const queryClient = new QueryClient();
-  await queryClient.fetchQuery(["projectData", id], getProjectData);
+  await queryClient.fetchQuery(["projectData", id], () => {
+    return getProjectData(id);
+  });
   return {
     props: {
       dehydratedState: dehydrate(queryClient),
