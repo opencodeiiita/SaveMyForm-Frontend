@@ -1,5 +1,13 @@
 import React from "react";
-import { Input, Checkbox, Dropdown, Button, Space, Select, message } from "antd";
+import {
+  Input,
+  Checkbox,
+  Dropdown,
+  Button,
+  Space,
+  Select,
+  message,
+} from "antd";
 import { AiOutlineDown, AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 import CustomParameter from "../CustomParameterInput";
 export default function FormInput({ fields, setFields, hasFileField }) {
@@ -32,7 +40,10 @@ export default function FormInput({ fields, setFields, hasFileField }) {
   const handleMenuClick = (e) => {};
   const addField = () => {
     if (fields.length < 10) {
-      setFields([...fields, { name: "", isRequired: false }]);
+      setFields((prev) => [
+        ...prev,
+        { label: "", type: "text", required: false },
+      ]);
     } else {
       message.error("You cannot add more than 10 fields");
     }
@@ -51,7 +62,9 @@ export default function FormInput({ fields, setFields, hasFileField }) {
   return (
     <>
       <div className="rounded-lg  border-solid border-2 border-[#01684a] p-4 flex flex-col gap-2">
-        <div className="text-lg text-[#01684a] font-bold">Add Fields to your Form</div>
+        <div className="text-lg text-[#01684a] font-bold">
+          Add Fields to your Form
+        </div>
         {fields.map((field, i) => (
           <div className="flex flex-col gap-4" key={i}>
             <div className="border-2 rounded-lg p-4 flex flex-col gap-2">
@@ -63,7 +76,11 @@ export default function FormInput({ fields, setFields, hasFileField }) {
                     style={{ width: "100%" }}
                     options={
                       hasFileField
-                        ? options.filter((option) => option.label !== "file" && option.label !== "image")
+                        ? options.filter(
+                            (option) =>
+                              option.label !== "file" &&
+                              option.label !== "image"
+                          )
                         : options
                     }
                     showArrow={true}
@@ -109,7 +126,12 @@ export default function FormInput({ fields, setFields, hasFileField }) {
                   </Checkbox>
                 </div>
                 <div onClick={() => handleRemove(i)}>
-                  <AiOutlineClose size={20} strokeWidth={12} className="cursor-pointer" fill="#970606" />
+                  <AiOutlineClose
+                    size={20}
+                    strokeWidth={12}
+                    className="cursor-pointer"
+                    fill="#970606"
+                  />
                 </div>
               </div>
               {/* <div className="flex flex-col gap-2">
