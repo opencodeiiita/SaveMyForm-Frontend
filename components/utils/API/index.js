@@ -3,10 +3,10 @@ import { getLS, removeLS } from "../LocalStorage/index";
 
 const API_URL =
   process.env.NEXT_PUBLIC_ENVIORNMENT === "prod"
-    ? "https://api.savemyform.tk"
+    ? "https://api.savemyform.in.net"
     : process.env.NEXT_PUBLIC_ENVIORNMENT === "pro-dev"
     ? "http://localhost:8080"
-    : "https://dev-api.savemyform.tk";
+    : "https://dev-api.savemyform.in.net";
 
 const getAccessToken = () => {
   return getLS("secret");
@@ -66,11 +66,7 @@ const get = async (endpoint, token = null) => {
 
 const patch = async (endpoint, body, token = null) => {
   try {
-    const response = await axios.patch(
-      API_URL + endpoint,
-      body,
-      getHeaders(token)
-    );
+    const response = await axios.patch(API_URL + endpoint, body, getHeaders(token));
     return response.data;
   } catch (err) {
     console.error(err?.response?.data || err);
